@@ -3,6 +3,7 @@ import { lighten } from 'polished';
 export default {
   primaryColor: '#7F00FF',
   secondaryColor: '#E100FF',
+  tertiaryColor: '#FC6192',
   white: '#FBFBFB',
   black: '#000000',
   get lightWhite() {
@@ -20,9 +21,9 @@ export default {
       huge: '6rem'
     },
     weight: {
-      light: '300',
-      regular: undefined,
-      bold: '700'
+      light: '100',
+      regular: '300',
+      bold: '500'
     }
   },
   gap: {

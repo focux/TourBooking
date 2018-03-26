@@ -2,7 +2,7 @@ import { injectGlobal } from 'styled-components';
 
 /* eslint-disable */
 injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Lato:300,700');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,500');
 
   *,
   *::after,
@@ -18,7 +18,7 @@ injectGlobal`
 
   body {
     box-sizing: border-box;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
 `;

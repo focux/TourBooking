@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { StyledButton } from '../Button/style';
 
 export const Container = styled.div`
   display: flex;
@@ -50,8 +51,15 @@ export const NavItem = styled(NavLink).attrs({
 `;
 
 export const Logo = styled.div`
-  font-weight: 600;
+  font-weight: ${props => props.theme.font.weight.bold};
   font-size: ${props => props.theme.font.size.medium};
   color: ${props => props.theme.white};
   letter-spacing: 0.1rem;
+`;
+
+export const RightSide = styled.div`
+  display: flex;
+  ${StyledButton}:not(:last-child) {
+    margin-right: ${(props) => props.theme.gap.small}
+  }
 `;
