@@ -1,8 +1,8 @@
 import { lighten } from 'polished';
 
 export default {
-  primaryColor: '#5036A6',
-  secondaryColor: '#ff6a00',
+  primaryColor: '#7F00FF',
+  secondaryColor: '#E100FF',
   white: '#FBFBFB',
   black: '#000000',
   get lightWhite() {

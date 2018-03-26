@@ -45,18 +45,6 @@ export const NavItem = styled(NavLink).attrs({
   }
 
   &.${activeClassName} {
-    color: ${props => props.theme.black};
-    &::before {
-      content: '';
-      background-color: ${props => props.theme.white};
-      position: absolute;
-      top: -3rem;
-      left: -.8rem;
-      z-index: -99;
-      width: 140%;
-      height: 8.3rem;
-      transform: skewX(160deg);
-    }
      
   }
 `;

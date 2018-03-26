@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Navigation, NavItem, Logo, activeClassName } from './style';
+import Button from '../Button';
 
 const Header = () => (
   <Container>
     <Logo>Driscovery</Logo>
     <Navigation>
-      <NavItem to="/" activeClassName={activeClassName}>
+      <Button type="solid">
         Log In
-      </NavItem>
-      <NavItem to="/lol" activeClassName={activeClassName}>
+      </Button>
+      <Button type="solid">
         Sign Up
-      </NavItem>
+      </Button>
     </Navigation>
   </Container>
 );
