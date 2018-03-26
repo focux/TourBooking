@@ -6,6 +6,7 @@ export const StyledButton = styled.button`
   font-weight: ${(props) => props.theme.font.weight.light};
   border-radius: 3rem;
   border: 0;
+  letter-spacing: 1px;
   ${props => {
     switch (props.type) {
       case 'solid':
