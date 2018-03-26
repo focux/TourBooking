@@ -31,18 +31,19 @@ export const StyledButton = styled.button`
         transition: background-color .2s ease-out;
         background-color: transparent;
         color: ${props.theme.white};
-        border: 2px solid;
+        border: 1.2px solid;
         border-color: ${
   props.borderFill === 'tertiary'
     ? props.theme.tertiaryColor
-    : props.theme.primaryColor
+    : props.theme.white
 };
 
         &:hover {
+          color: ${props.theme.black};
           background-color: ${
   props.borderFill === 'tertiary'
     ? props.theme.tertiaryColor
-    : props.theme.primaryColor
+    : props.theme.white
 };
         }
         `;
