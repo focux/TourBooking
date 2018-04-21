@@ -14,7 +14,7 @@ import {
 const SearchBar = () => (
   <Container style={{ flexGrow: 1 }}>
     <Grid container justify="center" alignItems="center">
-      <StyledGrid item sm={7}>
+      <StyledGrid item sm={8}>
         <Grid container justify="center">
           <StyledInputGrid item sm={10}>
             <Grid container justify="center" alignItems="flex-end">

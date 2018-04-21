@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
+import Typed from 'react-typed';
 
 export const Container = styled.div`
   width: 100%;
@@ -49,5 +50,6 @@ export const SearchBarContainer = styled.div`
   transform: translate(-50%, -50%);
 `;
 
-export const HeroText = styled.h1`
+export const StyledTyped = styled(Typed)`
+  color: ${props => props.theme.white};
 `;
