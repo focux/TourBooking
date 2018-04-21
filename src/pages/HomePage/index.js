@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from 'Components/Header';
-import HeroContainer from 'Components/HeroContainer';
+import SectionContainer from 'Components/SectionContainer';
+import SearchBar from 'Components/SearchBar';
 import {
   Container,
   SearchBarContainer
@@ -11,9 +12,9 @@ export default class HomePage extends React.PureComponent {
     return (
       <Container>
         <Header />
-        <HeroContainer image={'images/bighero.jpg'} title={'More deals than day in a year'} place={'Punta Cana'} />
-        <SearchBarContainer>
-        </SearchBarContainer>
+        <SectionContainer image={'images/bighero.jpg'}>
+          <SearchBar/>
+        </SectionContainer>
       </Container>
     );
   }
