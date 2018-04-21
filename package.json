@@ -14,6 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.42",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -30,6 +31,8 @@
     "formik": "^0.11.4",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
+    "material-ui": "^1.0.0-beta.42",
+    "mdi-material-ui": "^4.0.0",
     "moment": "^2.20.1",
     "node-sass": "^4.7.2",
     "numeral": "^2.0.6",
