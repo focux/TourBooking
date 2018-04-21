@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
 
-export const Container = styled.div`
+export const Container = styled.section`
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to right, ${rgba('#7F00FF', 0.7)}, ${rgba('#E100FF', 0.7)}), url('${props => props.image}');
@@ -12,7 +12,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;
 
 export const HeroTitle = styled.h1`
