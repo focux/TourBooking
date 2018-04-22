@@ -26,7 +26,7 @@ export const NavItem = styled(NavLink).attrs({
   text-decoration: none;
   letter-spacing: 0.1rem;
   font-size: ${props => props.theme.font.size.small};
-  font-weight: ${props => props.theme.font.weight.light};
+  font-weight: ${props => props.theme.font.weight.regular};
   color: ${props => props.theme.white};
   position: relative;
   padding: ${props => props.theme.gap.small};
