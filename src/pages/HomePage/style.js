@@ -63,7 +63,7 @@ export const StyledDownArrIcon = styled(DownArrIcon)`
     }
 
     50% {
-      transform: translateY(20px);
+      transform: translateY(10px);
     }
 
     100% {
@@ -73,7 +73,7 @@ export const StyledDownArrIcon = styled(DownArrIcon)`
   && {
     color: ${props => props.theme.white};
     font-size: 40px;
-    animation: animateArrow 1.3s ease-out infinite;
+    animation: animateArrow 1s ease-out infinite;
   }
 `;
 
