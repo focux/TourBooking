@@ -11,10 +11,13 @@ export const Container = styled.div`
   left: 0;
   width: 100%;
   z-index: 999;
-  padding: ${prop => prop.theme.gap.small};
+  padding: ${prop => prop.theme.gap.small} ${prop => prop.theme.gap.big};
 `;
 
-export const Navigation = styled.nav``;
+export const Navigation = styled.nav`
+  margin-left: ${props => props.theme.gap.small};
+  color: ${props => props.theme.white};
+`;
 export const activeClassName = 'nav-item-active';
 
 export const NavItem = styled(NavLink).attrs({
@@ -27,22 +30,14 @@ export const NavItem = styled(NavLink).attrs({
   color: ${props => props.theme.white};
   position: relative;
   padding: ${props => props.theme.gap.small};
-  border-bottom: 2px solid transparent;
-  transition: .2s border-bottom;
-
-  &::before {
-    content: '';
-    width: 0;
-    height: 0;
-    transition: .2s height ease-out;
-  }
+  transition: .2s opacity;
 
   &:not(:last-child) {
-    margin-right: ${props => props.theme.gap.big};
+    margin-right: ${props => props.theme.gap.small};
   }
 
   &:hover {
-    /* border-bottom: 2px solid ${props => props.theme.secondaryColor}; */
+    opacity: .6;
   }
 
   &.${activeClassName} {
@@ -62,4 +57,10 @@ export const RightSide = styled.div`
   ${StyledButton}:not(:last-child) {
     margin-right: ${(props) => props.theme.gap.small}
   }
+`;
+
+export const LeftSide = styled.div`
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 `;

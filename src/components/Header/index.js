@@ -6,21 +6,26 @@ import {
   NavItem,
   Logo,
   activeClassName,
-  RightSide
+  RightSide,
+  LeftSide
 } from './style';
 import Button from '../Button';
 
 const Header = () => (
   <Container>
-    <Logo>Driscovery</Logo>
-    <Navigation>
+    <LeftSide>
+      <Logo>Driscovery</Logo>
+      <Navigation>
+        <NavItem to="">Log In</NavItem>
+        <NavItem to="">Sign Up</NavItem>
+        <NavItem to="">Help</NavItem>
+      </Navigation>
+    </LeftSide>
       <RightSide>
-        <Button type="border">Login</Button>
         <Button type="solid" fill="tertiary">
-          Get started
+          Host a tour
         </Button>
       </RightSide>
-    </Navigation>
   </Container>
 );
 
