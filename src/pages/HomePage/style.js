@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
 import Typed from 'react-typed';
+import DownArrIcon from '@material-ui/icons/KeyboardArrowDown';
+import { Grid} from 'material-ui';
 
 export const Container = styled.div`
   width: 100%;
@@ -52,4 +54,36 @@ export const SearchBarContainer = styled.div`
 
 export const StyledTyped = styled(Typed)`
   color: ${props => props.theme.white};
+`;
+
+export const StyledDownArrIcon = styled(DownArrIcon)`
+  @keyframes animateArrow {
+    0% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(20px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  && {
+    color: ${props => props.theme.white};
+    font-size: 40px;
+    animation: animateArrow 1.3s ease-out infinite;
+  }
+`;
+
+export const BottomGrid = styled(Grid)`
+  && {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: ${props => props.theme.white};
+  }
 `;
