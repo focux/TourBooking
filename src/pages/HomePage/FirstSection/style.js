@@ -11,6 +11,7 @@ export const SectionContainer = styled.section`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   position: relative;
   display: flex;
   justify-content: center;
@@ -55,7 +56,7 @@ export const BottomGrid = styled(Grid)`
     position: absolute;
     bottom: 0;
     right: 50%;
-    transform: translateX(-50%);
+    transform: translateX(50%);
     text-align: center;
     color: ${props => props.theme.white};
   }
