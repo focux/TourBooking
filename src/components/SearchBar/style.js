@@ -14,7 +14,7 @@ export const StyledGrid = styled(Grid)`
 && {
   background-color: white;
   opacity: .8;
-  box-shadow: 0 5px 6px rgba(0,0,0,.4);
+  box-shadow: 0 5px 6px rgba(0,0,0,.3);
 }
 `;
 
