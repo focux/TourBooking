@@ -1,6 +1,7 @@
 import React from 'react';
-import { Typography, Grid } from 'material-ui';
+import { Grid } from 'material-ui';
 import TourCard from 'Components/TourCard';
+import Heading from 'Components/Heading';
 import {
   SectionContainer
 } from './style';
@@ -9,9 +10,9 @@ const SecondSection = () => (
   <SectionContainer>
     <Grid container alignItems="center" justify="center" direction="column" spacing={40}>
       <Grid item sm={12}>
-        <Typography variant="display3" align="center">
+        <Heading>
           Explore Dominican Republic
-        </Typography>
+        </Heading>
       </Grid>
       <Grid container item sm={12} justify="center" spacing={40}>
         <Grid item sm={4}>
