@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { CardMedia, Grid } from 'material-ui';
+import { CardMedia, Grid, CardContent } from 'material-ui';
 
 export const Location = styled.div`
  position: absolute;
@@ -29,5 +29,28 @@ export const StyledGrid = styled(({ bgColor, ...others }) => <Grid {...others} /
 
   &:hover {
     opacity: 1;
+  }
+`;
+
+export const CardTitle = styled.h3`
+  font-size: 2rem;
+  color: ${props => props.theme.primaryColor};
+  letter-spacing: 1px;
+  font-weight: 400;
+  padding: ${props => props.theme.gap.referenceVal - 0.2}rem ${props => props.theme.gap.tiny};
+  text-align: center;
+`;
+
+export const HoverGrid = styled(Grid)`
+  padding: ${props => props.theme.gap.tiny};
+  text-align: center;
+  &:hover {
+   background-color: rgba(0,0,0,.1);
+  }
+`;
+
+export const StyledCardContent = styled(CardContent)`
+  &&&& {
+    padding: 2rem 0 0 0;
   }
 `;

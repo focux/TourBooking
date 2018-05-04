@@ -1,7 +1,7 @@
 import React from 'react';
-import { Typography, Card, CardContent } from 'material-ui';
+import { Typography, Card, CardContent, Grid } from 'material-ui';
 import { LocationOn, DirectionsBus } from '@material-ui/icons';
-import { Location, StyledCardMedia, StyledGrid } from './style';
+import { Location, StyledCardMedia, StyledGrid, CardTitle, HoverGrid, StyledCardContent } from './style';
 
 const TourCard = ({ image, imageTitle, location, title, price, spaces, difficult, departingTime }) => (
   <Card>
@@ -14,21 +14,32 @@ const TourCard = ({ image, imageTitle, location, title, price, spaces, difficult
             }}
           >
           <Location>
-            <StyledGrid item container sm={6} alignItems="center" justify="center" bgColor="primary"><LocationOn style={{fontSize: 'inherit', marginLeft: 5}} />{location}</StyledGrid>
-            <StyledGrid item container sm={6} alignItems="center" justify="center"><DirectionsBus style={{fontSize: 'inherit', marginLeft: 5}} />Departing in {departingTime} days</StyledGrid>
+            <StyledGrid item container sm={6} alignItems="center" justify="center" bgColor="primary"><LocationOn style={{fontSize: 'inherit', marginRight: 5}} />{location}</StyledGrid>
+            <StyledGrid item container sm={6} alignItems="center" justify="center"><DirectionsBus style={{fontSize: 'inherit', marginRight: 5}} />Departing in {departingTime} days</StyledGrid>
           </Location>
           </StyledCardMedia>
-        <CardContent>
-          <Typography gutterBottom variant="title" component="h2" color="inherit">
-            
-          </Typography>
-          <Typography gutterBottom variant="display1" component="h3" color="primary">
+        <StyledCardContent>
+          <CardTitle gutterBottom variant="display2" component="h3" color="primary">
             {title}
-          </Typography>
-          <Typography variant="title" component="p" color="inherit" style={{ textTransform: 'uppercase' }}>
-          ${price} USD • {spaces} Spaces Left • {difficult}
-          </Typography>
-        </CardContent>
+          </CardTitle>
+          <Grid container direction="row">
+            <HoverGrid item sm={4}>
+              <Typography variant="title" component="p" color="inherit" style={{ textTransform: 'uppercase' }}>
+                ${price} USD
+              </Typography>
+            </HoverGrid>
+            <HoverGrid item sm={4}>
+              <Typography variant="title" component="p" color="inherit" style={{ textTransform: 'uppercase' }}>
+                {spaces} Spaces Left
+              </Typography>
+            </HoverGrid>
+            <HoverGrid item sm={4}>
+              <Typography variant="title" component="p" color="inherit" style={{ textTransform: 'uppercase' }}>
+                Level: {difficult}
+              </Typography>
+            </HoverGrid>
+          </Grid>
+        </StyledCardContent>
       </Card>
 );
 
