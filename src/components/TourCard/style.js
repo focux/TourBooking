@@ -22,23 +22,18 @@ export const StyledGrid = styled(({ bgColor, ...others }) => <Grid {...others} /
                       ? props.theme.primaryColor
                       : '#000'
                     };
-  opacity: .9;
-  padding: ${props => props.theme.gap.referenceVal + .5}rem;
+  padding: ${props => props.theme.gap.referenceVal + 0.5}rem;
   text-align: center;
-  transition: opacity .2s ease-out;
-
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 export const CardTitle = styled.h3`
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: ${props => props.theme.primaryColor};
   letter-spacing: 1px;
   font-weight: 400;
   padding: ${props => props.theme.gap.referenceVal - 0.2}rem ${props => props.theme.gap.tiny};
   text-align: center;
+  color: ${props => props.theme.black};
 `;
 
 export const HoverGrid = styled(Grid)`

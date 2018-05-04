@@ -14,12 +14,12 @@ const TourCard = ({ image, imageTitle, location, title, price, spaces, difficult
             }}
           >
           <Location>
-            <StyledGrid item container sm={6} alignItems="center" justify="center" bgColor="primary"><LocationOn style={{fontSize: 'inherit', marginRight: 5}} />{location}</StyledGrid>
+            <StyledGrid item container sm={6} alignItems="center" justify="center"><LocationOn style={{fontSize: 'inherit', marginRight: 5}} />{location}</StyledGrid>
             <StyledGrid item container sm={6} alignItems="center" justify="center"><DirectionsBus style={{fontSize: 'inherit', marginRight: 5}} />Departing in {departingTime} days</StyledGrid>
           </Location>
           </StyledCardMedia>
         <StyledCardContent>
-          <CardTitle gutterBottom variant="display2" component="h3" color="primary">
+          <CardTitle>
             {title}
           </CardTitle>
           <Grid container direction="row">
