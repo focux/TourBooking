@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Grid } from 'material-ui';
-import { ModalContent } from './style';
+import { ModalContent, Divisor, DivisorText } from './style';
 import SocialBtn from '../../SocialBtn';
 
 const AuthModal = ({
@@ -22,7 +22,7 @@ const AuthModal = ({
           <SocialBtn type="google" action="login" />
         </Grid>
         <Grid item sm={12}>
-          <h3>Icono Joogle</h3>
+          <Divisor> <DivisorText>or</DivisorText> </Divisor>
         </Grid>
       </Grid>
     </ModalContent>
