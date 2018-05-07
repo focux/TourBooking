@@ -40,6 +40,11 @@ export const NavItem = styled(NavLink).attrs({
     opacity: .6;
   }
 
+  &:focus {
+    outline: 0;
+    opacity: .6;
+  }
+
   &.${activeClassName} {
      
   }
