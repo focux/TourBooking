@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, Grid } from 'material-ui';
 import { ModalContent, Divisor, DivisorText } from './style';
 import SocialBtn from '../../SocialBtn';
+import LoginForm from './LoginForm';
 
 const AuthModal = ({
   openAuthModal,
@@ -23,6 +24,9 @@ const AuthModal = ({
         </Grid>
         <Grid item sm={12}>
           <Divisor> <DivisorText>or</DivisorText> </Divisor>
+        </Grid>
+        <Grid item sm={12}>
+          <LoginForm onSubmit={() => {}} onError={() => {}} />
         </Grid>
       </Grid>
     </ModalContent>
