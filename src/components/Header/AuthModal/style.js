@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ModalContent = styled.div`
   position: absolute;
-  width: 50%;
+  width: 45%;
   background-color: #fff;
   padding: ${props => props.theme.gap.medium};
   top: 50%;
@@ -22,6 +22,7 @@ export const Divisor = styled.div`
   justify-content: center;
   align-items: center;
   padding: ${props => props.theme.gap.small} 0;
+  backface-visibility: hidden;
 
   &::before {
     content: '';
