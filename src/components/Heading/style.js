@@ -8,6 +8,8 @@ export const Typography = styled.div`
   position: relative;
   padding-bottom: 2rem;
   margin-bottom: 4rem;
+  text-transform: uppercase;
+  font-weight: 300;
 
   &::after {
     content: '';
