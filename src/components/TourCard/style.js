@@ -90,6 +90,8 @@ export const CardFooter = styled.div`
 export const FooterText = styled.div`
   font-size: ${props => props.fontSize};
   font-weight: 400;
+  display: flex;
+  align-items: center;
   &:not(:last-child) {
     margin-right: 10px;
   }

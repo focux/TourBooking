@@ -17,9 +17,9 @@ const SecondSection = () => (
       <Grid container item sm={12} justify="center" spacing={24}>
         <Grid item sm={3}>
           <TourCard
-            image="https://quetzalexcursions.com/wp-content/uploads/2016/11/quetzal-cata-excursions-bayahibe-04-720x720.jpg"
+            image="https://i.ytimg.com/vi/APaabbUNEDM/maxresdefault.jpg"
             imageTitle="Playa Dominicus"
-            location="Bayahibe, La Altagracia"
+            location="Bayahibe, La Romana"
             departingTime={3}
             title="Excursion para Playa Dominicus"
             price={50}
@@ -29,7 +29,7 @@ const SecondSection = () => (
         </Grid>
         <Grid item sm={3}>
           <TourCard
-            image="https://media-cdn.tripadvisor.com/media/photo-s/0a/a0/65/d8/laguna-dudu-or-blue-lagoon.jpg"
+            image="http://coralblanco.com/wp-content/uploads/2014/04/dudu.jpg"
             imageTitle="Laguna Dudu"
             location="Laguna Dudu, Cabrera"
             departingTime={3}
@@ -53,7 +53,7 @@ const SecondSection = () => (
         </Grid>
         <Grid item sm={3}>
           <TourCard
-            image="https://www.colonialtours.com/1scapeccpc24.jpg"
+            image="https://room-online-pro.s3.amazonaws.com/cobi%2Fmedia%2Fwww.sirenishotels.com%2Fcache%2F80%2Fbe%2F80be2b8b571913c7c95ac0b26560c450.jpg"
             imageTitle="Laguna Azul"
             location="Pico Duarte, Manabao"
             departingTime={3}
