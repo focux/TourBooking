@@ -33,7 +33,7 @@ const LoginForm = ({
         isSubmitting
     }) => (
       <form onSubmit={handleSubmit}>
-        <Grid container alignItems="center" spacing={16}>
+        <Grid container alignItems="center" spacing={24}>
           <Grid item sm={12}>
             <BottomLineInput
               iconComponent={<MailOutline />}

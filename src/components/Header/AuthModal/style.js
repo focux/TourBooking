@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button } from 'material-ui';
 
 export const ModalContent = styled.div`
   position: absolute;
@@ -42,4 +43,36 @@ export const DivisorText = styled.span`
   background-color: #fff;
   letter-spacing: 1px;
   padding: 0 ${props => props.theme.gap.small};
+`;
+
+export const ModalLink = styled.a`
+  color: ${props => props.theme.tertiaryColor};
+  font-size: ${props => props.size}rem;
+  font-weight: 400;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin-left: ${props => props.theme.gap.tiny};
+  &:hover, &:focus {
+    text-decoration: underline;
+  }
+`;
+
+export const ModalText = styled.a`
+  color: ${props => props.theme.black};
+  font-size: 16px;
+  font-weight: 300;
+  text-align: center;
+`;
+
+export const StyledButton = styled(Button)`
+  && {
+    background-color: transparent;
+    color: ${props => props.theme.black};
+    font-weight: 300;
+
+    &:hover {
+      background-color: rgba(0, 0, 0,.06);
+    }
+  }
 `;
