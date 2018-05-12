@@ -57,7 +57,7 @@
     "typed.js": "^2.0.6",
     "uuid": "^3.1.0",
     "validator": "^9.2.0",
-    "webpack": "^3.10.0",
+    "webpack": "^3.12.0",
     "yup": "^0.24.0"
   },
   "devDependencies": {
