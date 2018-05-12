@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
+import { RoundedButton } from 'Components/Buttons';
 import {
   Container,
   Navigation,
   NavItem,
   Logo,
-  activeClassName,
   RightSide,
   LeftSide
 } from './style';
-import { RoundedButton } from '../Buttons';
 import AuthModal from './AuthModal/';
 
 class Header extends Component {
