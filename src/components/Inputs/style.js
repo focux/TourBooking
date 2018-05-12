@@ -5,7 +5,7 @@ export const BottomLine = styled.div`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 2.5px;
+  height: 2px;
   background-color: ${props => props.theme.black};
   transition: background-color .2s ease-out;
 `;
@@ -36,7 +36,7 @@ export const InputContainer = styled.div`
     transform: translateY(-50%);
     color: rgba(0,0,0,.5);
     font-weight: 100;
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 `;
 

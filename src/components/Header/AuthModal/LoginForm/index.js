@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik } from 'formik';
 import { Grid } from 'material-ui';
 import { BottomLineInput } from 'Components/Inputs';
+import { BigButton } from 'Components/Buttons';
 import { LockOutline, MailOutline } from '@material-ui/icons';
 
 const LoginForm = ({
@@ -58,9 +59,9 @@ const LoginForm = ({
             {touched.password && errors.password && <div>{errors.password}</div>}
           </Grid>
           <Grid item sm={12}>
-            <button type="submit" disabled={isSubmitting}>
+            <BigButton type="submit" disabled={isSubmitting}>
               Log in
-            </button>
+            </BigButton>
           </Grid>
         </Grid>
       </form>

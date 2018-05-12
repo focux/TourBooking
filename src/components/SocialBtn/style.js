@@ -12,7 +12,7 @@ export const Button = styled.button`
   width: 100%;
   border: 0;
   transition: opacity .2s ease-out;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   letter-spacing: .5px;
   box-shadow: 0 3px 9px rgba(0,0,0,.3);

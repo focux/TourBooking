@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import {
   Container,
   Navigation,
@@ -9,7 +8,7 @@ import {
   RightSide,
   LeftSide
 } from './style';
-import Button from '../Button';
+import { RoundedButton } from '../Buttons';
 import AuthModal from './AuthModal/';
 
 class Header extends Component {
@@ -37,9 +36,9 @@ class Header extends Component {
           </Navigation>
         </LeftSide>
         <RightSide>
-          <Button type="solid" fill="tertiary">
+          <RoundedButton type="solid" fill="tertiary">
             Host a tour
-          </Button>
+          </RoundedButton>
         </RightSide>
       </Container>
     );

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { StyledButton } from '../Button/style';
+import { StyledButton } from '../Buttons/style';
 
 export const Container = styled.div`
   display: flex;
