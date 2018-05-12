@@ -27,6 +27,11 @@ export const StyledButton = styled.button`
           transform: scale(1.05, 1.05);
           box-shadow: 0 .5rem 1rem rgba(0,0,0,.08);
         }
+
+        &:focus {
+          outline: 0;
+          opacity: 1;
+        }
         `;
       case 'border':
         return `
