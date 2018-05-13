@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomModal from 'Components/CustomModal';
 import Login from './Login';
+import SignUp from './SignUp';
 
 const AuthModal = ({
   openAuthModal,
@@ -14,7 +15,7 @@ const AuthModal = ({
     open={openAuthModal}
     onClose={handleCloseLoginModal}
   >
-    {loginPage ? <Login onChangePage={onChangePage} /> : 'test'}
+    {loginPage ? <Login onChangePage={onChangePage} /> : <SignUp onChangePage={onChangePage} />}
   </CustomModal>
 );
 
