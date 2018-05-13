@@ -30,7 +30,7 @@ const Login = ({
     </Grid>
     <Grid container item justify="center" sm={12}>
       <ModalText>Don’t have an account?</ModalText>
-      <ModalLink size={1.6} onClick={onChangePage}>Sign Up</ModalLink>
+      <ModalLink size={1.6} onClick={onChangePage}>Sign up</ModalLink>
     </Grid>
   </Fragment>
 );
