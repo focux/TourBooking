@@ -4,7 +4,9 @@ import Login from './Login';
 
 const AuthModal = ({
   openAuthModal,
-  handleCloseLoginModal
+  handleCloseLoginModal,
+  loginPage,
+  onChangePage
 }) => (
   <CustomModal
     aria-labelledby="auth-modal"
@@ -12,7 +14,7 @@ const AuthModal = ({
     open={openAuthModal}
     onClose={handleCloseLoginModal}
   >
-    <Login />
+    {loginPage ? <Login onChangePage={onChangePage} /> : 'test'}
   </CustomModal>
 );
 

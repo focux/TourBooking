@@ -12,12 +12,17 @@ import AuthModal from './AuthModal/';
 
 class Header extends Component {
   state = {
-    openAuthModal: true
+    openAuthModal: true,
+    loginPage: true
   };
 
   handleOpenLoginModal = () => this.setState({ openAuthModal: true });
 
-  handleCloseLoginModal = () => this.setState({ openAuthModal: false });
+  handleCloseLoginModal = () => this.setState({ openAuthModal: false, loginPage: true });
+
+  handleChangeModalPage = () => this.setState((prevState) => ({
+    loginPage: !prevState.loginPage
+  }));
 
   render() {
     return (
@@ -25,6 +30,8 @@ class Header extends Component {
         <AuthModal
           handleCloseLoginModal={this.handleCloseLoginModal}
           openAuthModal={this.state.openAuthModal}
+          loginPage={this.state.loginPage}
+          onChangePage={this.handleChangeModalPage}
         />
         <LeftSide>
           <Logo>Driscovery</Logo>

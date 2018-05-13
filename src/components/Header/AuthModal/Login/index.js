@@ -6,7 +6,8 @@ import LoginForm from './LoginForm';
 
 const Login = ({
   openAuthModal,
-  handleCloseLoginModal
+  handleCloseLoginModal,
+  onChangePage
 }) => (
   <Fragment>
     <Grid item sm={12}>
@@ -29,7 +30,7 @@ const Login = ({
     </Grid>
     <Grid container item justify="center" sm={12}>
       <ModalText>Don’t have an account?</ModalText>
-      <ModalLink size={1.6}>Sign Up</ModalLink>
+      <ModalLink size={1.6} onClick={onChangePage}>Sign Up</ModalLink>
     </Grid>
   </Fragment>
 );
