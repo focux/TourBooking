@@ -59,6 +59,7 @@ export const BottomGrid = styled(Grid)`
     transform: translateX(50%);
     text-align: center;
     color: ${props => props.theme.white};
+    text-transform: uppercase;
   }
 `;
 
