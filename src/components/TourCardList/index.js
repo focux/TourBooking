@@ -2,14 +2,14 @@ import React from 'react';
 import { Grid } from 'material-ui';
 import TourCard from 'Components/TourCard';
 
-const TourCardList = (tours) => (
+const TourCardList = ({ tours }) => (
   <Grid container item sm={12} justify="center" spacing={24}>
     {tours.map(({
       image,
       location,
       departingTime,
       title,
-      prices,
+      price,
       spaces,
       level
     }) => (
@@ -19,7 +19,7 @@ const TourCardList = (tours) => (
           location={location}
           departingTime={departingTime}
           title={title}
-          price={prices}
+          price={price}
           spaces={spaces}
           level={level}
         />
