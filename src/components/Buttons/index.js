@@ -14,7 +14,7 @@ RoundedButton.propTypes = {
 export const BigButton = ({ children, ...others }) => (
   <Button {...others}>
     <StyledGrid container justify="center" alignItems="center">
-      <Grid item container justify="center" alignItems="center" sm={5}>
+      <Grid item container justify="center" alignItems="center" sm={12}>
         {children}
       </Grid>
     </StyledGrid>

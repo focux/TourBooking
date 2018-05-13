@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Grid } from 'material-ui';
+import { MailOutline } from '@material-ui/icons';
 import SocialBtn from 'Components/SocialBtn';
 import { BigButton } from 'Components/Buttons';
 import { Divisor, DivisorText, ModalLink, ModalText } from './style';
@@ -22,8 +23,16 @@ const SignUp = ({
     </Grid>
     <Grid item sm={12}>
       <BigButton>
-        Sign up with E-mail
+          <Grid item container justify="center" alignItems="center" sm={1}>
+            <MailOutline />
+          </Grid>
+          <Grid item container justify="center" alignItems="center" sm={5}>
+            Sign up with E-mail
+          </Grid>
       </BigButton>
+    </Grid>
+    <Grid item sm={12}>
+      <Divisor />
     </Grid>
     <Grid container item justify="center" sm={12}>
       <ModalText>Already have an {Constants.appName} account?</ModalText>
