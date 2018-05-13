@@ -185,7 +185,7 @@ const SignUpForm = ({
               </Grid>
               <Grid item sm={12}>
                 <BigButton type="submit" disabled={isSubmitting}>
-                  Log in
+                  Sign up
                 </BigButton>
               </Grid>
             </Grid>
