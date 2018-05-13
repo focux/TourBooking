@@ -1,29 +1,36 @@
-import React, { Component } from 'react';
-import { Modal, Grid } from 'material-ui';
-import { ModalContent, StyledButton } from './style';
+import React from 'react';
+import { Grid, Slide } from 'material-ui';
+import { ModalContent, StyledButton, StyledModal } from './style';
 
 const CustomModal = ({
   children,
   open,
   onClose,
   ...others
-}) => (
-  <Modal
+}) => ( 
+  <StyledModal
     {...others}
     open={open}
     onClose={onClose}
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}
   >
-    <ModalContent>
-      <Grid container justify="center" spacing={16}>
-        <Grid item container justify="flex-end" sm={12}>
-          <StyledButton onClick={onClose} variant="fab" color="secondary" aria-label="close" mini>
-            X
-          </StyledButton>
+    <Slide in={open}>
+      <ModalContent>
+        <Grid container justify="center" spacing={16}>
+          <Grid item container justify="flex-end" sm={12}>
+            <StyledButton onClick={onClose} variant="fab" color="secondary" aria-label="close" mini>
+              X
+            </StyledButton>
+          </Grid>
+          {children}
         </Grid>
-        {children}
-      </Grid>
-    </ModalContent>
-  </Modal>
+      </ModalContent>
+    </Slide>
+  </StyledModal>
 );
 
 export default CustomModal;
