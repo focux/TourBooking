@@ -13,7 +13,7 @@ import AuthModal from './AuthModal/';
 class Header extends Component {
   state = {
     openAuthModal: true,
-    currentPage: 0
+    currentPage: 2
   };
 
   handleOpenLoginModal = () => this.setState({ openAuthModal: true });
@@ -21,6 +21,8 @@ class Header extends Component {
   handleOpenSignUpModal = () => this.setState({ openAuthModal: true, currentPage: 1 });
 
   handleCloseLoginModal = () => this.setState({ openAuthModal: false, currentPage: 0 });
+
+  handleProceedEmailSignUp = () => this.setState({ currentPage: 2 });
 
   handleChangeModalPage = () => this.setState((prevState) => ({
     currentPage: prevState.currentPage === 0 ? 1 : 0
@@ -34,6 +36,7 @@ class Header extends Component {
           openAuthModal={this.state.openAuthModal}
           currentPage={this.state.currentPage}
           onChangePage={this.handleChangeModalPage}
+          onClickEmailSignUp={this.handleProceedEmailSignUp}
         />
         <LeftSide>
           <Logo>Driscovery</Logo>

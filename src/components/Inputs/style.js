@@ -1,4 +1,6 @@
+import React from 'react';
 import styled from 'styled-components';
+import { Select, Input, MenuItem } from 'material-ui';
 
 export const BottomLine = styled.div`
   position: absolute;
@@ -58,5 +60,34 @@ export const StyledBottomLineInput = styled.input`
   &::placeholder {
     color: #fff;
 
+  }
+`;
+
+const selectClassName = 'select__root';
+const selectMenuClassName = 'select__menu';
+const inputClassName = 'input__custom-size';
+export const StyledSelect = styled(Select).attrs({
+  classes: {
+    root: selectClassName,
+    select: selectMenuClassName
+  },
+  input: <Input classes={{ input: inputClassName }} />
+})`
+width: 100%;
+&&& {
+  .${selectClassName} {
+    width: 100%;
+  }
+
+  .${inputClassName} {
+    min-height: 2rem;
+    font-size: 1.4rem;
+  }
+}
+`;
+
+export const StyledMenuItem = styled(MenuItem)`
+  &&&& {
+    font-size: 1.4rem;
   }
 `;

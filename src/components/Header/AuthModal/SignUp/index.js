@@ -9,7 +9,8 @@ import Constants from '../../../../config/constants';
 const SignUp = ({
   openAuthModal,
   handleCloseLoginModal,
-  onChangePage
+  onChangePage,
+  onClickEmailSignUp
 }) => (
   <Fragment>
     <Grid item sm={12}>
@@ -22,7 +23,7 @@ const SignUp = ({
       <Divisor> <DivisorText>or</DivisorText> </Divisor>
     </Grid>
     <Grid item sm={12}>
-      <BigButton>
+      <BigButton onClick={onClickEmailSignUp}>
           <Grid item container justify="center" alignItems="center" sm={1}>
             <MailOutline />
           </Grid>

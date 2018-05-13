@@ -2,18 +2,20 @@ import React from 'react';
 import CustomModal from 'Components/CustomModal';
 import Login from './Login';
 import SignUp from './SignUp';
+import SignUpForm from './SignUp/SignUpForm';
 
 const AuthModal = ({
   openAuthModal,
   handleCloseLoginModal,
   currentPage,
-  onChangePage
+  onChangePage,
+  onClickEmailSignUp
 }) => {
   let page;
   if (currentPage === 2) {
-    page = <SignUp onChangePage={onChangePage} />;
+    page = <SignUpForm onChangePage={onChangePage} />;
   } else if (currentPage === 1) {
-    page = <SignUp onChangePage={onChangePage} />;
+    page = <SignUp onClickEmailSignUp={onClickEmailSignUp} onChangePage={onChangePage} />;
   } else {
     page = <Login onChangePage={onChangePage} />;
   }

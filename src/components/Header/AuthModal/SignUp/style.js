@@ -42,7 +42,7 @@ export const ModalLink = styled.a`
   }
 `;
 
-export const ModalText = styled.a`
+export const ModalText = styled.span`
   color: ${props => props.theme.black};
   font-size: 16px;
   font-weight: 300;
