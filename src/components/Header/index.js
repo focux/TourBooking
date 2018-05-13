@@ -12,15 +12,15 @@ import AuthModal from './AuthModal/';
 
 class Header extends Component {
   state = {
-    openAuthModal: true,
-    currentPage: 2
+    openAuthModal: false,
+    currentPage: 0
   };
 
-  handleOpenLoginModal = () => this.setState({ openAuthModal: true });
+  handleOpenLoginModal = () => this.setState({ openAuthModal: true, currentPage: 0 });
 
   handleOpenSignUpModal = () => this.setState({ openAuthModal: true, currentPage: 1 });
 
-  handleCloseLoginModal = () => this.setState({ openAuthModal: false, currentPage: 0 });
+  handleCloseLoginModal = () => this.setState({ openAuthModal: false });
 
   handleProceedEmailSignUp = () => this.setState({ currentPage: 2 });
 
