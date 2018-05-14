@@ -30,7 +30,7 @@ class Header extends Component {
 
   render() {
     return (
-      <Container>
+      <Container fixed={this.props.fixed}>
         <AuthModal
           handleCloseLoginModal={this.handleCloseLoginModal}
           openAuthModal={this.state.openAuthModal}

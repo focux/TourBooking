@@ -6,17 +6,43 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
   padding: ${prop => prop.theme.gap.small} ${prop => prop.theme.gap.big};
+  ${props => props.fixed ?
+    `
+    position: fixed;
+    animation-fill-mode: backwards;
+    animation: slideNavbar .2s ease-out;
+    box-shadow: 0 2px 15px rgba(0,0,0,.1);
+    background-color: #fff;
+    color: ${props.theme.black};
+    box-shadow: 0 2px 15px rgba(0,0,0,.1);
+    `
+  :
+  `
+   position: absolute;
+   color: ${props.theme.white};
+   `
+  }
+  
+
+  @keyframes slideNavbar {
+    0% {
+      transform: translateY(-100%);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
 `;
 
 export const Navigation = styled.nav`
   margin-left: ${props => props.theme.gap.small};
-  color: ${props => props.theme.white};
+  color: inherit;
 `;
 export const activeClassName = 'nav-item-active';
 
@@ -27,7 +53,7 @@ export const NavItem = styled(NavLink).attrs({
   letter-spacing: 0.1rem;
   font-size: ${props => props.theme.font.size.small};
   font-weight: ${props => props.theme.font.weight.regular};
-  color: ${props => props.theme.white};
+  color: inherit;
   position: relative;
   padding: ${props => props.theme.gap.small};
   transition: .2s opacity;
@@ -53,7 +79,7 @@ export const NavItem = styled(NavLink).attrs({
 export const Logo = styled.div`
   font-weight: ${props => props.theme.font.weight.bold};
   font-size: ${props => props.theme.font.size.medium};
-  color: ${props => props.theme.white};
+  color: inherit;
   letter-spacing: 0.1rem;
 `;
 
