@@ -1,0 +1,1 @@
+export { fetchTours } from './fetchTours';
