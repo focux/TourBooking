@@ -41,9 +41,9 @@ class Header extends Component {
         <LeftSide>
           <Logo>Driscovery</Logo>
           <Navigation>
-            <NavItem to="" onClick={this.handleOpenLoginModal}>Log In</NavItem>
-            <NavItem to="" onClick={this.handleOpenSignUpModal}>Sign Up</NavItem>
-            <NavItem to="">Help</NavItem>
+            <NavItem  onClick={this.handleOpenLoginModal}>Log In</NavItem>
+            <NavItem  onClick={this.handleOpenSignUpModal}>Sign Up</NavItem>
+            <NavItem >Help</NavItem>
           </Navigation>
         </LeftSide>
         <RightSide>

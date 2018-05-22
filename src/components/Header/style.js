@@ -46,9 +46,8 @@ export const Navigation = styled.nav`
 `;
 export const activeClassName = 'nav-item-active';
 
-export const NavItem = styled(NavLink).attrs({
-  activeClassName
-})`
+export const NavItem = styled.a`
+  cursor: pointer;
   text-decoration: none;
   letter-spacing: 0.1rem;
   font-size: ${props => props.theme.font.size.small};
