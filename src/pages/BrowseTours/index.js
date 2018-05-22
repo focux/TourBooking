@@ -1,26 +1,33 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Grid, CircularProgress } from 'material-ui';
+import { Explore } from '@material-ui/icons';
 import TourCardList from 'Components/TourCardList';
 import Header from 'Components/Header';
-import { SectionContainer, CustomPaper } from './style';
+import { SectionContainer, CustomPaper, SectionTitle, PurpleText, BlackGrid } from './style';
 
 const BrowseTours = (props) => (
-  <React.Fragment>
+  <Fragment>
     <Header fixed />
     <SectionContainer>
       <Grid container>
-        <Grid item xs={9}>
-          <h1>{props.match && props.match.params && props.match.params.location ? `Browsing tours at ${props.match.params.location}` : 'Browsing all the tours'}</h1>
           {
             props.toursRequest === 'READY' ?
-              <TourCardList tours={props.tours} sideMode />
+            <Grid item xs={9}>
+              <Grid container direction="column">
+                <BlackGrid container item alignItems="center" xs={6}>
+                <Explore style={{ marginRight: 10 }} /><SectionTitle>{props.match && props.match.params && props.match.params.location ? <span>Found <PurpleText>{props.tours && props.tours.length} tours</PurpleText> to {props.match.params.location}</span> : `Browsing ${props.tours && <PurpleText>{props.tours.length}</PurpleText>} tours`}</SectionTitle>
+                </BlackGrid>
+                <Grid item xs={12}>
+                  <TourCardList tours={props.tours} sideMode />
+                </Grid>
+                </Grid>
+              </Grid>
             :
               <CircularProgress color="primary" />
         }
-        </Grid>
         <Grid item xs={3}>
-        <CustomPaper elevation={4}>
+        <CustomPaper elevation={2}>
           <h1>Other column</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget magna dolor.
           Pellentesque sit amet diam fermentum, molestie odio ac, cursus ligula.
@@ -32,7 +39,7 @@ const BrowseTours = (props) => (
         </Grid>
       </Grid>
     </SectionContainer>
-  </React.Fragment>
+  </Fragment>
 );
 
 const mapStateToProps = state => ({
