@@ -7,12 +7,6 @@ import Header from 'Components/Header';
 import { SectionContainer, CustomPaper, SectionTitle, PurpleText, BlackGrid, StyledFiltersPanel } from './style';
 
 class BrowseTours extends Component {
-  state = {
-    expanded: ''
-  };
-
-  onChangeExpanded = (panel) =>  (e) => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
-
   render() {
     return (
   <Fragment>
@@ -32,7 +26,7 @@ class BrowseTours extends Component {
                 </Grid>
               </Grid>
         <Grid item xs={3}>
-         <StyledFiltersPanel expanded={this.state.expanded} onChangeExpanded={this.onChangeExpanded} />
+         <StyledFiltersPanel />
         </Grid>
       </Grid>
     </SectionContainer>

@@ -1,12 +1,6 @@
-import React from 'react';
-import {
-  ExpansionPanel,
-  ExpansionPanelDetails,
-  ExpansionPanelSummary
-} from 'material-ui';
-import { ExpandMore } from '@material-ui/icons';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { PanelTitle } from './style';
+import CustomPanel from 'Components/CustomPanel';
 import {
   setFilterText,
   setStartDate,
@@ -14,42 +8,53 @@ import {
 } from '../../actions';
 import PriceSlider from './PriceSlider';
 
-const FiltersPanel = ({ style, className, expanded, startPrice, onChangeExpanded, setStartPrice }) => (
-  <div style={style || {}} className={className || ''}>
-    <ExpansionPanel expanded={expanded === 'price'} onChange={onChangeExpanded('price')}>
-      <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-        <PanelTitle>Max price</PanelTitle>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        <PriceSlider startPrice={startPrice} setStartPrice={setStartPrice} />
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
-    <ExpansionPanel expanded={expanded === 'departing'} onChange={onChangeExpanded('departing')}>
-      <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-        <PanelTitle>Departing</PanelTitle>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        Aqui inputs pa el date
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
-    <ExpansionPanel expanded={expanded === 'spaces'} onChange={onChangeExpanded('spaces')}>
-      <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-        <PanelTitle>Spaces</PanelTitle>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        Aqui input pa cuanto space ta buscando
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
-    <ExpansionPanel expanded={expanded === 'type'} onChange={onChangeExpanded('type')}>
-      <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-        <PanelTitle>Tour type</PanelTitle>
-      </ExpansionPanelSummary>
-      <ExpansionPanelDetails>
-        Aqui tour si es experiencia, eco, blabla
-      </ExpansionPanelDetails>
-    </ExpansionPanel>
+class FiltersPanel extends Component {
+  state = {
+    expanded: ''
+  };
+
+  onChangeExpanded = (panel) =>  (e) => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
+
+  render() {
+    const { style, className, expanded, startPrice, onChangeExpanded, setStartPrice } = this.props;
+    return (
+      <div style={style || {}} className={className || ''}>
+    <CustomPanel
+      name="price"
+      title="Max price"
+      onChange={this.onChangeExpanded}
+      currentExpanded={this.state.expanded}
+    >
+      <PriceSlider startPrice={startPrice} setStartPrice={setStartPrice} />
+    </CustomPanel>
+    <CustomPanel
+      name="departing"
+      title="Departing"
+      onChange={this.onChangeExpanded}
+      currentExpanded={this.state.expanded}
+    >
+      Aqui inputs pa el date
+    </CustomPanel>
+    <CustomPanel
+      name="spaces"
+      title="Spaces"
+      onChange={this.onChangeExpanded}
+      currentExpanded={this.state.expanded}
+    >
+      Aqui inputs pa el spaces
+    </CustomPanel>
+    <CustomPanel
+      name="type"
+      title="Tour type"
+      onChange={this.onChangeExpanded}
+      currentExpanded={this.state.expanded}
+    >
+      Aqui inputs pa el tour type
+    </CustomPanel>
   </div>
-);
+    )
+  }
+}
 
 const mapStateToProps = (state) => ({
   startPrice: state.filters.startPrice
