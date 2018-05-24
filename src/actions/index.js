@@ -14,3 +14,16 @@ export {
   setFetchedTours,
   setFetchRequestReady
 } from './tours';
+
+export {
+  SORT_BY_AMOUNT,
+  SORT_BY_DATE,
+  SET_FILTER_TEXT,
+  SET_START_DATE,
+  SET_START_PRICE,
+  sortByAmount,
+  sortByDate,
+  setFilterText,
+  setStartDate,
+  setStartPrice
+} from './filters';
