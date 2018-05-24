@@ -48,6 +48,9 @@ module.exports = env => {
         }
       ]
     },
+    plugins: [
+      CSSExtract
+    ],
     resolve: {
       alias: {
         Components: path.resolve(__dirname, 'src/components/')
