@@ -11,7 +11,7 @@ class BrowseTours extends Component {
     expanded: ''
   };
 
-  onChangeExpanded = (panel) => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
+  onChangeExpanded = (panel) =>  (e) => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
 
   render() {
     return (
