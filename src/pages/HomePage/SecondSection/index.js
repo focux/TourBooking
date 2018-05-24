@@ -15,12 +15,7 @@ const SecondSection = ({ tours, toursRequest }) => (
           Explore Dominican Republic
         </Heading>
       </Grid>
-      {
-        toursRequest === 'READY' ?
-          <TourCardList tours={tours} />
-        :
-          <CircularProgress color="primary" />
-    }
+      <TourCardList tours={tours} toursRequest={toursRequest} />
     </Grid>
   </SectionContainer>
 );

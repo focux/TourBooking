@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Paper, Grid } from 'material-ui';
+import FiltersPanel from 'Components/FiltersPanel';
 
 export const SectionContainer = styled.section`
   width: 100%;
@@ -32,5 +33,11 @@ export const BlackGrid = styled(Grid)`
   color: #fff;
   font-size: 2rem;
   margin-bottom: 2rem;
+  margin-top: 2rem;
 }
+`;
+
+export const StyledFiltersPanel = styled(FiltersPanel)`
+  position: fixed;
+  width: 23%;
 `;

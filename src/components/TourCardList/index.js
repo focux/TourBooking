@@ -1,10 +1,12 @@
 import React from 'react';
-import { Grid } from 'material-ui';
+import { Grid, CircularProgress } from 'material-ui';
 import TourCard from 'Components/TourCard';
 
-const TourCardList = ({ tours, sideMode }) => (
+const TourCardList = ({ tours, sideMode, toursRequest }) => (
   <Grid container item sm={12} justify="flex-start" spacing={24}>
-    {tours.map(({
+  {
+    toursRequest === 'READY' ?
+    tours.map(({
       image,
       location,
       departingTime,
@@ -12,8 +14,8 @@ const TourCardList = ({ tours, sideMode }) => (
       price,
       spaces,
       level
-    }) => (
-      <Grid item xs={sideMode ? 12 : 12} sm={sideMode ? 6 : 6} md={sideMode ? 4 : 4} lg={sideMode ? 4 : 3}>
+    }, key) => (
+      <Grid item xs={sideMode ? 12 : 12} sm={sideMode ? 6 : 6} md={sideMode ? 4 : 4} lg={sideMode ? 4 : 3} key={key}>
         <TourCard
           image={image}
           location={location}
@@ -24,7 +26,9 @@ const TourCardList = ({ tours, sideMode }) => (
           level={level}
         />
       </Grid>
-    ))}
+    ))
+    :
+    <CircularProgress color="primary" />}
   </Grid>
 );
 
