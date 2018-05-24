@@ -2,15 +2,16 @@ import React from 'react';
 import { ExpansionPanel, ExpansionPanelDetails, ExpansionPanelSummary } from 'material-ui';
 import { ExpandMore } from '@material-ui/icons';
 import { PanelTitle } from './style';
+import PriceSlider from './PriceSlider';
 
 const FiltersPanel = ({ style, className, expanded, onChangeExpanded }) => (
   <div style={style || {}} className={className || ''}>
     <ExpansionPanel expanded={expanded === 'price'} onChange={() => onChangeExpanded('price')}>
       <ExpansionPanelSummary expandIcon={<ExpandMore />}>
-        <PanelTitle>Price</PanelTitle>
+        <PanelTitle>Max price</PanelTitle>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
-        Aqui el slider del precio
+        <PriceSlider />
       </ExpansionPanelDetails>
     </ExpansionPanel>
     <ExpansionPanel expanded={expanded === 'departing'} onChange={() => onChangeExpanded('departing')}>
