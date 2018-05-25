@@ -7,7 +7,7 @@ import {
   setStartDate,
   setStartPrice
 } from '../../actions';
-import PriceSlider from './PriceSlider';
+import PriceSlider from '../PriceSlider';
 import { formatPrice } from '../../utils';
 
 class FiltersPanel extends Component {
