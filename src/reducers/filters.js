@@ -11,7 +11,7 @@ const defaultState = {
   startPrice: 1200,
   orderBy: 'date',
   text: '',
-  startDate: moment()
+  startDate: moment().add(1, 'days')
 };
 
 const filters = (state = defaultState, action) => {

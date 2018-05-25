@@ -10,7 +10,7 @@ import {
   setStartPrice
 } from '../../actions';
 import PriceSlider from '../PriceSlider';
-import { formatPrice } from '../../utils';
+import { formatPrice, displayDate } from '../../utils';
 
 class FiltersPanel extends Component {
   static propTypes = {
@@ -68,6 +68,7 @@ class FiltersPanel extends Component {
           title="Departing"
           onChange={this.onChangeExpanded}
           currentExpanded={this.state.expanded}
+          rightTitle={displayDate(this.state.date)}
         >
           <DateInput
             id="filter-input"
