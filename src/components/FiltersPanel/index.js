@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CustomPanel from 'Components/CustomPanel';
 import PropTypes from 'prop-types';
+import DateInput from 'Components/DateInput';
+import moment from 'moment';
 import {
   setFilterText,
   setStartDate,
@@ -15,7 +17,9 @@ class FiltersPanel extends Component {
     startPrice: PropTypes.number.isRequired,
     className: PropTypes.string,
     style: PropTypes.objectOf(PropTypes.string),
-    setPrice: PropTypes.func.isRequired
+    setPrice: PropTypes.func.isRequired,
+    setDate: PropTypes.func.isRequired,
+    startDate: PropTypes.instanceOf(moment).isRequired
   }
 
   static defaultProps = {
@@ -25,12 +29,21 @@ class FiltersPanel extends Component {
 
   state = {
     expanded: '',
-    tempPrice: this.props.startPrice
+    tempPrice: this.props.startPrice,
+    date: this.props.startDate,
+    focused: false
   };
 
   onChangeExpanded = (panel) => () => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
 
   onChangeTempPrice = (price) => this.setState({ tempPrice: price.values[0] });
+
+  onDateChange = (date) => {
+    this.setState({ date });
+    this.props.setDate(date);
+  }
+
+  onFocusChange = ({ focused }) => this.setState({ focused });
 
   render() {
     const {
@@ -56,7 +69,13 @@ class FiltersPanel extends Component {
           onChange={this.onChangeExpanded}
           currentExpanded={this.state.expanded}
         >
-          Aqui inputs pa el date
+          <DateInput
+            id="filter-input"
+            currentDate={this.state.date}
+            focused={this.state.focused}
+            onDateChange={this.onDateChange}
+            onFocusChange={this.onFocusChange}
+          />
         </CustomPanel>
         <CustomPanel
           name="spaces"
@@ -80,11 +99,13 @@ class FiltersPanel extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  startPrice: state.filters.startPrice
+  startPrice: state.filters.startPrice,
+  startDate: state.filters.startDate
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setPrice: (price) => dispatch(setStartPrice(price.values[0]))
+  setPrice: (price) => dispatch(setStartPrice(price.values[0])),
+  setDate: (date) => dispatch(setStartDate(date))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FiltersPanel);

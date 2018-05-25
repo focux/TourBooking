@@ -9,6 +9,7 @@ export const CardHeader = styled.div`
   background-size: cover;
   overflow: hidden;
   transition: all .2s ease-out;
+  z-index: 0;
   &::after {
     content: '';
     position: absolute;

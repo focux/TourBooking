@@ -9,7 +9,7 @@ export const Container = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 1;
   padding: ${prop => prop.theme.gap.small} ${prop => prop.theme.gap.big};
   ${props => props.fixed ?
     `
