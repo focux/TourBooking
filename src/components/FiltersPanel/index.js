@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CustomPanel from 'Components/CustomPanel';
+import PropTypes from 'prop-types';
 import {
   setFilterText,
   setStartDate,
@@ -9,50 +10,73 @@ import {
 import PriceSlider from './PriceSlider';
 
 class FiltersPanel extends Component {
-  state = {
-    expanded: ''
+  static propTypes = {
+    startPrice: PropTypes.number.isRequired,
+    className: PropTypes.string,
+    style: PropTypes.objectOf(PropTypes.string),
+    setPrice: PropTypes.func.isRequired,
+    tempPrice: PropTypes.number
+  }
+
+  static defaultProps = {
+    className: '',
+    style: {},
+    tempPrice: null
   };
 
-  onChangeExpanded = (panel) =>  (e) => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
+  state = {
+    expanded: '',
+    tempPrice: this.props.startPrice
+  };
+
+  onChangeExpanded = (panel) => () => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
+
+  onChangeTempPrice = (price) => this.setState({ tempPrice: price.values[0] });
 
   render() {
-    const { style, className, expanded, startPrice, onChangeExpanded, setStartPrice } = this.props;
+    const {
+      style,
+      className,
+      startPrice,
+      setPrice
+    } = this.props;
     return (
       <div style={style || {}} className={className || ''}>
-    <CustomPanel
-      name="price"
-      title="Max price"
-      onChange={this.onChangeExpanded}
-      currentExpanded={this.state.expanded}
-    >
-      <PriceSlider startPrice={startPrice} setStartPrice={setStartPrice} />
-    </CustomPanel>
-    <CustomPanel
-      name="departing"
-      title="Departing"
-      onChange={this.onChangeExpanded}
-      currentExpanded={this.state.expanded}
-    >
-      Aqui inputs pa el date
-    </CustomPanel>
-    <CustomPanel
-      name="spaces"
-      title="Spaces"
-      onChange={this.onChangeExpanded}
-      currentExpanded={this.state.expanded}
-    >
-      Aqui inputs pa el spaces
-    </CustomPanel>
-    <CustomPanel
-      name="type"
-      title="Tour type"
-      onChange={this.onChangeExpanded}
-      currentExpanded={this.state.expanded}
-    >
-      Aqui inputs pa el tour type
-    </CustomPanel>
-  </div>
-    )
+        <CustomPanel
+          name="price"
+          title="Max price"
+          onChange={this.onChangeExpanded}
+          currentExpanded={this.state.expanded}
+          rightTitle={this.state.tempPrice}
+        >
+          <PriceSlider startPrice={startPrice} setStartPrice={setPrice} onChangeTempPrice={this.onChangeTempPrice} />
+        </CustomPanel>
+        <CustomPanel
+          name="departing"
+          title="Departing"
+          onChange={this.onChangeExpanded}
+          currentExpanded={this.state.expanded}
+        >
+          Aqui inputs pa el date
+        </CustomPanel>
+        <CustomPanel
+          name="spaces"
+          title="Spaces"
+          onChange={this.onChangeExpanded}
+          currentExpanded={this.state.expanded}
+        >
+          Aqui inputs pa el spaces
+        </CustomPanel>
+        <CustomPanel
+          name="type"
+          title="Tour type"
+          onChange={this.onChangeExpanded}
+          currentExpanded={this.state.expanded}
+        >
+          Aqui inputs pa el tour type
+        </CustomPanel>
+      </div>
+    );
   }
 }
 
@@ -61,7 +85,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setStartPrice: (price) => dispatch(setStartPrice(price.values[0]))
+  setPrice: (price) => dispatch(setStartPrice(price.values[0]))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FiltersPanel);
