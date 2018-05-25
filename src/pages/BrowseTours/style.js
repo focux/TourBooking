@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Paper, Grid } from 'material-ui';
-import FiltersPanel from 'Components/FiltersPanel';
 
 export const SectionContainer = styled.section`
   width: 100%;
@@ -10,9 +9,8 @@ export const SectionContainer = styled.section`
 `;
 
 export const CustomPaper = styled(Paper)`
-  padding: 1.8rem;
-  margin-right: 5rem;
-  position: fixed;
+  margin-bottom: ${props => props.theme.gap.medium};
+  padding: ${props => props.theme.gap.small};
 `;
 
 export const SectionTitle = styled.h1`
@@ -37,7 +35,9 @@ export const BlackGrid = styled(Grid)`
 }
 `;
 
-export const StyledFiltersPanel = styled(FiltersPanel)`
-  position: fixed;
-  width: 23%;
+export const StyledGridContainer = styled(Grid)`
+  && {
+    position: fixed;
+    width: 23%;
+  }
 `;

@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Grid } from 'material-ui';
+import { Grid, Paper } from 'material-ui';
 import { Explore } from '@material-ui/icons';
 import TourCardList from 'Components/TourCardList';
 import Header from 'Components/Header';
-import { SectionContainer, CustomPaper, SectionTitle, PurpleText, BlackGrid, StyledFiltersPanel } from './style';
+import FiltersPanel from 'Components/FiltersPanel';
+import { SectionContainer, CustomPaper, SectionTitle, PurpleText, BlackGrid, StyledGridContainer } from './style';
 
 class BrowseTours extends Component {
   render() {
@@ -26,8 +27,15 @@ class BrowseTours extends Component {
                 </Grid>
               </Grid>
         <Grid item xs={3}>
-         <StyledFiltersPanel />
-        </Grid>
+        <StyledGridContainer container direction="column">
+          <Grid item>
+          <FiltersPanel />
+          </Grid>
+          <Grid item>
+
+          </Grid>
+        </StyledGridContainer>
+      </Grid>
       </Grid>
     </SectionContainer>
   </Fragment>
