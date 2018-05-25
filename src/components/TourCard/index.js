@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatPrice } from '../../utils';
 import { Card, CardHeader, HeaderCloud, CardBottom, CardTitle, CardSubtitle, CardFooter, FooterText, FooterSmallText } from './style';
 
 const TourCard = ({ image, imageTitle, location, title, price, spaces, difficult, departingTime }) => (
@@ -14,7 +15,7 @@ const TourCard = ({ image, imageTitle, location, title, price, spaces, difficult
         {location} | Sep 12
       </CardSubtitle>
       <CardFooter>
-        <FooterText fontSize="26px"><FooterSmallText>USD$</FooterSmallText>{price}</FooterText>
+        <FooterText fontSize="26px"><FooterSmallText>$</FooterSmallText>{formatPrice(price)}</FooterText>
         <FooterText fontSize="26px">{spaces}<FooterSmallText>SPACES</FooterSmallText></FooterText>
       </CardFooter>
     </CardBottom>

@@ -8,20 +8,19 @@ import {
   setStartPrice
 } from '../../actions';
 import PriceSlider from './PriceSlider';
+import { formatPrice } from '../../utils';
 
 class FiltersPanel extends Component {
   static propTypes = {
     startPrice: PropTypes.number.isRequired,
     className: PropTypes.string,
     style: PropTypes.objectOf(PropTypes.string),
-    setPrice: PropTypes.func.isRequired,
-    tempPrice: PropTypes.number
+    setPrice: PropTypes.func.isRequired
   }
 
   static defaultProps = {
     className: '',
-    style: {},
-    tempPrice: null
+    style: {}
   };
 
   state = {
@@ -47,7 +46,7 @@ class FiltersPanel extends Component {
           title="Max price"
           onChange={this.onChangeExpanded}
           currentExpanded={this.state.expanded}
-          rightTitle={this.state.tempPrice}
+          rightTitle={formatPrice(this.state.tempPrice, true)}
         >
           <PriceSlider startPrice={startPrice} setStartPrice={setPrice} onChangeTempPrice={this.onChangeTempPrice} />
         </CustomPanel>
