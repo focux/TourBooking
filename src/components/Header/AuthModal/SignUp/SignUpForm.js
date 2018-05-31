@@ -1,9 +1,8 @@
 import React, { Fragment } from 'react';
 import { Formik } from 'formik';
 import { Grid, Input, InputLabel, MenuItem } from 'material-ui';
-import { BottomLineInput } from 'Components/Inputs';
 import { BigButton } from 'Components/Buttons';
-import { SelectInput, StyledMenuItem } from 'Components/Inputs';
+import { SelectInput, StyledMenuItem, BottomLineInput } from 'Components/Inputs';
 import { LockOutline, MailOutline, Face } from '@material-ui/icons';
 import { ModalText, ModalLink, Divisor } from './style';
 import Constants from '../../../../config/constants';

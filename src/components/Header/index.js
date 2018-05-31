@@ -6,7 +6,8 @@ import {
   NavItem,
   Logo,
   RightSide,
-  LeftSide
+  LeftSide,
+  CustomLink
 } from './style';
 import AuthModal from './AuthModal/';
 
@@ -39,11 +40,11 @@ class Header extends Component {
           onClickEmailSignUp={this.handleProceedEmailSignUp}
         />
         <LeftSide>
-          <Logo>Driscovery</Logo>
+          <Logo><CustomLink to="/">Driscovery</CustomLink></Logo>
           <Navigation>
-            <NavItem  onClick={this.handleOpenLoginModal}>Log In</NavItem>
-            <NavItem  onClick={this.handleOpenSignUpModal}>Sign Up</NavItem>
-            <NavItem >Help</NavItem>
+            <NavItem onClick={this.handleOpenLoginModal}>Log In</NavItem>
+            <NavItem onClick={this.handleOpenSignUpModal}>Sign Up</NavItem>
+            <NavItem>Help</NavItem>
           </Navigation>
         </LeftSide>
         <RightSide>

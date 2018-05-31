@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { StyledButton } from '../Buttons/style';
 
 export const Container = styled.div`
@@ -93,4 +93,13 @@ export const LeftSide = styled.div`
   display: flex;
   align-items: center;
   flex-grow: 1;
+`;
+
+export const CustomLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;

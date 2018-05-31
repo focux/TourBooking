@@ -4,6 +4,8 @@ import CustomPanel from 'Components/CustomPanel';
 import PropTypes from 'prop-types';
 import DateInput from 'Components/DateInput';
 import moment from 'moment';
+import { Checkbox } from 'material-ui';
+import { SelectInput, StyledMenuItem } from 'Components/Inputs';
 import {
   setFilterText,
   setStartDate,
@@ -31,7 +33,9 @@ class FiltersPanel extends Component {
     expanded: '',
     tempPrice: this.props.startPrice,
     date: this.props.startDate,
-    focused: false
+    focused: false,
+    selectedTourTypes: [],
+    tourTypes: ['Ecoturismo', 'Experiencias']
   };
 
   onChangeExpanded = (panel) => () => this.setState(((prevState) => ({ expanded: prevState.expanded === panel ? '' : panel })));
@@ -44,6 +48,12 @@ class FiltersPanel extends Component {
   }
 
   onFocusChange = ({ focused }) => this.setState({ focused });
+
+  onChangeTourType = (e) => this.setState((prevState) => (
+    {
+      selectedTourTypes: [...prevState, ...e.target.value]
+    }
+  ));
 
   render() {
     const {
@@ -91,8 +101,27 @@ class FiltersPanel extends Component {
           title="Tour type"
           onChange={this.onChangeExpanded}
           currentExpanded={this.state.expanded}
+          rightTitle={this.state.selectedTourTypes.join(', ')}
         >
-          Aqui inputs pa el tour type
+          <SelectInput
+            value={this.state.selectedTourTypes}
+            onChange={this.onChangeTourType}
+            renderValue={selected => selected.join(', ')}
+            inputProps={{
+              name: 'tourType',
+              id: 'tourType'
+            }}
+            autoWidth
+            multiple
+          >
+            {this.state.tourTypes.map((type) => (
+              <StyledMenuItem key={type} value={type}>
+                <Checkbox checked={this.state.selectedTourTypes.indexOf(type) > -1} />
+                {type}
+              </StyledMenuItem>
+              ))
+            }
+          </SelectInput>
         </CustomPanel>
       </div>
     );

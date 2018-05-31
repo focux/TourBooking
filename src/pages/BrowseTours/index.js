@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Paper } from 'material-ui';
+import { Grid } from 'material-ui';
 import { Explore } from '@material-ui/icons';
 import TourCardList from 'Components/TourCardList';
 import Header from 'Components/Header';
@@ -32,7 +32,7 @@ class BrowseTours extends Component {
           <FiltersPanel />
           </Grid>
           <Grid item>
-
+          
           </Grid>
         </StyledGridContainer>
       </Grid>

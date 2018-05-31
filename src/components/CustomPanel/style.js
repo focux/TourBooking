@@ -9,5 +9,6 @@ export const PanelThinTitle = styled.h3`
   margin-left: auto;
   font-size: 1.6rem;
   font-weight: 200;
+  text-align: right;
 `;
 

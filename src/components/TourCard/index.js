@@ -2,8 +2,8 @@ import React from 'react';
 import { formatPrice } from '../../utils';
 import { Card, CardHeader, HeaderCloud, CardBottom, CardTitle, CardSubtitle, CardFooter, FooterText, FooterSmallText } from './style';
 
-const TourCard = ({ image, imageTitle, location, title, price, spaces, difficult, departingTime }) => (
-  <Card>
+const TourCard = ({ id, image, imageTitle, location, title, price, spaces, difficult, departingTime, onClick }) => (
+  <Card style={{ cursor: 'pointer' }} onClick={onClick}>
     <CardHeader image={image}>
       <HeaderCloud />
     </CardHeader>
