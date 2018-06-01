@@ -1,14 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Grid, CircularProgress } from 'material-ui';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import TourCard from 'Components/TourCard';
 import { CustomLink } from './style';
 
 const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
-  <Grid container item sm={12} justify="flex-start" spacing={24}>
+  <Fragment>
   {
     toursRequest === 'READY' ?
-    tours.map(({
+    <Grid container item sm={12} justify="flex-start" spacing={24}>
+    {tours.map(({
       image,
       location,
       departingTime,
@@ -32,10 +33,14 @@ const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
         />
         </CustomLink>
       </Grid>
-    ))
+    ))}
+    </Grid>
     :
-    <CircularProgress color="primary" />}
-  </Grid>
+    <Grid container item sm={12} justify="center" spacing={24}>
+      <CircularProgress color="primary" />
+    </Grid>
+  }
+  </Fragment>
 );
 
 export default withRouter(TourCardList);

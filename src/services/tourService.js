@@ -11,7 +11,7 @@ class tourService {
       const response = await axios.get(tourService.baseUrl + endPoint);
       return response.data;
     } catch (err) {
-      return err;
+      return '001'; // Network error
     }
   }
 }

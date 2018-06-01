@@ -5,6 +5,8 @@ import { FETCH_TOURS, setFetchedTours, setFetchRequestReady } from '../actions';
 export function* fetchTours() {
   yield take(FETCH_TOURS);
   const response = yield call(tourService.fetchAllTours);
-  yield put(setFetchedTours(response));
-  yield put(setFetchRequestReady());
+  if (response !== '001') { // Network error
+    yield put(setFetchedTours(response));
+    yield put(setFetchRequestReady());
+  }
 };
