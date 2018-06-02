@@ -14,7 +14,7 @@ const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
       location,
       departingTime,
       title,
-      price,
+      adultPrice,
       spaces,
       level,
       id
@@ -26,7 +26,7 @@ const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
           location={location}
           departingTime={departingTime}
           title={title}
-          price={price}
+          adultPrice={adultPrice}
           spaces={spaces}
           level={level}
           

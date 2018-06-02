@@ -2,7 +2,7 @@ import React from 'react';
 import { formatPrice } from '../../utils';
 import { Card, CardHeader, HeaderCloud, CardBottom, CardTitle, CardSubtitle, CardFooter, FooterText, FooterSmallText } from './style';
 
-const TourCard = ({ id, image, imageTitle, location, title, price, spaces, difficult, departingTime, onClick }) => (
+const TourCard = ({ id, image, imageTitle, location, title, adultPrice, spaces, difficult, departingTime, onClick }) => (
   <Card style={{ cursor: 'pointer' }} onClick={onClick}>
     <CardHeader image={image}>
       <HeaderCloud />
@@ -15,7 +15,7 @@ const TourCard = ({ id, image, imageTitle, location, title, price, spaces, diffi
         {location} | Sep 12
       </CardSubtitle>
       <CardFooter>
-        <FooterText fontSize="26px"><FooterSmallText>$</FooterSmallText>{formatPrice(price)}</FooterText>
+        <FooterText fontSize="26px"><FooterSmallText>$</FooterSmallText>{formatPrice(adultPrice)}</FooterText>
         <FooterText fontSize="26px">{spaces}<FooterSmallText>SPACES</FooterSmallText></FooterText>
       </CardFooter>
     </CardBottom>

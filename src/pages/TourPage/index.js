@@ -3,14 +3,17 @@ import Header from 'Components/Header';
 import { connect } from 'react-redux';
 import { Tabs, Grid, CircularProgress } from 'material-ui';
 import { formatPrice } from '../../utils';
-import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle } from './style';
+import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, DiscountText } from './style';
+import IncrementInput from '../../components/IncrementInput';
 
 class TourPage extends Component {
   state = {
     currentTour: {},
     tab: 0,
     tabNames: ['Overview', 'Includes', 'Review', 'Host'],
-    fixedTab: false
+    fixedTab: false,
+    adults: 1,
+    childs: 0
   };
 
   componentDidMount() {
@@ -85,6 +88,22 @@ class TourPage extends Component {
 
   handleTabChange = (e, tab) => this.setState({ tab });
 
+  handleIncreaseAdults = () => this.setState((prevState) => ({
+    adults: prevState.adults + 1
+  }));
+
+  handleDecreaseAdults = () => this.setState((prevState) => ({
+    adults: prevState.adults - 1
+  }));
+
+  handleIncreaseChilds = () => this.setState((prevState) => ({
+    childs: prevState.childs + 1
+  }));
+
+  handleDecreaseChilds = () => this.setState((prevState) => ({
+    childs: prevState.childs - 1
+  }));
+
   infoColumn = () => {
     const { title, location, description } = this.state.currentTour;
     return (
@@ -116,7 +135,7 @@ class TourPage extends Component {
   }
 
   bookingColumn = () => {
-    const { price, initialDescount, spaces, totalSpaces } = this.state.currentTour;
+    const { adultPrice, initialDescount, spaces, totalSpaces } = this.state.currentTour;
     const columnWidth = $('#right-column').width();
     const tabStyle = this.state.fixedTab ? {
       position: 'fixed',
@@ -125,38 +144,68 @@ class TourPage extends Component {
     } : {};
     return (
       <Grid item xs={3} id="right-column">
-      <div style={tabStyle}>
-        <Grid container direction="column">
-          <Grid item xs={12}>
-            <BookingContent>
-              <Grid container spacing={16} alignItems="center">
-                <Grid item xs={6}>
-                  <Grid container direction="column" spacing={8}>
-                    <Grid item xs={12}>
-                      <BookingTitle>Price</BookingTitle>
+        <div style={tabStyle}>
+          <Grid container direction="column">
+            <Grid item xs={12}>
+              <BookingContent>
+                <Grid container spacing={16} alignItems="center">
+                  <Grid item xs={6}>
+                    <Grid container direction="column" spacing={8}>
+                      <Grid item xs={12}>
+                        <BookingTitle>Price</BookingTitle>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <BookingPrice>
+                          {formatPrice(adultPrice, true)}
+                        </BookingPrice>
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                      <BookingPrice>
-                        {formatPrice(price, true)}
-                      </BookingPrice>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Grid container direction="column" spacing={8}>
+                      <Grid item xs={12}>
+                        <BookingTitle>Spaces</BookingTitle>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <BookingSpaces>{spaces}/{totalSpaces}</BookingSpaces>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Grid container direction="column" spacing={8}>
+                      <Grid item xs={12}>
+                        <BookingTitle>Adults</BookingTitle>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <IncrementInput
+                          value={this.state.adults}
+                          onIncrease={this.handleIncreaseAdults}
+                          onDecrease={this.handleDecreaseAdults}
+                          maxValue={spaces}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Grid container direction="column" spacing={8}>
+                      <Grid item xs={12}>
+                        <BookingTitle>Childs</BookingTitle>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <IncrementInput
+                          value={this.state.childs}
+                          onIncrease={this.handleIncreaseChilds}
+                          onDecrease={this.handleDecreaseChilds}
+                          maxValue={spaces}
+                        />
+                      </Grid>
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item xs={6}>
-                  <Grid container direction="column" spacing={8}>
-                    <Grid item xs={12}>
-                      <BookingTitle>Spaces</BookingTitle>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <BookingSpaces>{spaces}/{totalSpaces}</BookingSpaces>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-            </BookingContent>
+              </BookingContent>
+            </Grid>
+            <Grid item xs={12}><BookingButton>Book for {formatPrice(adultPrice * (initialDescount || 1), true)}</BookingButton></Grid>
           </Grid>
-          <Grid item xs={12}><BookingButton>Book for {formatPrice(price * (initialDescount || 1), true)}</BookingButton></Grid>
-        </Grid>
         </div>
       </Grid>
     );

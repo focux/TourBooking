@@ -101,7 +101,7 @@ export const BookingButton = styled.button`
 export const BookingContent = styled.div`
   border: 1px solid rgba(0,0,0,.1);
   border-bottom: 0;
-  padding: 2rem;
+  padding: 2rem 2rem 1rem 2rem;
 `;
 
 export const BookingPrice = styled.h3`
@@ -128,4 +128,12 @@ export const BookingTitle = styled.h5`
   text-transform: uppercase;
   font-size: 1.1rem;
   letter-spacing: .5px;
+`;
+
+export const DiscountText = styled.p`
+  text-align: center;
+  text-transform: uppercase;
+  color: red;
+  letter-spacing: .3px;
+  font-weight: 400;
 `;
