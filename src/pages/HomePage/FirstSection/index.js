@@ -9,7 +9,7 @@ import {
   SectionContainer
 } from './style';
 
-const typedText = ['new friends &#x1F46B;', 'Dominican Republic &#x1F1E9;&#x1F1F4;', 'beaches &#x1F3DD;', 'mountains &#x1F3D4;', 'rivers &#x1F30A;', 'experiences &#x1F938;', 'Pico Duarte &#x1F9D7;', 'Laguna Dudu &#x1F3CA;', 'El Limon &#x1F3C7;', 'caribbean &#x1F5FA;', 'happiness &#x1F57A;'];
+const typedText = ['new friends &#x1F46B;', 'Dominican Republic &#x1F1E9;&#x1F1F4;', 'beaches &#x1F3DD;', 'mountains &#x1F3D4;', 'rivers &#x1F30A;', 'experiences &#x1F938;', 'happiness &#x1F57A;'];
 
 
 const FirstSection = (props) => (
