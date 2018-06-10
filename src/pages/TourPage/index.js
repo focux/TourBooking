@@ -13,7 +13,8 @@ class TourPage extends Component {
     tabNames: ['Overview', 'Includes', 'Review', 'Host'],
     fixedTab: false,
     adults: 1,
-    childs: 0
+    childs: 0,
+    totalPersons: 1
   };
 
   componentDidMount() {
@@ -89,19 +90,23 @@ class TourPage extends Component {
   handleTabChange = (e, tab) => this.setState({ tab });
 
   handleIncreaseAdults = () => this.setState((prevState) => ({
-    adults: prevState.adults + 1
+    adults: prevState.adults + 1,
+    totalPersons: prevState.totalPersons + 1
   }));
 
   handleDecreaseAdults = () => this.setState((prevState) => ({
-    adults: prevState.adults - 1
+    adults: prevState.adults - 1,
+    totalPersons: prevState.totalPersons - 1
   }));
 
   handleIncreaseChilds = () => this.setState((prevState) => ({
-    childs: prevState.childs + 1
+    childs: prevState.childs + 1,
+    totalPersons: prevState.totalPersons + 1
   }));
 
   handleDecreaseChilds = () => this.setState((prevState) => ({
-    childs: prevState.childs - 1
+    childs: prevState.childs - 1,
+    totalPersons: prevState.totalPersons - 1
   }));
 
   infoColumn = () => {
@@ -181,7 +186,7 @@ class TourPage extends Component {
                           value={this.state.adults}
                           onIncrease={this.handleIncreaseAdults}
                           onDecrease={this.handleDecreaseAdults}
-                          maxValue={spaces}
+                          maxValue={spaces - this.state.childs}
                         />
                       </Grid>
                     </Grid>
@@ -196,7 +201,8 @@ class TourPage extends Component {
                           value={this.state.childs}
                           onIncrease={this.handleIncreaseChilds}
                           onDecrease={this.handleDecreaseChilds}
-                          maxValue={spaces}
+                          maxValue={spaces - this.state.adults}
+                          minValue={0}
                         />
                       </Grid>
                     </Grid>
