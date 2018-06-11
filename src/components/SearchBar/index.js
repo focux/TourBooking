@@ -1,7 +1,5 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
 import Grid from 'material-ui/Grid';
-import { LocationOn } from '@material-ui/icons';
 import {
   StyledGrid,
   Container,
