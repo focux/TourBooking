@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchBar from 'Components/SearchBar';
 import { Typography, Grid } from 'material-ui';
+import AutocompleteBox from 'Components/AutocompleteBox';
 import {
   Container,
   StyledTyped,
@@ -27,7 +28,10 @@ const FirstSection = (props) => (
           </Typography>
         </Grid>
         <Grid item sm={12}>
-          <SearchBar id="home-search-bar" />
+          <SearchBar onChange={props.onChangeSearch} id="home-search-bar" />
+        </Grid>
+        <Grid item sm={12}>
+          <AutocompleteBox predictions={props.predictions} />
         </Grid>
         <BottomGrid item sm={12}>
           <Typography variant="title" align="center" color="inherit">
