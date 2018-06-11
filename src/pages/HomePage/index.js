@@ -28,7 +28,8 @@ export default class HomePage extends PureComponent {
   onChangeSearch = (e) => {
     if (e.target.value) {
       const service = new google.maps.places.AutocompleteService();
-      service.getQueryPredictions({ input: e.target.value }, this.displaySuggestions);
+      const componentRestrictions	= { country: 'do' };
+      service.getPlacePredictions({ input: e.target.value, componentRestrictions }, this.displaySuggestions);
       console.log('jeje');
     } else {
       this.setState({ predictions: [] });
