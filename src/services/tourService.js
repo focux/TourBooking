@@ -2,7 +2,7 @@ import axios from 'axios';
 
 class tourService {
   static get baseUrl() {
-    return 'https://5d053329-7fc5-4410-a279-119f0f537d4b.mock.pstmn.io';
+    return 'https://driscovery-new-api.herokuapp.com';
   }
 
   static async fetchAllTours() {
