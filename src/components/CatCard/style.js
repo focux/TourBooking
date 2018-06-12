@@ -48,7 +48,11 @@ export const Container = styled.a`
 
 export const TextContainer = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1;
+  flex-direction: column;
   &::after {
     content: '';
     position: absolute;
@@ -70,4 +74,10 @@ font-weight: 200;
 position: relative;
 padding: 1rem;
 z-index: 2;
+`;
+
+export const IconContainer = styled.div`
+  & > svg {
+    font-size: 4rem;
+  }
 `;
