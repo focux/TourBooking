@@ -40,7 +40,7 @@ class Header extends Component {
           onClickEmailSignUp={this.handleProceedEmailSignUp}
         />
         <LeftSide>
-          <Logo><CustomLink to="/">Driscovery</CustomLink></Logo>
+          <Logo><CustomLink to="/"><img src={`images/${!this.props.fixed ? 'logo.png' : 'logo-purple.png'}`} alt="Driscovery" style={{ maxWidth: 50 }} /></CustomLink></Logo>
           <Navigation>
             <NavItem onClick={this.handleOpenLoginModal}>Log In</NavItem>
             <NavItem onClick={this.handleOpenSignUpModal}>Sign Up</NavItem>
