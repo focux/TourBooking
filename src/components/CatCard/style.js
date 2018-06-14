@@ -77,6 +77,7 @@ z-index: 2;
 `;
 
 export const IconContainer = styled.div`
+  color: ${props => props.theme.primaryColor};
   & > svg {
     font-size: 4rem;
   }

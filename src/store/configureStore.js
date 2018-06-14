@@ -3,6 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import initSagas from './initSagas';
 import toursReducer from '../reducers/tours';
 import filtersReducer from '../reducers/filters';
+import uiReducer from '../reducers/ui';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reduxSaga = createSagaMiddleware();
@@ -10,7 +11,8 @@ const store = () => {
   const configStore = createStore(
     combineReducers({
       tours: toursReducer,
-      filters: filtersReducer
+      filters: filtersReducer,
+      ui: uiReducer
     }),
     composeEnhancers(applyMiddleware(reduxSaga))
   );
