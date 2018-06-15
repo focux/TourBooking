@@ -136,9 +136,9 @@ export const CustomMenuItem = styled(MenuItem).attrs({
   }
 })`
 &&&& {
-font-size: 1.6rem;
+font-size: 1.4rem;
 font-weight: 300;
-padding: 1rem;
+padding: 1 3rem;
 }
 `;
 
