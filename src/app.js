@@ -6,7 +6,7 @@ import mainTheme from './theme/mainTheme';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import './theme/styleGloblal';
-import { fetchTours } from './actions';
+import { fetchTours, requestUserInfo } from './actions';
 
 const store = configureStore();
 
@@ -18,4 +18,6 @@ const jsx = (
   </ThemeProvider>
 );
 store.dispatch(fetchTours());
+store.dispatch(requestUserInfo());
+
 ReactDOM.render(jsx, document.getElementById('app'));

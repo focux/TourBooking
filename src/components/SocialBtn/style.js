@@ -18,6 +18,7 @@ export const Button = styled.button`
   box-shadow: 0 3px 9px rgba(0,0,0,.3);
   border-radius: .5rem;
   overflow: hidden;
+  cursor: pointer;
 
   &:hover, &:focus {
     outline: 0;

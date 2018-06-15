@@ -34,3 +34,10 @@ export {
   openAuthModal,
   closeAuthModal
 } from './ui';
+
+export {
+  REQUEST_USER_INFO,
+  SET_USER_INFO,
+  requestUserInfo,
+  setUserInfo
+} from './user';

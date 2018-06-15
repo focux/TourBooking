@@ -4,6 +4,7 @@ import initSagas from './initSagas';
 import toursReducer from '../reducers/tours';
 import filtersReducer from '../reducers/filters';
 import uiReducer from '../reducers/ui';
+import userReducer from '../reducers/user';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const reduxSaga = createSagaMiddleware();
@@ -12,7 +13,8 @@ const store = () => {
     combineReducers({
       tours: toursReducer,
       filters: filtersReducer,
-      ui: uiReducer
+      ui: uiReducer,
+      user: userReducer
     }),
     composeEnhancers(applyMiddleware(reduxSaga))
   );

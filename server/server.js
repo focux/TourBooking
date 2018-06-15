@@ -9,6 +9,7 @@ const {mongoose} = require('./db/mongoose');
 const cookieSession = require('cookie-session');
 const { session } = require('./config/keys');
 const passport = require('passport');
+const flash = require('connect-flash');
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
@@ -17,6 +18,7 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(express.static(publicPath));
 

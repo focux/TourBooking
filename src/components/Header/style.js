@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { Menu, MenuItem, Tooltip } from 'material-ui';
+import { AccountCircle } from '@material-ui/icons';
 import { StyledButton } from '../Buttons/style';
 
 export const Container = styled.div`
@@ -102,4 +104,59 @@ export const CustomLink = styled(Link)`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const StyledAccountIcon = styled(AccountCircle)`
+  && {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+`;
+
+const menuClassName = 'menu__paper';
+export const CustomMenu = styled(Menu).attrs({
+  classes: {
+    paper: menuClassName
+  },
+  PopoverClasses: {
+    paper: menuClassName
+  }
+})`
+&&&&& {
+  ${menuClassName} {
+    width: 10rem;
+  }
+}
+`;
+
+const rootMenuItem = 'menu__item-root';
+export const CustomMenuItem = styled(MenuItem).attrs({
+  classes: {
+    root: rootMenuItem
+  }
+})`
+&&&& {
+font-size: 1.6rem;
+font-weight: 300;
+padding: 1rem;
+}
+`;
+
+const tooltipClass = 'tooltip__text';
+export const CustomTooltip = styled(Tooltip).attrs({
+  classes: {
+    open: tooltipClass,
+    popper: tooltipClass,
+    tooltip: tooltipClass
+  }
+})`
+
+&&&&&&& {
+  font-size: 1.6rem !important;
+}
+${tooltipClass} {
+font-size: 1.6rem;
+font-weight: 300;
+padding: 1rem;
+}
 `;

@@ -44,8 +44,12 @@ passport.use(new GoogleStrategy({
         googleId: id
       }
     });
-    const newUser = await user.save();
-    done(null, newUser);
+    try {
+      const newUser = await user.save();
+      done(null, newUser);
+    } catch (e) {
+      done(null, false);
+    }
   }
 }));
 
@@ -54,15 +58,17 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
   callbackURL: '/auth/facebook/redirect',
   clientID: facebook.clientID,
-  clientSecret: facebook.clientSecret
+  clientSecret: facebook.clientSecret,
+  profileFields: ['id', 'displayName', 'email', 'birthday', 'friends', 'first_name', 'last_name', 'middle_name', 'gender', 'link', 'picture', 'location']
 }, async (accessToken, refreshToken, profile, done) => {
   const {
     id,
     name,
     displayName,
-    email
+    emails,
+    photos
   } = profile;
-  console.log(profile)
+  console.log(profile);
   const currentUser = await User.findOne({
     socialLogin: {
       facebookId: id
@@ -71,15 +77,24 @@ passport.use(new FacebookStrategy({
   if (currentUser) {
     done(null, currentUser);
   } else {
-    if (email) {
+    if (emails[0].value) {
+      try {
       const newUser = new User({
         firstName: name.givenName || displayName,
         lastName: name.familyName,
-        email
+        email: emails[0].value,
+        photo: photos[0].value,
+        socialLogin: {
+          facebookId: id
+        }
       });
       const response = await newUser.save();
       done(null, response);
+    } catch (e) {
+      done(null, false);
     }
-    console.log('no tengo el email conon');
+    } else {
+      done(null, false);
+    }
   }
 }));
