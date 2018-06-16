@@ -14,8 +14,16 @@ const authCheck = (req, res, next) => {
   }
 };
 
+const checkReturnTo = (req, res, next) => {
+  const { returnTo } = req.query;
+  if (returnTo) {
+    req.session.returnTo = (returnTo.indexOf('/') === -1) ? `/${returnTo}` : returnTo;
+  }
+  next();
+};
+
 // Google Auth
-router.get('/google', passport.authenticate('google', {
+router.get('/google', checkReturnTo, passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 
@@ -26,7 +34,7 @@ router.get('/google/redirect', passport.authenticate('google', {
 });
 
 // Facebook Auth
-router.get('/facebook', passport.authenticate('facebook', {
+router.get('/facebook', checkReturnTo, passport.authenticate('facebook', {
   scope: ['user_birthday', 'email', 'public_profile']
 }));
 

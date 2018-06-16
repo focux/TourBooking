@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Header from 'Components/Header';
 import { connect } from 'react-redux';
 import { Tabs, Grid, CircularProgress } from 'material-ui';
+import { openAuthModal } from '../../actions';
 import { formatPrice } from '../../utils';
 import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, DiscountText } from './style';
 import IncrementInput from '../../components/IncrementInput';
@@ -139,6 +140,14 @@ class TourPage extends Component {
     );
   }
 
+  handleBooking = () => {
+    console.log('testing1')
+    if (!(this.props.user && this.props.user.id)) {
+      console.log('testing2')
+      this.props.openAuthModal();
+    }
+  }
+
   bookingColumn = () => {
     const { adultPrice, initialDescount, spaces, totalSpaces } = this.state.currentTour;
     const columnWidth = $('#right-column').width();
@@ -210,7 +219,7 @@ class TourPage extends Component {
                 </Grid>
               </BookingContent>
             </Grid>
-            <Grid item xs={12}><BookingButton>Book for {formatPrice(adultPrice * (initialDescount || 1), true)}</BookingButton></Grid>
+            <Grid item xs={12}><BookingButton onClick={this.handleBooking}>Book for {formatPrice(adultPrice * (initialDescount || 1), true)}</BookingButton></Grid>
           </Grid>
         </div>
       </Grid>
@@ -266,8 +275,13 @@ class TourPage extends Component {
 
 const mapStateToProps = state => ({
   tours: state.tours.data,
-  toursRequest: state.tours.status
+  toursRequest: state.tours.status,
+  user: state.user
 });
 
-export default connect(mapStateToProps)(TourPage);
+const mapDispatchToProps = dispatch => ({
+  openAuthModal: () => dispatch(openAuthModal())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(TourPage);
 

@@ -8,7 +8,7 @@ const defaultState = {
   lastName: '',
   email: '',
   photo: '',
-  _id: ''
+  id: ''
 };
 
 const userReducer = (state = defaultState, action) => {

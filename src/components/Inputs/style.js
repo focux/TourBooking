@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Select, Input, MenuItem } from 'material-ui';
+import MaskedInput from 'react-text-mask';
 
 export const BottomLine = styled.div`
   position: absolute;
@@ -43,6 +44,27 @@ export const InputContainer = styled.div`
 `;
 
 export const StyledBottomLineInput = styled.input`
+  width: 90%;
+  max-height: 5rem;
+  border: 0;
+  background-color: transparent;
+  font-size: 2rem;
+  font-weight: 100;
+  letter-spacing: 1px;
+  transition: border-bottom .2s ease-out;
+  padding: 1rem ${props => props.theme.gap.tiny};
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::placeholder {
+    color: #fff;
+
+  }
+`;
+
+export const StyledMaskedBottomLineInput = styled(MaskedInput)`
   width: 90%;
   max-height: 5rem;
   border: 0;
