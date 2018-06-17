@@ -77,3 +77,11 @@ export const CustomTableCell = styled(TableCell).attrs({
 }
   }
 `;
+
+export const InfoTitle = styled.h3`
+  font-size: 1.6rem;
+`;
+
+export const InfoBody = styled.p`
+  font-size: 1.2rem;
+`;

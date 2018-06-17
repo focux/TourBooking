@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  cellphone: {
+    type: String,
+    trim: true,
+    minlength: 10
+  },
   photo: String,
   email: {
     type: String,
@@ -30,6 +35,7 @@ const userSchema = new mongoose.Schema({
     googleId: String,
     facebookId: String
   },
+  whatsapp: Boolean,
   tokens: [{
     access: {
       type: String,

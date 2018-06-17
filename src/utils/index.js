@@ -12,3 +12,5 @@ export const displayDate = (currentDate) => {
   }
   return `in ${diffDateRounded} ${diffDateRounded === 1 ? 'day' : 'days'}`;
 };
+
+export const displayNumDate = (currentDate) => moment(currentDate).format('DD/MM/YYYY');

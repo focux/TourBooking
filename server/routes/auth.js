@@ -56,7 +56,9 @@ router.get('/check', authCheck, (req, res) => {
     'lastName',
     'email',
     'photo',
-    '_id'
+    '_id',
+    'cellphone',
+    'whatsapp'
   ]);
   res.status(200).send({ user });
 });

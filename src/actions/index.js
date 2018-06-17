@@ -38,6 +38,8 @@ export {
 export {
   REQUEST_USER_INFO,
   SET_USER_INFO,
+  UPDATE_USER_INFO,
   requestUserInfo,
-  setUserInfo
+  setUserInfo,
+  updateUserInfo
 } from './user';

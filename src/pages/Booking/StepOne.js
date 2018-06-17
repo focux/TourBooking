@@ -5,34 +5,36 @@ import { Formik } from 'formik';
 import { BottomLineInput, BottomLineMaskedInput } from 'Components/Inputs';
 import { StepContentTitle, CustomLabel } from './style';
 
-const StepOne = ({ onSubmit, user = {}, activeStep, handleBack, handleNext, steps }) => (
+const StepOne = ({ onSubmit, user, activeStep, handleBack, handleNext, steps, updateUser }) => (
   <Fragment>
     <StepContentTitle>Confirma tus datos de contacto</StepContentTitle>
+    {(user && !user.id) &&
     <Formik
       initialValues={{
         lastName: user.lastName || '',
         firstName: user.firstName || '',
         email: user.email || '',
-        phoneNumber: user.phoneNumber || '',
+        cellphone: user.cellphone || '',
         whatsapp: user.whatsapp || false
       }}
       onSubmit={(
         values,
         { setSubmitting, setErrors, setValues }
       ) => {
-        let { phoneNumber } = values;
-        phoneNumber = phoneNumber.replace(/\s/g, '');
-        phoneNumber = phoneNumber.replace('(', '');
-        phoneNumber = phoneNumber.replace(')', '');
-        phoneNumber = phoneNumber.replace('-', '');
+        let { cellphone } = values;
+        cellphone = cellphone.replace(/\s/g, '');
+        cellphone = cellphone.replace('(', '');
+        cellphone = cellphone.replace(')', '');
+        cellphone = cellphone.replace('-', '');
 
-        console.log(phoneNumber.length, phoneNumber);
+        console.log(cellphone.length, cellphone);
         setErrors({});
-        if (phoneNumber.length === 10) {
+        if (cellphone.length === 10) {
           setSubmitting(false);
+          updateUser(values);
           handleNext();
         } else {
-          setErrors({ phoneNumber: 'Inserta un número de teléfono válido.' });
+          setErrors({ cellphone: 'Inserta un número de teléfono válido.' });
         }
       }
     }
@@ -93,14 +95,14 @@ const StepOne = ({ onSubmit, user = {}, activeStep, handleBack, handleNext, step
                   <BottomLineMaskedInput
                     iconComponent={<Phone />}
                     type="tel"
-                    name="phoneNumber"
+                    name="cellphone"
                     placeholder="Número de celular"
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.phoneNumber}
+                    value={values.cellphone}
                     required
                   />
-                  {touched.phoneNumber && errors.phoneNumber && <div>{errors.phoneNumber}</div>}
+                  {touched.cellphone && errors.cellphone && <div>{errors.cellphone}</div>}
                 </Grid>
                 <Grid container justify="flex-start" alignItems="center">
                   <Grid item xs={12}>
@@ -140,7 +142,7 @@ const StepOne = ({ onSubmit, user = {}, activeStep, handleBack, handleNext, step
           </Grid>
         </Fragment>
   )}
-    </Formik>
+    </Formik>}
   </Fragment>
 );
 
