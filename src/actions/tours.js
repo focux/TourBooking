@@ -5,6 +5,7 @@ export const UPDATE_TOUR_RATE = 'UPDATE_TOUR_RATE';
 export const FETCH_TOURS = 'FETCH_TOURS';
 export const SET_FETCHED_TOURS = 'SET_FETCHED_TOURS';
 export const SET_FETCH_REQUEST_READY = 'SET_FETCH_REQUEST_READY';
+export const REDUCE_TOUR_SPACE = 'REDUCE_TOUR_SPACE';
 
 
 export const createTour = tour => ({
@@ -38,4 +39,9 @@ export const setFetchedTours = (tours) => ({
 
 export const setFetchRequestReady = () => ({
   type: SET_FETCH_REQUEST_READY
+});
+
+export const reduceTourSpace = (id) => ({
+  type: REDUCE_TOUR_SPACE,
+  payload: { id: parseInt(id) }
 });

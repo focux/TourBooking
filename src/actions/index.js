@@ -6,13 +6,15 @@ export {
   FETCH_TOURS,
   SET_FETCHED_TOURS,
   SET_FETCH_REQUEST_READY,
+  REDUCE_TOUR_SPACE,
   createTour,
   editTour,
   deleteTour,
   updateTourRate,
   fetchTours,
   setFetchedTours,
-  setFetchRequestReady
+  setFetchRequestReady,
+  reduceTourSpace
 } from './tours';
 
 export {
@@ -43,3 +45,8 @@ export {
   setUserInfo,
   updateUserInfo
 } from './user';
+
+export {
+  SAVE_BOOKING_INFO,
+  saveBookingInfo
+} from './booking';

@@ -1,12 +1,13 @@
 import axios from 'axios';
+import constants from '../config/constants';
 
 export default class UserService {
   static get baseUrl() {
-    return 'http://localhost:3000/auth';
+    return constants.apiUrl;
   }
 
   static async retrieveSession() {
-    const endPoint = '/check';
+    const endPoint = '/auth/check';
     axios.interceptors.response.use((response) => response, (error) => {
       if (error.response && error.response.status === 401) {
         localStorage.removeItem('user');
@@ -24,5 +25,11 @@ export default class UserService {
         error: e
       };
     }
+  }
+
+  static async updateUser(updates) {
+    const endPoint = '/user';
+    const response = await axios.patch(UserService.baseUrl + endPoint, updates);
+    return { status: response.status, ...response.data.data };
   }
 }

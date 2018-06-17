@@ -11,10 +11,10 @@ const Login = ({
 }) => (
   <Fragment>
     <Grid item sm={12}>
-      <SocialBtn type="fb" link={`/auth/facebook?returnTo=${window.location.pathname}`} action="login" />
+      <SocialBtn type="fb" link={`/api/v1/auth/facebook?returnTo=${window.location.pathname}`} action="login" />
     </Grid>
     <Grid item sm={12}>
-      <SocialBtn type="google" link={`/auth/google?returnTo=${window.location.pathname}`} action="login" />
+      <SocialBtn type="google" link={`/api/v1/auth/google?returnTo=${window.location.pathname}`} action="login" />
     </Grid>
     <Grid item sm={12}>
       <Divisor> <DivisorText>or</DivisorText> </Divisor>

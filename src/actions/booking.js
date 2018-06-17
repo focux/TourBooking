@@ -1,12 +1,20 @@
-export const SET_BOOKING_INFO = 'SET_BOOKING_INFO';
+export const SAVE_BOOKING_INFO = 'SAVE_BOOKING_INFO';
 
-export const setBookingInfo = ({
+export const saveBookingInfo = ({
   adults,
-  childs
+  childs,
+  tourId,
+  paymentID,
+  payerID,
+  amount
 }) => ({
-  type: SET_BOOKING_INFO,
+  type: SAVE_BOOKING_INFO,
   payload: {
     adults,
-    childs
+    childs,
+    tourId,
+    paymentID,
+    payerID,
+    amount
   }
 });

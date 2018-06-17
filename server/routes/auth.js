@@ -1,18 +1,8 @@
 const router = require('express').Router();
 const passport = require('passport');
-const errorCodes = require('../config/errorCodes');
+const { authCheck } = require('../middlewares');
 const _ = require('lodash');
-
-const authCheck = (req, res, next) => {
-  if (!req.user) {
-    res.status(401).send({
-      errorCode: errorCodes.NOTAUTHENTICATED.code,
-      errorMessage: errorCodes.NOTAUTHENTICATED.message
-    });
-  } else {
-    next();
-  }
-};
+const { User } = require('../models/user');
 
 const checkReturnTo = (req, res, next) => {
   const { returnTo } = req.query;

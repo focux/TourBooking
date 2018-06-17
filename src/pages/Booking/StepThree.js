@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import { Grid } from 'material-ui';
-import moment from 'moment';
+import { Grid, Paper } from 'material-ui';
+import { CheckCircle } from '@material-ui/icons';
 import { displayNumDate } from '../../utils';
-import { StepContentTitle, InfoTitle, InfoBody } from './style';
+import { StepContentTitle, InfoTitle, InfoBody, CustomPaper } from './style';
 
 const StepThree = ({ currentTour }) => {
   const {
@@ -36,21 +36,25 @@ const StepThree = ({ currentTour }) => {
     <Fragment>
       <StepContentTitle>Informaciones finales</StepContentTitle>
       {titles.map((v, k) => (
-        <Grid container style={{ marginBottom: '.5rem' }}>
+        <Grid container key={k} style={{ marginBottom: '.5rem' }}>
           <Grid item xs={3}>
             <InfoTitle>{v}</InfoTitle>
           </Grid>
-          <Grid item xs={3}>
+          <Grid item xs={4}>
             <InfoBody>{content[k]}</InfoBody>
           </Grid>
         </Grid>
       ))}
-      <Grid item xs={12}>
-        <InfoBody>
-          Nos pondremos en contacto contigo lo más pronto posible para darte las indicaciones correspondientes.
-          Cualquier pregunta o duda sobre el viaje agendado, informanoslo a través del apartado de contacto.
-          Gracias.
-        </InfoBody>
+      <Grid container>
+        <CustomPaper>
+          <Grid item xs={12}>
+            <InfoBody>
+              Nos pondremos en contacto contigo lo más pronto posible para darte las indicaciones correspondientes.
+              Cualquier pregunta o duda sobre el viaje agendado, informanoslo a través del apartado de contacto.
+              Gracias.
+            </InfoBody>
+          </Grid>
+        </CustomPaper>
       </Grid>
     </Fragment>
   );

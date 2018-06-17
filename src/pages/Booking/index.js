@@ -7,7 +7,7 @@ import { SectionContainer, CustomStepLabel, StepContent } from './style';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
-import { updateUserInfo } from '../../actions';
+import { updateUserInfo, reduceTourSpace, saveBookingInfo } from '../../actions';
 
 class Booking extends Component {
   constructor(props) {
@@ -37,7 +37,7 @@ class Booking extends Component {
   }
 
   validIdCheck = (id) => {
-    if (this.props.tours.filter((val) => val.id === parseInt(this.props.match.params.id)).length === 0 && this.props.toursRequest === 'READY' && !this.state.currentTour.id) {
+    if (this.props.tours && this.props.tours.filter((val) => val.id === this.props.match.params.id).length === 0 && this.props.toursRequest === 'READY' && !this.state.currentTour.id) {
       this.props.history.push('/');
     }
   }
@@ -45,7 +45,7 @@ class Booking extends Component {
   getCurrentTour = () => {
     if (this.props.toursRequest === 'READY' && !this.state.currentTour.id) {
       this.setState({
-        currentTour: this.props.tours.filter((val) => val.id === parseInt(this.props.match.params.id))[0] || {}
+        currentTour: this.props.tours.filter((val) => val.id === this.props.match.params.id)[0] || {}
       });
     }
   }
@@ -83,12 +83,13 @@ class Booking extends Component {
             adultPrice={currentTour.adultPrice}
             total={this.getTotalPrice()}
             handleNext={this.handleNext}
+            onAuthorize={this.onAuthorizePayment}
           />
         );
       case 2:
         return (
           <StepThree
-            currentTour={this.state.currentTour}
+            currentTour={currentTour}
           />
         )
       default:
@@ -113,6 +114,21 @@ class Booking extends Component {
       activeStep: prevState.activeStep + 1
     }));
   };
+
+  onAuthorizePayment = (data) => {
+    const { payerID, paymentID } = data;
+    const bookingObject = {
+      payerID,
+      paymentID,
+      tourId: this.state.currentTour.id,
+      adults: this.query.a,
+      childs: this.query.c,
+      amount: this.getTotalPrice()
+    };
+    this.props.reduceTourSpace(this.props.match.params.id);
+    this.props.saveBooking(bookingObject);
+    this.handleNext();
+  }
 
   render() {
     const { activeStep, steps } = this.state;
@@ -185,7 +201,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateUser: (user) => dispatch(updateUserInfo(user))
+  updateUser: (user) => dispatch(updateUserInfo(user)),
+  reduceTourSpace: (id) => dispatch(reduceTourSpace(id)),
+  saveBooking: (bookingObj) => dispatch(saveBookingInfo(bookingObj))
 });
 
 

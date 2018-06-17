@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { StepLabel, TableCell } from 'material-ui';
+import { StepLabel, TableCell, Paper } from 'material-ui';
 
 export const SectionContainer = styled.section`
   width: 100%;
@@ -83,5 +83,10 @@ export const InfoTitle = styled.h3`
 `;
 
 export const InfoBody = styled.p`
-  font-size: 1.2rem;
+  font-size: 1.4rem;
+`;
+
+export const CustomPaper = styled(Paper)`
+  padding: ${props => props.theme.gap.small};
+  margin-top: ${props => props.theme.gap.medium};
 `;

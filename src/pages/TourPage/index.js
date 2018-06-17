@@ -61,8 +61,9 @@ class TourPage extends Component {
 
   getCurrentTour = () => {
     if (this.props.toursRequest === 'READY' && !this.state.currentTour.id) {
+      console.log('jejeje')
       this.setState({
-        currentTour: this.props.tours.filter((val) => val.id === parseInt(this.props.match.params.id))[0]
+        currentTour: this.props.tours.filter((val) => val.id === this.props.match.params.id)[0]
       });
     }
   }
@@ -243,7 +244,7 @@ class TourPage extends Component {
       <Fragment>
         <Header fixed />
         <SectionContainer>
-          {!this.state.currentTour.id ?
+          {this.state.currentTour && !this.state.currentTour.id ?
             <Grid container justify="center" alignItems="center" style={{ position: 'absolute', top: '50%' }}>
               <CircularProgress />
             </Grid>

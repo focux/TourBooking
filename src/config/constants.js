@@ -1,3 +1,4 @@
 export default {
-  appName: 'Driscovery'
+  appName: 'Driscovery',
+  apiUrl: 'http://localhost:3000/api/v1'
 };

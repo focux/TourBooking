@@ -4,7 +4,8 @@ import {
   DELETE_TOUR,
   UPDATE_TOUR_RATE,
   SET_FETCH_REQUEST_READY,
-  SET_FETCHED_TOURS
+  SET_FETCHED_TOURS,
+  REDUCE_TOUR_SPACE
 } from '../actions';
 
 const defaultState = {
@@ -49,6 +50,20 @@ const toursReducer = (state = defaultState, action) => {
       let newState = {...state};
       newState.data = action.payload.tours;
       return newState;
+    }
+    case REDUCE_TOUR_SPACE: {
+      return {
+        ...state,
+        data: state.data.map(tour => {
+        if (tour.id === action.payload.id) {
+          return {
+            ...tour,
+            spaces: tour.spaces - 1
+          };
+        }
+        return tour;
+      })
+    }
     }
     default:
       return state;

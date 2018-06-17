@@ -8,7 +8,7 @@ import { StepContentTitle, CustomLabel } from './style';
 const StepOne = ({ onSubmit, user, activeStep, handleBack, handleNext, steps, updateUser }) => (
   <Fragment>
     <StepContentTitle>Confirma tus datos de contacto</StepContentTitle>
-    {(user && !user.id) &&
+    {(user && user.id) &&
     <Formik
       initialValues={{
         lastName: user.lastName || '',

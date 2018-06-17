@@ -3,7 +3,7 @@ import { Table, TableBody, Grid, TableHead, TableRow, Paper} from 'material-ui';
 import { StepContentTitle, CustomTableCell, CustomTableRow } from './style';
 import PaypalButton from '../../services/Paypal';
 
-const StepTwo = ({ adults, childs, adultPrice, childPrice, total, handleNext }) => (
+const StepTwo = ({ adults, childs, adultPrice, childPrice, total, handleNext, onAuthorize }) => (
   <Fragment>
     <StepContentTitle>Resumen de la orden</StepContentTitle>
     <Paper>
@@ -44,7 +44,7 @@ const StepTwo = ({ adults, childs, adultPrice, childPrice, total, handleNext }) 
     </Paper>
     <StepContentTitle style={{ marginTop: '4rem' }}>Opciones de pago</StepContentTitle>
     <Grid item xs={4}>
-      <PaypalButton onAuthorize={handleNext} />
+      <PaypalButton onAuthorize={onAuthorize} />
     </Grid>
   </Fragment>
 );
