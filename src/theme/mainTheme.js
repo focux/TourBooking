@@ -27,6 +27,7 @@ export default {
     }
   },
   gap: {
+    referenceVal: 0.5,
     tiny: '0.5rem',
     small: '1.5rem',
     medium: '2rem',

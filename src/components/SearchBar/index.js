@@ -1,36 +1,35 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
-import Grid from 'material-ui/Grid';
-import { Search } from '@material-ui/icons';
+import { Grid, Hidden } from 'material-ui';
 import {
   StyledGrid,
   Container,
   StyledInputGrid,
   StyledBtnGrid,
-  StyledNextIcon,
-  StyledNextBtn
+  StyledSearchIcon,
+  StyledNextBtn,
+  SearchInput,
+  StyledLocIcon
 } from './style';
 
-const SearchBar = () => (
+const SearchBar = ({ inputRef, onClickSearch, onKeyPress,
+   ...others }) => (
   <Container style={{ flexGrow: 1 }}>
     <Grid container justify="center" alignItems="center">
-      <StyledGrid item sm={7}>
+      <StyledGrid item xs={11} md={9}>
         <Grid container justify="center">
-          <StyledInputGrid item sm={10}>
+          <StyledInputGrid item container xs={12} sm={10} alignItems="flex-end">
             <Grid container justify="center" alignItems="flex-end">
-              <Grid item container justify="flex-end" sm={1}>
-                <Search />
+            
+              <Grid item container justify="flex-end" xs={1} sm={1}>
+                <StyledLocIcon />
               </Grid>
-              <Grid item sm={11}>
-                <TextField
-                  fullWidth
-                  id="search"
-                  type="search"
-                  label="I want to explore.."
-                />
+              
+              <Grid item xs={10} sm={11}>
+                <SearchInput ref={inputRef} onKeyPress={onKeyPress} {...others} type="search" placeholder="A donde quieres ir?" />
               </Grid>
             </Grid>
           </StyledInputGrid>
+          <Hidden only="xs">
           <StyledBtnGrid item container alignItems="center" sm={2}>
             <Grid
               item
@@ -39,12 +38,13 @@ const SearchBar = () => (
               alignItems="center"
               sm={12}
             >
-              <StyledNextBtn variant="raised" size="small" color="primary">
-                <StyledNextIcon />
+              <StyledNextBtn onClick={onClickSearch} variant="raised" size="small" color="primary">
+                <StyledSearchIcon />
                 SEARCH
               </StyledNextBtn>
             </Grid>
           </StyledBtnGrid>
+          </Hidden>
         </Grid>
       </StyledGrid>
     </Grid>

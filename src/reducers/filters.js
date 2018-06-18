@@ -1,35 +1,35 @@
 import moment from 'moment';
+import {
+  SORT_BY_AMOUNT,
+  SORT_BY_DATE,
+  SET_FILTER_TEXT,
+  SET_START_DATE,
+  SET_START_PRICE
+} from '../actions';
 
 const defaultState = {
-  startPrice: 0,
-  endPrice: 1000,
+  startPrice: 10000,
   orderBy: 'date',
   text: '',
-  startDate: moment(),
-  endDate: moment().add(3, 'months')
+  startDate: moment().add(1, 'days')
 };
 
 const filters = (state = defaultState, action) => {
   switch (action.type) {
-    case 'SET_START_PRICE':
+    case SET_START_PRICE:
       return {
         ...state,
-        startPrice: action.startPrice
+        startPrice: action.payload.startPrice
       };
-    case 'SET_END_PRICE':
+    case SET_START_DATE:
       return {
         ...state,
-        endPrice: action.endPrice
+        startDate: action.payload.startDate
       };
-    case 'SET_START_DATE':
+    case SET_FILTER_TEXT:
       return {
         ...state,
-        startDate: action.startDate
-      };
-    case 'SET_END_DATE':
-      return {
-        ...state,
-        endDate: action.endDate
+        text: action.payload.text
       };
     default:
       return state;

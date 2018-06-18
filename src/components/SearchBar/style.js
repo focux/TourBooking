@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Grid, Typography, Button } from 'material-ui';
 import { ArrowRightBoldCircleOutline } from 'mdi-material-ui';
+import { LocationOn, Search } from '@material-ui/icons';
 
 export const Container = styled.div`
   display: flex;
@@ -13,6 +14,7 @@ export const StyledGrid = styled(Grid)`
 && {
   background-color: white;
   opacity: .8;
+  box-shadow: 0 5px 6px rgba(0,0,0,.3);
 }
 `;
 
@@ -34,7 +36,7 @@ export const StyledTypography = styled(Typography)`
   }
 `;
 
-export const StyledNextIcon = styled(ArrowRightBoldCircleOutline)`
+export const StyledSearchIcon = styled(Search)`
   && {
     color: ${props => props.theme.white};
     font-size: 2rem;
@@ -47,5 +49,33 @@ export const StyledNextBtn = styled(Button)`
   background-color: ${props => props.theme.primaryColor};
   font-size: 1.4rem;
 }
+`;
+
+export const StyledLocIcon = styled(LocationOn)`
+
+`;
+
+export const SearchInput = styled.input`
+  width: 100%;
+  border: 0;
+  border-bottom: 1.5px solid ${props => props.theme.black};
+  background-color: transparent;
+  height: 100%;
+  font-size: 1.6rem;
+  font-weight: 100;
+  letter-spacing: .2px;
+  transition: border-bottom .2s ease-out;
+  padding: ${props => props.theme.gap.tiny};
+
+  &:focus {
+    outline: 0;
+    border-bottom: 1.5px solid ${props => props.theme.primaryColor};
+  }
+
+  &:placeholder {
+    font-weight: 100;
+  }
+
+  
 `;
 
