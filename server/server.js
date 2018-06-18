@@ -2,6 +2,7 @@ const path = require('path');
 const express = require('express');
 const PORT = process.env.PORT || 3000;
 const app = express();
+const config = require('./config/config');
 const publicPath = path.join(__dirname, '..', 'public');
 const authRoutes = require('./routes/auth');
 const tourRoutes = require('./routes/tour');
@@ -13,7 +14,6 @@ const emailRoutes = require('./routes/email');
 const passportSetup = require('./config/passport-setup');
 const { mongoose } = require('./db/mongoose');
 const cookieSession = require('cookie-session');
-const { session } = require('./config/keys');
 const passport = require('passport');
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
@@ -21,7 +21,7 @@ const cors = require('cors');
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [session.cookieKey]
+  keys: [process.env.SESSION_COOKIE_KEY]
 }));
 app.use(cors());
 

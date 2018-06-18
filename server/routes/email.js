@@ -2,11 +2,8 @@ const router = require('express').Router();
 const { authCheck } = require('../middlewares');
 const moment = require('moment');
 const sgMail = require('@sendgrid/mail');
-const { sendGrid } = require('../config/keys');
 
-// console.log('api key', process.env.SENDGRID_API_KEY);
-console.log('api key', sendGrid.key);
-sgMail.setApiKey(sendGrid.key);
+sgMail.setApiKey(process.env.SENDGRID_KEY);
 
 router.post('/confirmation', authCheck, (req, res) => {
   const {

@@ -5,3 +5,5 @@ public/dist/
 mockup
 server/config/keys.js
 server/sendgrid.env
+server/config/config.js
+server/config/keys.json
