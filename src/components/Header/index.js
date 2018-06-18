@@ -56,7 +56,7 @@ class Header extends Component {
             <ListItemIcon>
               <VpnKey />
             </ListItemIcon>
-            <a href="/auth/logout" style={{textDecoration: 'none', color: '#000'}}>Cerrar sesión</a>
+            <a href="/api/v1/auth/logout" style={{textDecoration: 'none', color: '#000'}}>Cerrar sesión</a>
           </CustomMenuItem>
         </CustomMenu>
       </Fragment>
