@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Title, TextContainer, IconContainer } from './style.js';
 
-const CatCard = ({ image, title, icon }) => (
-  <Container href="#" image={image}>
+const CatCard = ({ image, title, icon, url }) => (
+  <Container href={url} image={image}>
     <TextContainer>
       <IconContainer>{icon}</IconContainer>
       <Title>{title}</Title>

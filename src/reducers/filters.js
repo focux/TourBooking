@@ -8,7 +8,7 @@ import {
 } from '../actions';
 
 const defaultState = {
-  startPrice: 15000,
+  startPrice: 10000,
   orderBy: 'date',
   text: '',
   startDate: moment().add(1, 'days')

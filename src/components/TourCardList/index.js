@@ -12,7 +12,7 @@ const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
     {tours.map(({
       image,
       location,
-      departingTime,
+      departingDate,
       title,
       adultPrice,
       spaces,
@@ -24,7 +24,7 @@ const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
         <TourCard
           image={image}
           location={location}
-          departingTime={departingTime}
+          departingDate={departingDate}
           title={title}
           adultPrice={adultPrice}
           spaces={spaces}

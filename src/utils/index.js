@@ -14,3 +14,5 @@ export const displayDate = (currentDate) => {
 };
 
 export const displayNumDate = (currentDate) => moment(currentDate).format('DD/MM/YYYY');
+
+export const displayMonthDayDate = (currentDate) => moment(currentDate).locale('es').format('MMM DD');
