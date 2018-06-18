@@ -8,6 +8,7 @@ export const StyledButton = styled.button`
   border-radius: 3rem;
   border: 0;
   letter-spacing: 1px;
+  cursor: pointer;
   ${props => {
     switch (props.type) {
       case 'solid':

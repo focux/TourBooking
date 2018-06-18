@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import { Tabs, Grid, CircularProgress, Hidden } from 'material-ui';
 import { openAuthModal } from '../../actions';
 import { formatPrice } from '../../utils';
-import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, DiscountText } from './style';
+import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, CustomSmallTitle } from './style';
 import IncrementInput from '../../components/IncrementInput';
 
 class TourPage extends Component {
   state = {
     currentTour: {},
     tab: 0,
-    tabNames: ['Overview', 'Includes', 'Review', 'Host'],
+    tabNames: ['Destino', 'Incluye', 'Itinerario', 'El Operador'],
     fixedTab: false,
     adults: 1,
     childs: 0,
@@ -121,19 +121,19 @@ class TourPage extends Component {
             <Subtitle><LocationIcon /> {location}</Subtitle>
           </Grid>
           <Grid item xs={12}>
-            <BlockTitle id="about">About the tour</BlockTitle>
+            <CustomSmallTitle id="about">Acerca del destino</CustomSmallTitle>
             <Description>{description}</Description>
           </Grid>
           <Grid item xs={12}>
-            <BlockTitle id="features">Features</BlockTitle>
+            <CustomSmallTitle id="features">Incluye</CustomSmallTitle>
             <Description>{description}</Description>
           </Grid>
           <Grid item xs={12}>
-            <BlockTitle id="review">Review</BlockTitle>
+            <CustomSmallTitle id="review">Itinerario</CustomSmallTitle>
             <Description>{description}</Description>
           </Grid>
           <Grid item xs={12}>
-            <BlockTitle id="host">Host</BlockTitle>
+            <CustomSmallTitle id="host">Acerca del operador</CustomSmallTitle>
             <Description>{description}</Description>
           </Grid>
         </Grid>

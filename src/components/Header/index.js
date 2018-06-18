@@ -127,7 +127,7 @@ class Header extends Component {
         </LeftSide>
         <RightSide>
           {!(this.props.user && this.props.user.id) ?
-            <RoundedButton type="solid" fill="tertiary">
+            <RoundedButton onClick={this.goTo('/contactus')} type="solid" fill="tertiary">
               Agencias
             </RoundedButton>
           :

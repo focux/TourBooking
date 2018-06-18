@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Tab } from 'material-ui';
 import { LocationOn } from '@material-ui/icons';
+import { SmallTitle } from 'Components/Heading';
 
 export const SectionContainer = styled.section`
   width: 100%;
@@ -136,4 +137,8 @@ export const DiscountText = styled.p`
   color: red;
   letter-spacing: .3px;
   font-weight: 400;
+`;
+
+export const CustomSmallTitle = styled(SmallTitle)`
+  text-transform: uppercase;
 `;
