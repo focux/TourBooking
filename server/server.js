@@ -1,8 +1,12 @@
+try {
+  require('./config/config');
+} catch (e) {
+
+}
 const path = require('path');
 const express = require('express');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const config = require('./config/config');
 const publicPath = path.join(__dirname, '..', 'public');
 const authRoutes = require('./routes/auth');
 const tourRoutes = require('./routes/tour');
