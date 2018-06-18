@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { IconButton, Menu, MenuItem, Fade, ListItemIcon, Hidden, Tooltip, Drawer, List, ListItemText, ListItem, Divider } from 'material-ui';
 import { VpnKey } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -35,6 +36,8 @@ class Header extends Component {
   };
 
   handleDrawer = (open) => () => this.setState({ drawerOpen: open })
+
+  goTo = (path) => () => this.props.history.push(path);
 
   profileMenu = () => {
     const { anchorEl } = this.state;
@@ -115,7 +118,7 @@ class Header extends Component {
               </Fragment>
             }
             <Hidden only="xs">
-            <NavItem>Contáctanos</NavItem>
+            <NavItem onClick={this.goTo('/contactus')}>Contáctanos</NavItem>
             </Hidden>
           </Navigation>
           {/* <IconButton onClick={this.handleDrawer(true)} color="inherit" aria-label="Menu">
@@ -147,4 +150,4 @@ const mapDispatchToProps = dispatch => ({
   handleCloseAuth: () => dispatch(closeAuthModal())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Header));

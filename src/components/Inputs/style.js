@@ -113,3 +113,18 @@ export const StyledMenuItem = styled(MenuItem)`
     font-size: 1.4rem;
   }
 `;
+
+export const CustomTextarea = styled.textarea`
+  border: 0;
+  border-bottom: 2px solid #000; 
+  font-weight: 100;
+  font-size: 1.6rem;
+  padding: 1rem ${props => props.theme.gap.tiny};
+  width: 100%;
+  color: rgba(0,0,0,.5);
+
+  &:focus {
+    outline: 0;
+    border-bottom: 2px solid ${props => props.theme.primaryColor}; 
+  }
+`;

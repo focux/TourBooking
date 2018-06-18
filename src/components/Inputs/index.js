@@ -38,3 +38,5 @@ export const BottomLineMaskedInput = ({ inputRef, iconComponent, type, ...others
 };
 
 export { StyledMenuItem } from './style';
+
+export { CustomTextarea } from './style';

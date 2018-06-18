@@ -145,7 +145,7 @@ class TourPage extends Component {
     if (!(this.props.user && this.props.user.id)) {
       this.props.openAuthModal();
     } else {
-      this.props.history.push(`/booking/${this.props.match && this.props.match.params.id}?a=${this.state.adults}${this.state.childs ? `?c=${this.state.childs}` : ''}`);
+      this.props.history.push(`/booking/${this.props.match && this.props.match.params.id}?a=${this.state.adults}${this.state.childs ? `&c=${this.state.childs}` : ''}`);
     }
   }
 

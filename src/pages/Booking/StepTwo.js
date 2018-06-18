@@ -36,7 +36,7 @@ const StepTwo = ({ adults, childs, adultPrice, childPrice, total, handleNext, on
             <CustomTableCell component="th" scope="row">
               Total
             </CustomTableCell>
-            <CustomTableCell numeric></CustomTableCell>
+            <CustomTableCell numeric>{childs}</CustomTableCell>
             <CustomTableCell numeric>{total}</CustomTableCell>
           </TableRow>
         </TableBody>
@@ -44,7 +44,7 @@ const StepTwo = ({ adults, childs, adultPrice, childPrice, total, handleNext, on
     </Paper>
     <StepContentTitle style={{ marginTop: '4rem' }}>Opciones de pago</StepContentTitle>
     <Grid item xs={4}>
-      <PaypalButton onAuthorize={onAuthorize} />
+      <PaypalButton onAuthorize={onAuthorize} amount={total / 49.43} />
     </Grid>
   </Fragment>
 );

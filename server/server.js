@@ -7,6 +7,7 @@ const authRoutes = require('./routes/auth');
 const tourRoutes = require('./routes/tour');
 const bookingRoutes = require('./routes/booking');
 const paymentRoutes = require('./routes/payment');
+const contactRoutes = require('./routes/contact');
 const userRoutes = require('./routes/user');
 const passportSetup = require('./config/passport-setup');
 const { mongoose } = require('./db/mongoose');
@@ -35,6 +36,7 @@ app.use('/api/v1/user', userRoutes);
 app.use('/api/v1/tours', tourRoutes);
 app.use('/api/v1/booking', bookingRoutes);
 app.use('/api/v1/payment', paymentRoutes);
+app.use('/api/v1/contact', contactRoutes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));

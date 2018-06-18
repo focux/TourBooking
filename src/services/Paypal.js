@@ -18,14 +18,13 @@ class PaypalButton extends Component {
     };
 
     onAuthorize = (data, actions) => actions.payment.execute().then((paymentData) => {
-      console.log('AQUI PAYMENT DATA', data);
       this.props.onAuthorize(data);
     });
 
     payment = (data, actions) => actions.payment.create({
       transactions: [{
         amount: {
-          total: '0.30',
+          total: this.props.amount.toFixed(2),
           currency: 'USD'
         }
       }]

@@ -22,3 +22,22 @@ export const Typography = styled.div`
     transform: translateX(50%);
   }
 `;
+
+export const SmallTitle = styled.h1`
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  position: relative;
+  padding-left: ${props => props.theme.gap.small};
+  margin-bottom: ${props => props.theme.gap.medium};
+
+  &::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 3px;
+    background-color: ${props => props.theme.primaryColor};
+    top: 0;
+    left: 0;
+  }
+`;
