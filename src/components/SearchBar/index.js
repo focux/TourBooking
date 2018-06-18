@@ -11,7 +11,8 @@ import {
   StyledLocIcon
 } from './style';
 
-const SearchBar = ({ inputRef, ...others }) => (
+const SearchBar = ({ inputRef, onClickSearch, onKeyPress,
+   ...others }) => (
   <Container style={{ flexGrow: 1 }}>
     <Grid container justify="center" alignItems="center">
       <StyledGrid item sm={8}>
@@ -22,7 +23,7 @@ const SearchBar = ({ inputRef, ...others }) => (
                 <StyledLocIcon />
               </Grid>
               <Grid item sm={11}>
-                <SearchInput ref={inputRef} {...others} type="search" placeholder="Where do you want to go?" />
+                <SearchInput ref={inputRef} onKeyPress={onKeyPress} {...others} type="search" placeholder="Where do you want to go?" />
               </Grid>
             </Grid>
           </StyledInputGrid>
@@ -34,7 +35,7 @@ const SearchBar = ({ inputRef, ...others }) => (
               alignItems="center"
               sm={12}
             >
-              <StyledNextBtn variant="raised" size="small" color="primary">
+              <StyledNextBtn onClick={onClickSearch} variant="raised" size="small" color="primary">
                 <StyledSearchIcon />
                 SEARCH
               </StyledNextBtn>

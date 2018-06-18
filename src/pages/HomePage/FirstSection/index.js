@@ -28,7 +28,7 @@ const FirstSection = (props) => (
           </Typography>
         </Grid>
         <Grid item sm={12}>
-          <SearchBar onChange={props.onChangeSearch} id="home-search-bar" />
+          <SearchBar onKeyPress={props.handleKeyPress} onClickSearch={props.handleSearch} onChange={props.onChangeSearch} id="home-search-bar" />
         </Grid>
         <Grid item sm={12}>
           <AutocompleteBox predictions={props.predictions} />
