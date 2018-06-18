@@ -12,7 +12,7 @@ import {
   setStartPrice
 } from '../../actions';
 import PriceSlider from '../PriceSlider';
-import { formatPrice, displayDate } from '../../utils';
+import { formatPrice, displayNumDate } from '../../utils';
 
 class FiltersPanel extends Component {
   static propTypes = {
@@ -66,7 +66,7 @@ class FiltersPanel extends Component {
       <div style={style || {}} className={className || ''}>
         <CustomPanel
           name="price"
-          title="Max price"
+          title="Precio maximo"
           onChange={this.onChangeExpanded}
           currentExpanded={this.state.expanded}
           rightTitle={formatPrice(this.state.tempPrice, true)}
@@ -75,10 +75,10 @@ class FiltersPanel extends Component {
         </CustomPanel>
         <CustomPanel
           name="departing"
-          title="Departing"
+          title="A partir de"
           onChange={this.onChangeExpanded}
           currentExpanded={this.state.expanded}
-          rightTitle={displayDate(this.state.date)}
+          rightTitle={displayNumDate(this.state.date)}
         >
           <DateInput
             id="filter-input"
@@ -88,7 +88,7 @@ class FiltersPanel extends Component {
             onFocusChange={this.onFocusChange}
           />
         </CustomPanel>
-        <CustomPanel
+        {/* <CustomPanel
           name="spaces"
           title="Spaces"
           onChange={this.onChangeExpanded}
@@ -122,7 +122,7 @@ class FiltersPanel extends Component {
               ))
             }
           </SelectInput>
-        </CustomPanel>
+          </CustomPanel> */}
       </div>
     );
   }

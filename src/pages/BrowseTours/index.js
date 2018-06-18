@@ -27,7 +27,7 @@ class BrowseTours extends Component {
               <Grid container direction="column">
                 {this.props.toursRequest === 'READY' && 
                   <BlackGrid container item alignItems="center" xs={6}>
-                    <Explore style={{ marginRight: 10 }} /><SectionTitle>{this.props.match && this.props.match.params && this.props.match.params.location ? <span>Found <PurpleText>{this.props.tours && this.props.tours.length} tours</PurpleText> to {this.props.match.params.location}</span> : `Browsing ${this.props.tours && <PurpleText>{this.props.tours.length}</PurpleText>} tours`}</SectionTitle>
+                    <Explore style={{ marginRight: 10 }} /><SectionTitle>{this.props.match && this.props.match.params && this.props.match.params.location ? <span><PurpleText>{this.props.tours && this.props.tours.length} tours</PurpleText> encontrados</span> : this.props.tours && <PurpleText>{this.props.tours.length}</PurpleText>} tours encontrados</SectionTitle>
                   </BlackGrid>
                 }
                 <Grid item xs={12}>
