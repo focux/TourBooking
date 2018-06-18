@@ -30,4 +30,11 @@ export const StyledModal = styled(Modal)`
   justify-content: center;
   align-items: center;
 }
+
+&& div[role=document] {
+  @media (max-width: 960px) {
+    width: 100%;
+    height: 100%;
+  }
+}
 `;

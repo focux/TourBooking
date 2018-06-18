@@ -7,7 +7,7 @@ const AutocompleteBox = ({ predictions }) => (
     {
       predictions.map(({ description, structured_formatting }, id) =>
         (
-          <CustomGrid item key={id} xs={8}>
+          <CustomGrid item key={id} xs={11} md={9}>
             <Link href={`/search/${encodeURI(structured_formatting.main_text)}`}>
               {description}
             </Link>

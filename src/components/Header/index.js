@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { IconButton, Menu, MenuItem, Fade, ListItemIcon, Tooltip } from 'material-ui';
+import { IconButton, Menu, MenuItem, Fade, ListItemIcon, Hidden, Tooltip, Drawer, List, ListItemText, ListItem, Divider } from 'material-ui';
 import { VpnKey } from '@material-ui/icons';
+import MenuIcon from '@material-ui/icons/Menu';
 import { RoundedButton } from 'Components/Buttons';
 import {
   Container,
@@ -21,7 +22,8 @@ import { openAuthModal, closeAuthModal } from '../../actions';
 
 class Header extends Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    drawerOpen: false
   };
 
   handleClick = event => {
@@ -31,6 +33,8 @@ class Header extends Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+
+  handleDrawer = (open) => () => this.setState({ drawerOpen: open })
 
   profileMenu = () => {
     const { anchorEl } = this.state;
@@ -63,9 +67,37 @@ class Header extends Component {
     );
   }
 
+  // sideDrawer = () => {
+  //   return (
+  //     <Drawer
+  //     anchor="right"
+  //     open={this.state.drawerOpen}
+  //     onClose={this.handleDrawer(false)}
+  //     onOpen={this.handleDrawer(true)}
+  //   >
+  //   <div
+  //       tabIndex={0}
+  //       role="button"
+  //       onClick={this.handleDrawer(false)}
+  //       onKeyDown={this.handleDrawer(false)}
+  //     >
+  //     <List component="nav">
+  //       <ListItem button>
+  //         <ListItemText primary="Trash" />
+  //       </ListItem>
+  //       <ListItem button component="a" href="#simple-list">
+  //         <ListItemText primary="Spam" />
+  //       </ListItem>
+  //     </List>
+  //     </div>
+  // </Drawer>
+  //   )
+  // }
+
   render() {
     return (
       <Container fixed={this.props.fixed}>
+      {/* this.sideDrawer() */}
         <AuthModal
           handleCloseLoginModal={this.props.handleCloseAuth}
           openAuthModal={this.props.openAuth}
@@ -78,17 +110,22 @@ class Header extends Component {
           <Navigation>
             {!(this.props.user && this.props.user.id) &&
               <Fragment>
-                <NavItem onClick={this.props.handleOpenAuth()}>Log In</NavItem>
-                <NavItem onClick={this.props.handleOpenAuth(1)}>Sign Up</NavItem>
+                <NavItem onClick={this.props.handleOpenAuth()}>Loguéate</NavItem>
+                <NavItem onClick={this.props.handleOpenAuth(1)}>Registrate</NavItem>
               </Fragment>
             }
-            <NavItem>Help</NavItem>
+            <Hidden only="xs">
+            <NavItem>Contáctanos</NavItem>
+            </Hidden>
           </Navigation>
+          {/* <IconButton onClick={this.handleDrawer(true)} color="inherit" aria-label="Menu">
+            <MenuIcon />
+          </IconButton> */}
         </LeftSide>
         <RightSide>
           {!(this.props.user && this.props.user.id) ?
             <RoundedButton type="solid" fill="tertiary">
-              Host a tour
+              Agencias
             </RoundedButton>
           :
             this.profileMenu()

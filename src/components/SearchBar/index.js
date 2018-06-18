@@ -1,5 +1,5 @@
 import React from 'react';
-import Grid from 'material-ui/Grid';
+import { Grid, Hidden } from 'material-ui';
 import {
   StyledGrid,
   Container,
@@ -15,14 +15,16 @@ const SearchBar = ({ inputRef, onClickSearch, onKeyPress,
    ...others }) => (
   <Container style={{ flexGrow: 1 }}>
     <Grid container justify="center" alignItems="center">
-      <StyledGrid item sm={8}>
+      <StyledGrid item xs={11} md={9}>
         <Grid container justify="center">
           <StyledInputGrid item container sm={10} alignItems="flex-end">
             <Grid container justify="center" alignItems="flex-end">
-              <Grid item container justify="flex-end" sm={1}>
+            
+              <Grid item container justify="flex-end" xs={1} sm={1}>
                 <StyledLocIcon />
               </Grid>
-              <Grid item sm={11}>
+              
+              <Grid item xs={10} sm={11}>
                 <SearchInput ref={inputRef} onKeyPress={onKeyPress} {...others} type="search" placeholder="Where do you want to go?" />
               </Grid>
             </Grid>

@@ -63,3 +63,10 @@ export const BottomGrid = styled(Grid)`
   }
 `;
 
+export const HiddenTitle = styled.h1`
+  font-size: 4rem;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: ${props => props.theme.gap.small};
+`;
+

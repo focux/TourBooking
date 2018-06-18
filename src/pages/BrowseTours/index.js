@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Grid } from 'material-ui';
+import { Grid, Hidden } from 'material-ui';
 import { Explore } from '@material-ui/icons';
 import TourCardList from 'Components/TourCardList';
 import Header from 'Components/Header';
@@ -23,10 +23,10 @@ class BrowseTours extends Component {
     <Header fixed />
     <SectionContainer>
       <Grid container>
-            <Grid item xs={9}>
+            <Grid item xs={12} md={9}>
               <Grid container direction="column">
                 {this.props.toursRequest === 'READY' && 
-                  <BlackGrid container item alignItems="center" xs={6}>
+                  <BlackGrid container item alignItems="center" xs={12} sm={12} md={8}>
                     <Explore style={{ marginRight: 10 }} /><SectionTitle>{this.props.match && this.props.match.params && this.props.match.params.location ? <span><PurpleText>{this.props.tours && this.props.tours.length} tours</PurpleText> encontrados</span> : this.props.tours && <Fragment><PurpleText>{this.props.tours.length} tours</PurpleText> encontrados</Fragment>}</SectionTitle>
                   </BlackGrid>
                 }
@@ -38,7 +38,9 @@ class BrowseTours extends Component {
         <Grid item xs={3}>
         <StyledGridContainer container direction="column">
           <Grid item>
-          <FiltersPanel />
+            <Hidden only={['xs', 'sm']}>
+            <FiltersPanel />
+            </Hidden>
           </Grid>
           <Grid item>
           

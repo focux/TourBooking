@@ -21,7 +21,7 @@ const CustomModal = ({
     <Slide in={open}>
       <ModalContent>
         <Grid container justify="center" spacing={16}>
-          <Grid item container justify="flex-end" sm={12}>
+          <Grid item container justify="flex-end" xs={12}>
             <StyledButton onClick={onClose} variant="fab" color="secondary" aria-label="close" mini>
               X
             </StyledButton>

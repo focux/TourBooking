@@ -1,9 +1,9 @@
 import React from 'react';
 import SearchBar from 'Components/SearchBar';
-import { Typography, Grid } from 'material-ui';
+import { Typography, Grid, Hidden } from 'material-ui';
 import AutocompleteBox from 'Components/AutocompleteBox';
 import {
-  Container,
+  HiddenTitle,
   StyledTyped,
   StyledDownArrIcon,
   BottomGrid,
@@ -17,6 +17,7 @@ const FirstSection = (props) => (
     <SectionContainer image={'images/bighero.jpg'}>
       <Grid container justify="center" alignItems="center">
         <Grid item sm={12}>
+          <Hidden only="xs">
           <Typography variant="display4" align="center" style={{ color: '#fff' }} gutterBottom>
             <span style={{ fontWeight: 100 }}>Discover </span>
             <StyledTyped
@@ -26,11 +27,17 @@ const FirstSection = (props) => (
               backSpeed={60}
             />
           </Typography>
+          </Hidden>
+          <Hidden smUp>
+          <HiddenTitle>
+            Descubre tu país.&#x1F1E9;&#x1F1F4;
+          </HiddenTitle>
+          </Hidden>
         </Grid>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <SearchBar onKeyPress={props.handleKeyPress} onClickSearch={props.handleSearch} onChange={props.onChangeSearch} id="home-search-bar" />
         </Grid>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <AutocompleteBox predictions={props.predictions} />
         </Grid>
         <BottomGrid item sm={12}>

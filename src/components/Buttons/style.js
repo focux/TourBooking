@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import { Grid } from 'material-ui';
 /* eslint-disable import/prefer-default-export */
@@ -31,6 +30,10 @@ export const StyledButton = styled.button`
         &:focus {
           outline: 0;
           opacity: 1;
+        }
+
+        @media (max-width: 700px) {
+          display: none;
         }
         `;
       case 'border':
