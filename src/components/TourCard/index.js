@@ -15,8 +15,8 @@ const TourCard = ({ id, image, imageTitle, location, title, adultPrice, spaces, 
         {location} | Sep 12
       </CardSubtitle>
       <CardFooter>
-        <FooterText fontSize="26px"><FooterSmallText>$</FooterSmallText>{formatPrice(adultPrice)}</FooterText>
-        <FooterText fontSize="26px">{spaces}<FooterSmallText>SPACES</FooterSmallText></FooterText>
+        <FooterText fontSize="26px"><FooterSmallText>RD$</FooterSmallText>{formatPrice(adultPrice)}</FooterText>
+        <FooterText fontSize="26px">{spaces}<FooterSmallText>CUPOS</FooterSmallText></FooterText>
       </CardFooter>
     </CardBottom>
   </Card>

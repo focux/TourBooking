@@ -6,8 +6,17 @@ import TourCardList from 'Components/TourCardList';
 import Header from 'Components/Header';
 import FiltersPanel from 'Components/FiltersPanel';
 import { SectionContainer, CustomPaper, SectionTitle, PurpleText, BlackGrid, StyledGridContainer } from './style';
+import { getTours } from '../../utils/selectors';
+import { setFilterText } from '../../actions';
 
 class BrowseTours extends Component {
+
+  componentDidMount() {
+    const { setTextFilter } = this.props;
+    const text = (this.props.match && this.props.match.params && this.props.match.params.location) || '';
+    setTextFilter(text);
+  }
+
   render() {
     return (
   <Fragment>
@@ -44,8 +53,12 @@ class BrowseTours extends Component {
 }
 
 const mapStateToProps = state => ({
-  tours: state.tours.data,
+  tours: getTours(state),
   toursRequest: state.tours.status
 });
 
-export default connect(mapStateToProps)(BrowseTours);
+const mapDispatchToProps = dispatch => ({
+  setTextFilter: (text) => dispatch(setFilterText(text))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(BrowseTours);
