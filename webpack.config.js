@@ -1,14 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+// process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-if (process.env.NODE_ENV == 'test') {
-  require('dotenv').config({ path: '.env.test' });
-} else if (process.env.NODE_ENV == 'development') {
-  require('dotenv').config({ path: '.env.development' });
-}
+// if (process.env.NODE_ENV == 'test') {
+//   require('dotenv').config({ path: '.env.test' });
+// } else if (process.env.NODE_ENV == 'development') {
+//   require('dotenv').config({ path: '.env.development' });
+// }
 
 module.exports = env => {
   const isProduction = env === 'production';
@@ -49,14 +50,17 @@ module.exports = env => {
       ]
     },
     plugins: [
-      CSSExtract
+      CSSExtract,
+      new UglifyJSPlugin({
+        sourceMap: true
+      })
     ],
     resolve: {
       alias: {
         Components: path.resolve(__dirname, 'src/components/')
       }
     },
-    devtool: isProduction ? 'source-map' : 'inline-source-map',
+    devtool: 'source-map', // Change sourcemap to inline-source-map cuando temo developing y commenta el uglify
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,

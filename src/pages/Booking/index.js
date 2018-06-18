@@ -8,6 +8,7 @@ import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
 import { updateUserInfo, reduceTourSpace, saveBookingInfo } from '../../actions';
+import EmailService from '../../services/emailService';
 
 class Booking extends Component {
   constructor(props) {
@@ -125,8 +126,16 @@ class Booking extends Component {
       childs: this.query.c,
       amount: this.getTotalPrice()
     };
+    const emailObject = {
+      title: this.state.currentTour.title,
+      spaces: this.query.c ? this.query.a + this.query.c : this.query.a,
+      operator: this.state.currentTour.operator,
+      departingDate: this.state.currentTour.departingDate,
+      departingFrom: this.state.currentTour.departingFrom
+    };
     this.props.reduceTourSpace(this.props.match.params.id);
     this.props.saveBooking(bookingObject);
+    EmailService.sendOrderConfirmation(emailObject);
     this.handleNext();
   }
 

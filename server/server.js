@@ -9,6 +9,7 @@ const bookingRoutes = require('./routes/booking');
 const paymentRoutes = require('./routes/payment');
 const contactRoutes = require('./routes/contact');
 const userRoutes = require('./routes/user');
+const emailRoutes = require('./routes/email');
 const passportSetup = require('./config/passport-setup');
 const { mongoose } = require('./db/mongoose');
 const cookieSession = require('cookie-session');
@@ -37,6 +38,7 @@ app.use('/api/v1/tours', tourRoutes);
 app.use('/api/v1/booking', bookingRoutes);
 app.use('/api/v1/payment', paymentRoutes);
 app.use('/api/v1/contact', contactRoutes);
+app.use('/api/v1/send', emailRoutes);
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(publicPath, 'index.html'));
