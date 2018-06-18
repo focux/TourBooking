@@ -137,7 +137,7 @@ class Booking extends Component {
         <Header fixed />
         <SectionContainer>
           <Grid container justify="center">
-            <Grid item xs={8}>
+            <Grid item xs={12} md={9}>
               <Stepper activeStep={activeStep}>
                 {steps.map((label) => {
                   const props = {};

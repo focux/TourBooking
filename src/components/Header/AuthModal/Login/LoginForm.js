@@ -34,7 +34,7 @@ const LoginForm = ({
     }) => (
       <form onSubmit={handleSubmit}>
         <Grid container alignItems="center" spacing={24}>
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <BottomLineInput
               iconComponent={<MailOutline />}
               type="email"
@@ -43,10 +43,11 @@ const LoginForm = ({
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
+              disabled
             />
             {touched.email && errors.email && <div>{errors.email}</div>}
           </Grid>
-          <Grid item sm={12}>
+          <Grid item xs={12}>
             <BottomLineInput
               iconComponent={<LockOutline />}
               type="password"
@@ -55,12 +56,13 @@ const LoginForm = ({
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.password}
+              disabled
             />
             {touched.password && errors.password && <div>{errors.password}</div>}
           </Grid>
-          <Grid item sm={12}>
-            <BigButton type="submit" disabled={isSubmitting}>
-              Log in
+          <Grid item xs={12}>
+            <BigButton type="submit" disabled={isSubmitting} disabled>
+              Iniciar sesión
             </BigButton>
           </Grid>
         </Grid>

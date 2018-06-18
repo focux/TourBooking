@@ -10,8 +10,8 @@ const SocialBtn = ({ type, action, link, ...others }) => (
         <Grid item container justify="center" alignItems="center" sm={1}>
           {type === 'fb' ? <Facebook /> : <Google />}
         </Grid>
-        <Grid item container justify="center" alignItems="center" sm={5}>
-          {action === 'login' ? 'Log in with ' : 'Sign up with '}{type === 'fb' ? 'Facebook' : 'Google'}
+        <Grid item container justify="center" alignItems="center" sm={8}>
+          {action === 'login' ? 'Inicia sesión con ' : 'Registrate con '}{type === 'fb' ? 'Facebook' : 'Google'}
         </Grid>
       </StyledGrid>
     </Button>

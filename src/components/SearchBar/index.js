@@ -17,7 +17,7 @@ const SearchBar = ({ inputRef, onClickSearch, onKeyPress,
     <Grid container justify="center" alignItems="center">
       <StyledGrid item xs={11} md={9}>
         <Grid container justify="center">
-          <StyledInputGrid item container sm={10} alignItems="flex-end">
+          <StyledInputGrid item container xs={12} sm={10} alignItems="flex-end">
             <Grid container justify="center" alignItems="flex-end">
             
               <Grid item container justify="flex-end" xs={1} sm={1}>
@@ -25,10 +25,11 @@ const SearchBar = ({ inputRef, onClickSearch, onKeyPress,
               </Grid>
               
               <Grid item xs={10} sm={11}>
-                <SearchInput ref={inputRef} onKeyPress={onKeyPress} {...others} type="search" placeholder="Where do you want to go?" />
+                <SearchInput ref={inputRef} onKeyPress={onKeyPress} {...others} type="search" placeholder="A donde quieres ir?" />
               </Grid>
             </Grid>
           </StyledInputGrid>
+          <Hidden only="xs">
           <StyledBtnGrid item container alignItems="center" sm={2}>
             <Grid
               item
@@ -43,6 +44,7 @@ const SearchBar = ({ inputRef, onClickSearch, onKeyPress,
               </StyledNextBtn>
             </Grid>
           </StyledBtnGrid>
+          </Hidden>
         </Grid>
       </StyledGrid>
     </Grid>

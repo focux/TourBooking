@@ -30,7 +30,7 @@ const FirstSection = (props) => (
           </Hidden>
           <Hidden smUp>
           <HiddenTitle>
-            Descubre tu país.&#x1F1E9;&#x1F1F4;
+            Descubre tu país&#x1F1E9;&#x1F1F4;
           </HiddenTitle>
           </Hidden>
         </Grid>

@@ -41,10 +41,10 @@ const SignUpForm = ({
         isSubmitting
     }) => (
       <Fragment>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <form onSubmit={handleSubmit}>
             <Grid container alignItems="center" spacing={24}>
-              <Grid item sm={12}>
+              <Grid item xs={12}>
                 <BottomLineInput
                   iconComponent={<Face />}
                   type="text"
@@ -56,7 +56,7 @@ const SignUpForm = ({
                 />
                 {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12}>
                 <BottomLineInput
                   iconComponent={<Face />}
                   type="text"
@@ -68,7 +68,7 @@ const SignUpForm = ({
                 />
                 {touched.lastName && errors.lastName && <div>{errors.lastName}</div>}
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12}>
                 <BottomLineInput
                   iconComponent={<MailOutline />}
                   type="email"
@@ -80,7 +80,7 @@ const SignUpForm = ({
                 />
                 {touched.email && errors.email && <div>{errors.email}</div>}
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12}>
                 <BottomLineInput
                   iconComponent={<LockOutline />}
                   type="password"
@@ -92,11 +92,11 @@ const SignUpForm = ({
                 />
                 {touched.password && errors.password && <div>{errors.password}</div>}
               </Grid>
-              <Grid container item sm={12} spacing={16}>
-                <Grid item sm={12}>
+              <Grid container item xs={12} spacing={16}>
+                <Grid item xs={12}>
                   <ModalText>Birthday</ModalText>
                 </Grid>
-                <Grid item sm={6}>
+                <Grid item xs={6}>
                   <InputLabel htmlFor="month">Month</InputLabel>
                   <SelectInput
                     value={values.month}
@@ -121,7 +121,7 @@ const SignUpForm = ({
                     <StyledMenuItem value={12}>Diciembre</StyledMenuItem>
                   </SelectInput>
                 </Grid>
-                <Grid item sm={2}>
+                <Grid item xs={2}>
                   <InputLabel htmlFor="day">Day</InputLabel>
                   <SelectInput
                     value={values.day}
@@ -165,7 +165,7 @@ const SignUpForm = ({
                     <StyledMenuItem value={31}>31</StyledMenuItem>
                   </SelectInput>
                 </Grid>
-                <Grid item sm={4}>
+                <Grid item xs={4}>
                   <InputLabel htmlFor="year">Year</InputLabel>
                   <SelectInput
                     value={values.year}
@@ -182,7 +182,7 @@ const SignUpForm = ({
                   </SelectInput>
                 </Grid>
               </Grid>
-              <Grid item sm={12}>
+              <Grid item xs={12}>
                 <BigButton type="submit" disabled={isSubmitting}>
                   Sign up
                 </BigButton>
@@ -190,10 +190,10 @@ const SignUpForm = ({
             </Grid>
           </form>
         </Grid>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <Divisor />
         </Grid>
-        <Grid container item justify="center" sm={12}>
+        <Grid container item justify="center" xs={12}>
           <ModalText>Already have an {Constants.appName} account?</ModalText>
           <ModalLink size={1.6} onClick={onChangePage}>Log in</ModalLink>
         </Grid>
