@@ -37,7 +37,7 @@ class TourPage extends Component {
     const currentScroll = window.scrollY + 76; // Scroll + Navbar
     const about = $('#about');
     const features = $('#features');
-    const review = $('#review');
+    const schedule = $('#schedule');
     const host = $('#host');
 
     if (currentScroll >= tabPosition) {
@@ -48,7 +48,7 @@ class TourPage extends Component {
 
     if (currentScroll >= host.position().top) {
       this.handleTabChange(null, 3);
-    } else if (currentScroll >= (review.position().top - 48)) {
+    } else if (currentScroll >= (schedule.position().top - 48)) {
       this.handleTabChange(null, 2);
     } else if (currentScroll >= (features.position().top - 48)) {
       this.handleTabChange(null, 1);
@@ -78,7 +78,7 @@ class TourPage extends Component {
         currentId = `#features`;
         break;
       case 2:
-        currentId = `#review`;
+        currentId = `#schedule`;
         break;
       case 3:
         currentId = `#host`;
@@ -122,19 +122,19 @@ class TourPage extends Component {
           </Grid>
           <Grid item xs={12}>
             <CustomSmallTitle id="about">Acerca del destino</CustomSmallTitle>
-            <Description>{description}</Description>
+            <Description>{description && description.aboutPlace}</Description>
           </Grid>
           <Grid item xs={12}>
             <CustomSmallTitle id="features">Incluye</CustomSmallTitle>
-            <Description>{description}</Description>
+            <Description><ul style={{ textTransform: 'capitalize' }}>{description.includes.map((v, k) => <li key={k}>{v}</li>)}</ul></Description>
           </Grid>
           <Grid item xs={12}>
-            <CustomSmallTitle id="review">Itinerario</CustomSmallTitle>
-            <Description>{description}</Description>
+            <CustomSmallTitle id="schedule">Itinerario</CustomSmallTitle>
+            <Description>{description.schedule}</Description>
           </Grid>
           <Grid item xs={12}>
             <CustomSmallTitle id="host">Acerca del operador</CustomSmallTitle>
-            <Description>{description}</Description>
+            <Description>{description.aboutOperator}</Description>
           </Grid>
         </Grid>
       </Grid>

@@ -45,8 +45,22 @@ const tourSchema = new mongoose.Schema(
       required: true
     },
     description: {
-      type: String,
-      required: true
+      aboutPlace: {
+        type: String,
+        required: true
+      },
+      includes: [{
+        type: String,
+        required: true
+      }],
+      schedule: {
+        type: String,
+        required: true
+      },
+      aboutOperator: {
+        type: String,
+        required: true
+      }
     },
     operator: {
       type: String,

@@ -64,7 +64,7 @@ export const BlockTitle = styled.h3`
   }
 `;
 
-export const Description = styled.p`
+export const Description = styled.div`
   font-size: 1.6rem;
   font-weight: 300;
   letter-spacing: 1px;
