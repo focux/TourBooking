@@ -19,10 +19,10 @@ const SecondSection = ({ tours, toursRequest }) => (
       </Grid>
       <Grid container alignItems="center" justify="center" direction="row" spacing={24} style={{padding: '0 2rem 2rem 2rem'}}>
         <Grid item xs={6}>
-          <CatCard icon={<Explore />} url="/search" title="Ecotourism" image="http://www.godominicanrepublic.com/wp-content/uploads/2017/12/salto_el_limon_002-xl-1800x1200.jpg" />
+          <CatCard icon={<Explore />} url="/search" title="Ecotourism" image="https://s22.postimg.cc/6rb7ivs75/salto_el_limon_002-xl-1800x1200.jpg" />
         </Grid>
         <Grid item xs={6}>
-          <CatCard icon={<Rowing />} url="/search" title="Experiences" image="http://excursionesenpuntacana.com/wp-content/uploads/2015/07/Buggies-Punta-Cana-3.jpg" />
+          <CatCard icon={<Rowing />} url="/search" title="Experiences" image="https://s22.postimg.cc/4y3pgz9yp/Buggies-_Punta-_Cana-3.jpg" />
         </Grid>
       </Grid>
       <Grid container>
