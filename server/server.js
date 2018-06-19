@@ -28,7 +28,7 @@ app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [process.env.SESSION_COOKIE_KEY]
 }));
-app.use(enforce.HTTPS({ trustXForwardedHostHeader: true }))
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors());
 
 app.use(bodyParser.json());
