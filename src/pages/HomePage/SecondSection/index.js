@@ -25,8 +25,10 @@ const SecondSection = ({ tours, toursRequest }) => (
           <CatCard icon={<Rowing />} url="/search" title="Experiences" image="http://excursionesenpuntacana.com/wp-content/uploads/2015/07/Buggies-Punta-Cana-3.jpg" />
         </Grid>
       </Grid>
-      <Grid item xs={12}>
+      <Grid container>
+      <Grid item xs={12} style={{padding: '0 2rem 2rem 2rem'}}>
         <TourCardList tours={tours} toursRequest={toursRequest} />
+      </Grid>
       </Grid>
     </Grid>
   </SectionContainer>
