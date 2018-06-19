@@ -23,8 +23,10 @@ const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const enforce = require('express-sslify');
+const helmet = require('helmet');
 
 app.set('trust proxy', 1);
+app.use(helmet());
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
