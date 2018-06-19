@@ -53,10 +53,6 @@ const tourSchema = new mongoose.Schema(
         type: String,
         required: true
       }],
-      schedule: {
-        type: String,
-        required: true
-      },
       aboutOperator: {
         type: String,
         required: true
