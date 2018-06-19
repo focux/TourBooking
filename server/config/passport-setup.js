@@ -16,7 +16,7 @@ passport.deserializeUser(async (id, done) => {
 
 // Google Strategy
 passport.use(new GoogleStrategy({
-  callbackURL: '/api/v1/auth/google/redirect',
+  callbackURL: `${process.env.ROOT_DOMAIN}/api/v1/auth/google/redirect`,
   clientID: process.env.GOOGLE_CLIENT_ID,
   clientSecret: process.env.GOOGLE_CLIENT_SECRET
 }, async (accessToken, refreshToken, profile, done) => {
@@ -55,7 +55,7 @@ passport.use(new GoogleStrategy({
 // Facebook Strategy
 
 passport.use(new FacebookStrategy({
-  callbackURL: '/api/v1/auth/facebook/redirect',
+  callbackURL: `${process.env.ROOT_DOMAIN}/api/v1/auth/facebook/redirect`,
   clientID: process.env.FACEBOOK_CLIENT_ID,
   clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
   profileFields: ['id', 'displayName', 'email', 'birthday', 'friends', 'first_name', 'last_name', 'middle_name', 'gender', 'link', 'picture', 'location']
