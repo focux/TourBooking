@@ -25,7 +25,7 @@ router.get('/google/redirect', passport.authenticate('google', {
 
 // Facebook Auth
 router.get('/facebook', checkReturnTo, passport.authenticate('facebook', {
-  scope: ['user_birthday', 'email', 'public_profile']
+  scope: ['email', 'public_profile']
 }));
 
 router.get('/facebook/redirect', passport.authenticate('facebook', {
