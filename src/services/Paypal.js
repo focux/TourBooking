@@ -9,7 +9,7 @@ const PayPalButton = paypal.Button.driver('react', {
 
 class PaypalButton extends Component {
     state = {
-      env: 'sandbox',
+      env: window.location.hostname === 'localhost' ? 'sandbox' : 'production',
       client: {
         sandbox: 'Ad3ggzxy08U6L0T_cwS-dclhyT5oaraN2DW9OIZh2BbfE9_Og4e6waRPElr2V-IOmfY2uvo1FP0kG8hQ',
         production: 'Ae21hqP9531E01besU94Ae00iqTtD8SbITrMGPyNmAmsQ-wL7mXwy_4-T63kxGAgIpgu7-0g-MiVlkls'
