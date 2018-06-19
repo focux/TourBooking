@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Header from 'Components/Header';
 import { connect } from 'react-redux';
 import { Tabs, Grid, CircularProgress, Hidden } from 'material-ui';
+import moment from 'moment';
 import { openAuthModal } from '../../actions';
 import { formatPrice } from '../../utils';
 import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, CustomSmallTitle } from './style';
@@ -11,7 +12,7 @@ class TourPage extends Component {
   state = {
     currentTour: {},
     tab: 0,
-    tabNames: ['Destino', 'Incluye', 'Itinerario', 'El Operador'],
+    tabNames: ['Destino', 'Incluye', 'Información', 'El Operador'],
     fixedTab: false,
     adults: 1,
     childs: 0,
@@ -37,7 +38,7 @@ class TourPage extends Component {
     const currentScroll = window.scrollY + 76; // Scroll + Navbar
     const about = $('#about');
     const features = $('#features');
-    const schedule = $('#schedule');
+    const moreInfo = $('#moreInfo');
     const host = $('#host');
 
     if (currentScroll >= tabPosition) {
@@ -48,7 +49,7 @@ class TourPage extends Component {
 
     if (currentScroll >= host.position().top) {
       this.handleTabChange(null, 3);
-    } else if (currentScroll >= (schedule.position().top - 48)) {
+    } else if (currentScroll >= (moreInfo.position().top - 48)) {
       this.handleTabChange(null, 2);
     } else if (currentScroll >= (features.position().top - 48)) {
       this.handleTabChange(null, 1);
@@ -78,7 +79,7 @@ class TourPage extends Component {
         currentId = `#features`;
         break;
       case 2:
-        currentId = `#schedule`;
+        currentId = `#moreInfo`;
         break;
       case 3:
         currentId = `#host`;
@@ -112,7 +113,7 @@ class TourPage extends Component {
   }));
 
   infoColumn = () => {
-    const { title, location, description } = this.state.currentTour;
+    const { title, location, description, departingDate, departingFrom } = this.state.currentTour;
     return (
       <Grid item xs={10} md={6}>
         <Grid container spacing={24} direction="column">
@@ -129,8 +130,16 @@ class TourPage extends Component {
             <Description><ul style={{ textTransform: 'capitalize' }}>{description.includes.map((v, k) => <li key={k}>{v}</li>)}</ul></Description>
           </Grid>
           <Grid item xs={12}>
-            <CustomSmallTitle id="schedule">Itinerario</CustomSmallTitle>
-            <Description>{description.schedule}</Description>
+            <CustomSmallTitle id="moreInfo">Información adicional</CustomSmallTitle>
+            <Description>
+              <Grid item xs={12}>
+                Fecha de salida: {moment(departingDate).format('DD/MM/YYYY h:mm:ss a')}
+              </Grid>
+              <Grid item xs={12}>
+                Lugar de encuentro: {departingFrom}
+              </Grid>
+              {description.moreInfo}
+            </Description>
           </Grid>
           <Grid item xs={12}>
             <CustomSmallTitle id="host">Acerca del operador</CustomSmallTitle>
