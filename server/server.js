@@ -26,7 +26,8 @@ const enforce = require('express-sslify');
 
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [process.env.SESSION_COOKIE_KEY]
+  keys: [process.env.SESSION_COOKIE_KEY],
+  secure: true
 }));
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(cors());
