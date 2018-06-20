@@ -19,9 +19,8 @@ router.post('/confirmation', authCheck, (req, res) => {
     departingDate,
     departingFrom
   } = req.body;
-  const signature = 'Que tengas un buen viaje, <br/> Driscovery Team';
   const body = `
-  <p>¡En hora buena <strong>${firstName}</strong>! <br /> Tu reserva se ha realizado con éxito. A continuación te proporcionamos,
+  Tu reserva se ha realizado con éxito. A continuación te proporcionamos,
   la información que necesitas saber acerca de tu excursión. De todas maneras, pronto estaremos en contacto contigo para responder
   las preguntas que tengas con respecto al viaje.</p>
   <br/>
@@ -32,15 +31,18 @@ router.post('/confirmation', authCheck, (req, res) => {
     <li>Fecha de partida: ${moment(departingDate).format('DD/MM/YYYY h:mm:ss a')}</li>
     <li>Lugar de encuentro: ${departingFrom}</li>
   </ul>
-  <p>
-    ${signature}
-  </p>
   `;
   const msg = {
     to: email,
     from,
+    template_id: '1c755d56-0042-495b-a898-f4ddbd85a12c',
     subject: 'Confirmación de reserva',
-    html: body
+    html: body,
+    spam_check: { enable: true },
+    substitutions: {
+      firstName
+    },
+    open_tracking: { enable: true }
   };
   sgMail.send(msg);
   res.status(200).send();
