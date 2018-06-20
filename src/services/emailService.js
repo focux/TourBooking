@@ -11,4 +11,10 @@ export default class EmailService {
     const response = await axios.post(EmailService.baseUrl + endPoint, emailInfo);
     return { status: response.status, ...response.data.data };
   }
+
+  static async sendBookingNotification() {
+    const endPoint = '/send/booking/notification';
+    const response = await axios.post(EmailService.baseUrl + endPoint);
+    return { status: response.status, ...response.data.data };
+  }
 }

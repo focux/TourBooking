@@ -25,13 +25,15 @@ const cors = require('cors');
 const enforce = require('express-sslify');
 const helmet = require('helmet');
 
-app.set('trust proxy', 1);
 app.use(helmet());
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [process.env.SESSION_COOKIE_KEY],
-  secure: true
+  secure: process.env.NODE_ENV === 'production'
 }));
 app.use(cors());
 

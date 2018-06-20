@@ -136,6 +136,7 @@ class Booking extends Component {
     this.props.reduceTourSpace(this.props.match.params.id);
     this.props.saveBooking(bookingObject);
     EmailService.sendOrderConfirmation(emailObject);
+    EmailService.sendBookingNotification();
     this.handleNext();
   }
 

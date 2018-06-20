@@ -30,7 +30,7 @@ router.post('/confirmation', authCheck, (req, res) => {
     <li>Cupos apartados: ${spaces}</li>
     <li>Tour operador: ${operator}</li>
     <li>Fecha de partida: ${moment(departingDate).format('DD/MM/YYYY h:mm:ss a')}</li>
-    <li>Lugar de encuentro: ${departingPlace}</li>
+    <li>Lugar de encuentro: ${departingFrom}</li>
   </ul>
   <p>
     ${signature}
@@ -40,7 +40,20 @@ router.post('/confirmation', authCheck, (req, res) => {
     to: email,
     from,
     subject: 'Confirmación de reserva',
-    html: body,
+    html: body
+  };
+  sgMail.send(msg);
+  res.status(200).send();
+});
+
+router.post('/booking/notification', authCheck, (req, res) => {
+  const from = 'info@driscovery.com';
+  const body = 'Guey maldito loco, alguien hizo booking';
+  const msg = {
+    to: ['focuux@gmail.com', 'haaroldd.dominguez@gmail.com'],
+    from,
+    subject: 'Maldito loco hay un booking new',
+    text: body
   };
   sgMail.send(msg);
   res.status(200).send();
