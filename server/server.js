@@ -24,7 +24,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const enforce = require('express-sslify');
 const helmet = require('helmet');
+const compression = require('compression');
 
+app.use(compression({ level: -1 }));
 app.use(helmet());
 if (process.env.NODE_ENV === 'production') {
   console.log('EN PRODUCTION');

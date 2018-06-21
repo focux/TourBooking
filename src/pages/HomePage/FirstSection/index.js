@@ -14,7 +14,7 @@ const typedText = ['new friends &#x1F46B;', 'Dominican Republic &#x1F1E9;&#x1F1F
 
 
 const FirstSection = (props) => (
-    <SectionContainer image={'images/bighero.jpg'}>
+    <SectionContainer image={'/images/bighero.jpg'}>
       <Grid container justify="center" alignItems="center">
         <Grid item sm={12}>
           <Hidden only="xs">
@@ -42,7 +42,7 @@ const FirstSection = (props) => (
         </Grid>
         <BottomGrid item sm={12}>
           <Typography variant="title" align="center" color="inherit">
-            Browse tours
+            Explorar tours
           </Typography>
           <StyledDownArrIcon />
         </BottomGrid>
