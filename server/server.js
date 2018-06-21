@@ -44,7 +44,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-app.use("/", expressStaticGzip("/public/"));
+app.use("/", expressStaticGzip("/public/dist/"));
 
 app.use(express.static(publicPath));
 
