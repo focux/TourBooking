@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { rgba } from 'polished';
-import Typed from 'react-typed';
 import DownArrIcon from '@material-ui/icons/KeyboardArrowDown';
 import { Grid } from 'material-ui';
 
@@ -24,10 +23,6 @@ export const SearchBarContainer = styled.div`
   left: 50%;
   z-index: 9999;
   transform: translate(-50%, -50%);
-`;
-
-export const StyledTyped = styled(Typed)`
-  color: ${props => props.theme.white};
 `;
 
 export const StyledDownArrIcon = styled(DownArrIcon)`

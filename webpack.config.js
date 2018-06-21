@@ -1,7 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 // process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
@@ -53,6 +54,18 @@ module.exports = env => {
       CSSExtract,
       new UglifyJSPlugin({
         sourceMap: true
+      }),
+      new webpack.DefinePlugin({ // <-- key to reducing React's size
+        'process.env': {
+          'NODE_ENV': JSON.stringify(env)
+        }
+      }),
+      new CompressionPlugin({
+        asset: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
       })
     ],
     resolve: {
@@ -60,7 +73,7 @@ module.exports = env => {
         Components: path.resolve(__dirname, 'src/components/')
       }
     },
-    devtool: isProduction ? 'source-map' : 'inline-source-map', // Change sourcemap to inline-source-map cuando temo developing y commenta el uglify
+    devtool: isProduction ? 'source-map' : 'inline-source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
