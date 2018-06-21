@@ -60,7 +60,7 @@ module.exports = env => {
         Components: path.resolve(__dirname, 'src/components/')
       }
     },
-    devtool: 'source-map', // Change sourcemap to inline-source-map cuando temo developing y commenta el uglify
+    devtool: isProduction ? 'source-map' : 'inline-source-map', // Change sourcemap to inline-source-map cuando temo developing y commenta el uglify
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,

@@ -27,6 +27,7 @@ const helmet = require('helmet');
 
 app.use(helmet());
 if (process.env.NODE_ENV === 'production') {
+  console.log('EN PRODUCTION');
   app.set('trust proxy', 1);
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
 }
