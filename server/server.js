@@ -24,7 +24,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const enforce = require('express-sslify');
 const helmet = require('helmet');
-const expressStaticGzip = require("express-static-gzip");
 
 app.use(helmet());
 if (process.env.NODE_ENV === 'production') {
@@ -44,7 +43,19 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 
-// app.use('/', expressStaticGzip('/public/'));
+app.get('*.js', (req, res, next) => {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  res.set('Content-Type', 'text/javascript');
+  next();
+});
+
+app.get('*.css', (req, res, next) => {
+  req.url += '.gz';
+  res.set('Content-Encoding', 'gzip');
+  res.set('Content-Type', 'text/css');
+  next();
+});
 
 app.use(express.static(publicPath));
 
