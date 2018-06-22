@@ -1,5 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import Header from 'Components/Header';
+import $ from 'jquery';
 import FirstSection from './FirstSection/';
 import SecondSection from './SecondSection/';
 
