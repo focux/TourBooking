@@ -3,6 +3,7 @@ import Header from 'Components/Header';
 import { connect } from 'react-redux';
 import { Tabs, Grid, CircularProgress, Hidden } from 'material-ui';
 import moment from 'moment';
+import $ from 'jquery';
 import { openAuthModal } from '../../actions';
 import { formatPrice } from '../../utils';
 import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, CustomSmallTitle } from './style';
