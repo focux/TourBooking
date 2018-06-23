@@ -213,7 +213,7 @@ class TourPage extends Component {
                       </Grid>
                       <Grid item xs={12}>
                         <IncrementInput
-                          value={this.state.adults}
+                          value={spaces > 0 ? this.state.adults : 0}
                           onIncrease={this.handleIncreaseAdults}
                           onDecrease={this.handleDecreaseAdults}
                           maxValue={spaces - this.state.childs}
@@ -240,7 +240,17 @@ class TourPage extends Component {
                 </Grid>
               </BookingContent>
             </Grid>
-            <Grid item xs={12}><BookingButton onClick={this.handleBooking}>Reserva con {formatPrice(bookingPrice * (this.state.adults + this.state.childs), true)}</BookingButton></Grid>
+            <Grid item xs={12}>
+              {spaces > 0 ?
+                <BookingButton onClick={this.handleBooking}>
+                  Reserva con {formatPrice(bookingPrice * (this.state.adults + this.state.childs), true)}
+                </BookingButton>
+              :
+                <BookingButton>
+                  AGOTADO
+                </BookingButton>
+              }
+            </Grid>
           </Grid>
         </div>
       </Grid>

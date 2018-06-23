@@ -14,7 +14,7 @@ import MyBookings from '../pages/MyBookings';
 export const history = createBrowserHistory();
 const isAuthenticated = !!localStorage.getItem('user');
 console.log('TA AUTH', localStorage.getItem('user'));
-const AppRouter = () => (
+const AppRouter = ({ isAuth }) => (
   <Router history={history}>
     <div>
       <Switch>
@@ -22,8 +22,8 @@ const AppRouter = () => (
         <Route path="/contactus" component={ContactPage} exact />
         <Route path="/search/:location?" component={BrowseTours} exact />
         <Route path="/tours/:id" component={TourPage} exact />
-        <AuthProtectedRoute path="/booking/:id" isAuthenticated={isAuthenticated} component={Booking} exact />
-        <AuthProtectedRoute path="/profile/bookings" isAuthenticated={isAuthenticated} component={MyBookings} exact />
+        <AuthProtectedRoute path="/booking/:id" isAuthenticated={isAuthenticated || isAuth} component={Booking} exact />
+        <AuthProtectedRoute path="/profile/bookings" isAuthenticated={isAuthenticated || isAuth} component={MyBookings} exact />
         <Redirect to="/" />
       </Switch>
     </div>
@@ -31,7 +31,7 @@ const AppRouter = () => (
 );
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: !!state.user.id
+  isAuth: !!state.user.id
 });
 
 export default connect(mapStateToProps)(AppRouter);
