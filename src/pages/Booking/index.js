@@ -63,6 +63,8 @@ class Booking extends Component {
     );
   }
 
+  getBookingPrice = () => (this.state.currentTour.bookingPrice * (parseInt(this.query.a) + (parseInt(this.query.c) || 0)));
+
   getCurrentContent = (step) => {
     const { activeStep, steps, currentTour } = this.state;
     switch (step) {
@@ -84,7 +86,7 @@ class Booking extends Component {
             childPrice={currentTour.childPrice}
             adultPrice={currentTour.adultPrice}
             total={this.getTotalPrice()}
-            bookingTotal={(this.getTotalPrice() * currentTour.bookingDiscount)}
+            bookingTotal={this.getBookingPrice()}
             handleNext={this.handleNext}
             onAuthorize={this.onAuthorizePayment}
             handleCompletePayment={this.handleCompletePayment}
@@ -131,7 +133,7 @@ class Booking extends Component {
       tourId: this.state.currentTour.id,
       adults: this.query.a,
       childs: this.query.c,
-      amount: this.state.completePayment ? this.getTotalPrice() : (this.state.currentTour.bookingDiscount * this.getTotalPrice())
+      amount: this.state.completePayment ? this.getTotalPrice() : this.getBookingPrice()
     };
     const emailObject = {
       title: this.state.currentTour.title,

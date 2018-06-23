@@ -17,7 +17,7 @@ const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
       adultPrice,
       spaces,
       level,
-      bookingDiscount,
+      bookingPrice,
       id
     }, key) => (
       <Grid item xs={sideMode ? 12 : 12} sm={sideMode ? 6 : 6} md={sideMode ? 4 : 4} lg={sideMode ? 4 : 3} key={key}>
@@ -30,7 +30,7 @@ const TourCardList = ({ tours, sideMode, toursRequest, history }) => (
           adultPrice={adultPrice}
           spaces={spaces}
           level={level}
-          bookingDiscount={bookingDiscount}
+          bookingPrice={bookingPrice}
         />
         </CustomLink>
       </Grid>

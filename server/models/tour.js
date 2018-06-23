@@ -31,7 +31,7 @@ const tourSchema = new mongoose.Schema(
       required: true
     },
     childPrice: Number,
-    bookingDiscount: Number,
+    bookingPrice: Number,
     spaces: {
       type: Number,
       required: true

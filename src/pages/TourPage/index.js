@@ -159,16 +159,8 @@ class TourPage extends Component {
     }
   }
 
-  getBookingPrice = () => {
-    const { adultPrice, childPrice, bookingDiscount } = this.state.currentTour;
-    const adultTotal = adultPrice * this.state.adults;
-    const childTotal = childPrice * this.state.childs;
-
-    return (adultTotal + childTotal) * bookingDiscount;
-  }
-
   bookingColumn = (notFixed) => {
-    const { adultPrice, childPrice, bookingDiscount, spaces, totalSpaces } = this.state.currentTour;
+    const { adultPrice, childPrice, bookingPrice, spaces, totalSpaces } = this.state.currentTour;
     const columnWidth = $('#right-column').width();
     const tabStyle = this.state.fixedTab && !notFixed ? {
       position: 'fixed',
@@ -248,7 +240,7 @@ class TourPage extends Component {
                 </Grid>
               </BookingContent>
             </Grid>
-            <Grid item xs={12}><BookingButton onClick={this.handleBooking}>Reserva con {formatPrice(this.getBookingPrice(), true)}</BookingButton></Grid>
+            <Grid item xs={12}><BookingButton onClick={this.handleBooking}>Reserva con {formatPrice(bookingPrice * (this.state.adults + this.state.childs), true)}</BookingButton></Grid>
           </Grid>
         </div>
       </Grid>

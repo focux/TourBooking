@@ -2,7 +2,7 @@ import React from 'react';
 import { formatPrice, displayMonthDayDate } from '../../utils';
 import { Card, CardHeader, HeaderCloud, CardBottom, CardTitle, CardSubtitle, CardFooter, FooterText, FooterSmallText, CardBookingPrice } from './style';
 
-const TourCard = ({ id, image, imageTitle, location, title, adultPrice, spaces, difficult, departingDate, onClick, bookingDiscount }) => (
+const TourCard = ({ id, image, imageTitle, location, title, adultPrice, spaces, difficult, departingDate, onClick, bookingPrice }) => (
   <Card style={{ cursor: 'pointer' }} onClick={onClick}>
     <CardHeader image={image}>
       <HeaderCloud />
@@ -18,7 +18,7 @@ const TourCard = ({ id, image, imageTitle, location, title, adultPrice, spaces, 
         <FooterText fontSize="26px"><FooterSmallText>RD$</FooterSmallText>{formatPrice(adultPrice)}</FooterText>
         <FooterText fontSize="26px">{spaces}<FooterSmallText>CUPOS</FooterSmallText></FooterText>
       </CardFooter>
-      <CardBookingPrice>Reserva con {formatPrice(adultPrice * bookingDiscount, true)}</CardBookingPrice>
+      <CardBookingPrice>Reserva con {formatPrice(bookingPrice, true)}</CardBookingPrice>
     </CardBottom>
   </Card>
 );
