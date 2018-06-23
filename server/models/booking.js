@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const bookingSchema = new mongoose.Schema(
   {
-    tourId: {
+    tour: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Tour',
       required: true
@@ -12,11 +12,16 @@ const bookingSchema = new mongoose.Schema(
       required: true
     },
     childs: Number,
-    userId: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
       required: true
-    }
+    },
+    payment: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Payment',
+      required: true
+    }]
   },
   {
     timestamps: true

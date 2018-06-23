@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { IconButton, Menu, MenuItem, Fade, ListItemIcon, Hidden, Tooltip, Drawer, List, ListItemText, ListItem, Divider } from 'material-ui';
-import { VpnKey } from '@material-ui/icons';
+import { VpnKey, Landscape } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import { RoundedButton } from 'Components/Buttons';
 import {
@@ -59,6 +59,12 @@ class Header extends Component {
           open={Boolean(anchorEl)}
           onClose={this.handleClose}
         >
+          <CustomMenuItem onClick={this.handleClose}>
+            <ListItemIcon>
+              <Landscape />
+            </ListItemIcon>
+            <a href="/profile/bookings" style={{textDecoration: 'none', color: '#000'}}>Mis reservas</a>
+          </CustomMenuItem>
           <CustomMenuItem onClick={this.handleClose}>
             <ListItemIcon>
               <VpnKey />

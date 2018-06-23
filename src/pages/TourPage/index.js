@@ -160,7 +160,7 @@ class TourPage extends Component {
   }
 
   bookingColumn = (notFixed) => {
-    const { adultPrice, initialDescount, spaces, totalSpaces } = this.state.currentTour;
+    const { adultPrice, bookingDiscount, spaces, totalSpaces, childPrice } = this.state.currentTour;
     const columnWidth = $('#right-column').width();
     const tabStyle = this.state.fixedTab && !notFixed ? {
       position: 'fixed',
@@ -180,9 +180,16 @@ class TourPage extends Component {
                         <BookingTitle>Precio</BookingTitle>
                       </Grid>
                       <Grid item xs={12}>
-                        <BookingPrice>
-                          {formatPrice(adultPrice, true)}
-                        </BookingPrice>
+                        <Grid item xs={12}>
+                        <BookingTitle>
+                            Adulto: {formatPrice(adultPrice, true)}
+                        </BookingTitle>  
+                        </Grid>
+                        <Grid item xs={12}>
+                          <BookingTitle>
+                            Niños:{formatPrice(childPrice, true)}
+                          </BookingTitle>
+                        </Grid>
                       </Grid>
                     </Grid>
                   </Grid>
