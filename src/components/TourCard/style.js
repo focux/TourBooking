@@ -123,3 +123,11 @@ export const Card = styled.div`
     padding: 0;
   }
 `;
+
+export const CardBookingPrice = styled.div`
+  text-align: center;
+  margin-top: ${props => props.theme.gap.tiny};
+  color: red;
+  font-weight: 400;
+  text-transform: uppercase;
+`;
