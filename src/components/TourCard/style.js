@@ -104,7 +104,7 @@ export const FooterSmallText = styled.span`
 
 export const Card = styled.div`
   width: 100%;
-  height: 40rem;
+  height: 45rem;
   border-radius: 8px;
   background-color: #fff;
   display: flex;
