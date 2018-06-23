@@ -120,6 +120,11 @@ export const BookingPrice = styled.h3`
   }
 `;
 
+export const BookingSubtitle = styled.h3`
+  position: relative;
+  font-size: 2.5rem;
+`;
+
 export const BookingSpaces = styled.h3`
     font-size: 2.5rem;
     font-weight: 400;
