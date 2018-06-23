@@ -3,6 +3,7 @@ import Header from 'Components/Header';
 import { connect } from 'react-redux';
 import { Tabs, Grid, CircularProgress, Hidden } from 'material-ui';
 import moment from 'moment';
+import $ from 'jquery';
 import { openAuthModal } from '../../actions';
 import { formatPrice } from '../../utils';
 import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, CustomSmallTitle } from './style';
@@ -158,8 +159,16 @@ class TourPage extends Component {
     }
   }
 
+  getBookingPrice = () => {
+    const { adultPrice, childPrice, bookingDiscount } = this.state.currentTour;
+    const adultTotal = adultPrice * this.state.adults;
+    const childTotal = childPrice * this.state.childs;
+
+    return (adultTotal + childTotal) * bookingDiscount;
+  }
+
   bookingColumn = (notFixed) => {
-    const { adultPrice, initialDescount, spaces, totalSpaces } = this.state.currentTour;
+    const { adultPrice, childPrice, bookingDiscount, spaces, totalSpaces } = this.state.currentTour;
     const columnWidth = $('#right-column').width();
     const tabStyle = this.state.fixedTab && !notFixed ? {
       position: 'fixed',
@@ -176,7 +185,7 @@ class TourPage extends Component {
                   <Grid item xs={6}>
                     <Grid container direction="column" spacing={8}>
                       <Grid item xs={12}>
-                        <BookingTitle>Precio</BookingTitle>
+                        <BookingTitle>Adultos</BookingTitle>
                       </Grid>
                       <Grid item xs={12}>
                         <BookingPrice>
@@ -186,6 +195,16 @@ class TourPage extends Component {
                     </Grid>
                   </Grid>
                   <Grid item xs={6}>
+                    <Grid container direction="column" spacing={8}>
+                      <Grid item xs={12}>
+                        <BookingTitle>Niños</BookingTitle>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <BookingSpaces>{formatPrice(childPrice, true)}</BookingSpaces>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={12}>
                     <Grid container direction="column" spacing={8}>
                       <Grid item xs={12}>
                         <BookingTitle>Cupos</BookingTitle>
@@ -229,7 +248,7 @@ class TourPage extends Component {
                 </Grid>
               </BookingContent>
             </Grid>
-            <Grid item xs={12}><BookingButton onClick={this.handleBooking}>Reservar</BookingButton></Grid>
+            <Grid item xs={12}><BookingButton onClick={this.handleBooking}>Reserva con {formatPrice(this.getBookingPrice(), true)}</BookingButton></Grid>
           </Grid>
         </div>
       </Grid>

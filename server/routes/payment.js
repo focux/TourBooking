@@ -4,15 +4,13 @@ const { Payment } = require('../models/payment');
 
 router.post('/', authCheck, async (req, res) => {
   const {
-    bookingId,
     paymentId,
     payerId,
     amount
   } = req.body;
 
   const newPayment = new Payment({
-    userId: req.user._id,
-    bookingId,
+    user: req.user._id,
     paymentId,
     payerId,
     amount

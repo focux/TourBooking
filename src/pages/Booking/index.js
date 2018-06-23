@@ -7,7 +7,7 @@ import { SectionContainer, CustomStepLabel, StepContent } from './style';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
-import { updateUserInfo, reduceTourSpace, saveBookingInfo } from '../../actions';
+import { updateUserInfo, saveBookingInfo } from '../../actions';
 import EmailService from '../../services/emailService';
 
 class Booking extends Component {
@@ -20,7 +20,8 @@ class Booking extends Component {
   state = {
     activeStep: 0,
     steps: ['Confirma tus datos', 'Pago', 'Informaciones finales'],
-    currentTour: {}
+    currentTour: {},
+    completePayment: false
   };
 
   componentDidMount() {
@@ -83,8 +84,11 @@ class Booking extends Component {
             childPrice={currentTour.childPrice}
             adultPrice={currentTour.adultPrice}
             total={this.getTotalPrice()}
+            bookingTotal={(this.getTotalPrice() * currentTour.bookingDiscount)}
             handleNext={this.handleNext}
             onAuthorize={this.onAuthorizePayment}
+            handleCompletePayment={this.handleCompletePayment}
+            completePayment={this.state.completePayment}
           />
         );
       case 2:
@@ -103,6 +107,9 @@ class Booking extends Component {
           />);
     }
   }
+
+  handleCompletePayment = () => this.setState((prevState) =>
+    ({ completePayment: !prevState.completePayment }));
 
   handleBack = () => {
     this.setState((prevState) => ({
@@ -124,7 +131,7 @@ class Booking extends Component {
       tourId: this.state.currentTour.id,
       adults: this.query.a,
       childs: this.query.c,
-      amount: this.getTotalPrice()
+      amount: this.state.completePayment ? this.getTotalPrice() : (this.state.currentTour.bookingDiscount * this.getTotalPrice())
     };
     const emailObject = {
       title: this.state.currentTour.title,
@@ -133,7 +140,6 @@ class Booking extends Component {
       departingDate: this.state.currentTour.departingDate,
       departingFrom: this.state.currentTour.departingFrom
     };
-    this.props.reduceTourSpace(this.props.match.params.id);
     this.props.saveBooking(bookingObject);
     EmailService.sendOrderConfirmation(emailObject);
     EmailService.sendBookingNotification();
@@ -212,7 +218,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   updateUser: (user) => dispatch(updateUserInfo(user)),
-  reduceTourSpace: (id) => dispatch(reduceTourSpace(id)),
   saveBooking: (bookingObj) => dispatch(saveBookingInfo(bookingObj))
 });
 

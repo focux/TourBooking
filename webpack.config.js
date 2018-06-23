@@ -15,6 +15,25 @@ const CompressionPlugin = require('compression-webpack-plugin');
 module.exports = env => {
   const isProduction = env === 'production';
   const CSSExtract = new ExtractTextPlugin('styles.css');
+  const plugins = (isProduction ?
+    [
+      CSSExtract,
+      new UglifyJSPlugin({
+        sourceMap: true
+      }),
+      new webpack.DefinePlugin({ // <-- key to reducing React's size
+        'process.env': {
+          'NODE_ENV': JSON.stringify(env)
+        }
+      }),
+      new CompressionPlugin({
+        asset: '[path].gz[query]',
+        algorithm: 'gzip',
+        test: /\.js$|\.css$|\.html$/,
+        threshold: 10240,
+        minRatio: 0.8
+      })
+    ] : [CSSExtract]);
 
   return {
     entry: ['babel-polyfill', './src/app.js'],
@@ -50,24 +69,7 @@ module.exports = env => {
         }
       ]
     },
-    plugins: [
-      CSSExtract,
-      new UglifyJSPlugin({
-        sourceMap: true
-      }),
-      new webpack.DefinePlugin({ // <-- key to reducing React's size
-        'process.env': {
-          'NODE_ENV': JSON.stringify(env)
-        }
-      }),
-      new CompressionPlugin({
-        asset: '[path].gz[query]',
-        algorithm: 'gzip',
-        test: /\.js$|\.css$|\.html$/,
-        threshold: 10240,
-        minRatio: 0.8
-      })
-    ],
+    plugins,
     resolve: {
       alias: {
         Components: path.resolve(__dirname, 'src/components/')

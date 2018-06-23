@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { IconButton, Menu, MenuItem, Fade, ListItemIcon, Hidden, Tooltip, Drawer, List, ListItemText, ListItem, Divider } from 'material-ui';
-import { VpnKey } from '@material-ui/icons';
+import { VpnKey, Landscape } from '@material-ui/icons';
 import MenuIcon from '@material-ui/icons/Menu';
 import { RoundedButton } from 'Components/Buttons';
 import {
@@ -16,7 +16,8 @@ import {
   StyledAccountIcon,
   CustomMenu,
   CustomMenuItem,
-  CustomTooltip
+  CustomTooltip,
+  CustomMenuLink
 } from './style';
 import AuthModal from './AuthModal/';
 import { openAuthModal, closeAuthModal } from '../../actions';
@@ -60,10 +61,20 @@ class Header extends Component {
           onClose={this.handleClose}
         >
           <CustomMenuItem onClick={this.handleClose}>
-            <ListItemIcon>
-              <VpnKey />
-            </ListItemIcon>
-            <a href="/api/v1/auth/logout" style={{textDecoration: 'none', color: '#000'}}>Cerrar sesión</a>
+            <CustomMenuLink onClick={this.goTo('/profile/bookings')}>
+              <ListItemIcon>
+                <Landscape />
+              </ListItemIcon>
+              Mis reservas
+            </CustomMenuLink>
+          </CustomMenuItem>
+          <CustomMenuItem onClick={this.handleClose}>
+            <CustomMenuLink href="/api/v1/auth/logout">
+              <ListItemIcon>
+                <VpnKey />
+              </ListItemIcon>
+              Cerrar sesión
+            </CustomMenuLink>
           </CustomMenuItem>
         </CustomMenu>
       </Fragment>

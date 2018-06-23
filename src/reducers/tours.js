@@ -58,7 +58,7 @@ const toursReducer = (state = defaultState, action) => {
         if (tour.id === action.payload.id) {
           return {
             ...tour,
-            spaces: tour.spaces - 1
+            spaces: tour.spaces - action.payload.spaces
           };
         }
         return tour;

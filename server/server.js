@@ -30,6 +30,19 @@ if (process.env.NODE_ENV === 'production') {
   console.log('EN PRODUCTION');
   app.set('trust proxy', 1);
   app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  app.get('*.js', (req, res, next) => {
+    req.url += '.gz';
+    res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', 'text/javascript');
+    next();
+  });
+  
+  app.get('*.css', (req, res, next) => {
+    req.url += '.gz';
+    res.set('Content-Encoding', 'gzip');
+    res.set('Content-Type', 'text/css');
+    next();
+  });
 }
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
@@ -42,20 +55,6 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-
-app.get('*.js', (req, res, next) => {
-  req.url += '.gz';
-  res.set('Content-Encoding', 'gzip');
-  res.set('Content-Type', 'text/javascript');
-  next();
-});
-
-app.get('*.css', (req, res, next) => {
-  req.url += '.gz';
-  res.set('Content-Encoding', 'gzip');
-  res.set('Content-Type', 'text/css');
-  next();
-});
 
 app.use(express.static(publicPath));
 

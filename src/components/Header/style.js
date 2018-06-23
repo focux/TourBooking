@@ -160,3 +160,10 @@ font-weight: 300;
 padding: 1rem;
 }
 `;
+
+export const CustomMenuLink = styled.a`
+  text-decoration: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+`;

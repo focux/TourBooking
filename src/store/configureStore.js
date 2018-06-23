@@ -16,7 +16,7 @@ const store = () => {
       filters: filtersReducer,
       ui: uiReducer,
       user: userReducer,
-      booking: bookingReducer
+      bookings: bookingReducer
     }),
     composeEnhancers(applyMiddleware(reduxSaga))
   );
