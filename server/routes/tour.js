@@ -19,4 +19,20 @@ router.post('/', authCheck, (req, res) => {
   res.status(200).send();
 });
 
+router.patch('/:id', async (req, res) => {
+  const { spaces } = req.body;
+  console.log('EL BODU', req.body);
+  console.log('eL ID', req.params.id);
+  try {
+    const response = await Tour.findByIdAndUpdate(req.params.id, { $inc: { spaces: -spaces } }, { new: true });
+    res.status(200).send({ data: response });
+  } catch (e) {
+    res.status(400).send({
+      data: {
+        error: 'Bad request'
+      }
+    });
+  }
+});
+
 module.exports = router;

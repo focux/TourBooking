@@ -29,9 +29,8 @@ router.post('/', authCheck, async (req, res) => {
   }
 });
 
-router.get('/', async (req, res) => {
-  const _id = '5b21fc97c5c50614d647938b';
-  // const { _id } = req.user;
+router.get('/', authCheck, async (req, res) => {
+  const { _id } = req.user;
   try {
     const data = await Booking.find({
       user: _id
@@ -47,13 +46,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.patch('/', async (req, res) => {
+router.patch('/', authCheck, async (req, res) => {
   const { bookingId, paymentId } = req.body;
-  console.log(bookingId, 'BOOOKING ID');
-  console.log(paymentId, 'PAYMENT ID');
   try {
     const bookingResponse = await Booking.findById(bookingId);
-    console.log('klk')
     if (!bookingResponse) {
       throw new Error();
     }

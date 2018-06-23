@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { TableCell } from 'material-ui';
+import { Payment } from '@material-ui/icons';
 
 export const SectionContainer = styled.section`
   width: 100%;
@@ -33,4 +34,17 @@ export const CustomTableCell = styled(TableCell).attrs({
     `
 }
   }
+`;
+
+export const BigText = styled.h1`
+  font-size: 4rem;
+  font-weight: 300;
+  color: ${props => props.theme.primaryColor};
+  text-align: center;
+`;
+
+export const PaymentIcon = styled(Payment)`
+  width: 10rem;
+  height: 10rem;
+  color: ${props => props.theme.primaryColor};
 `;

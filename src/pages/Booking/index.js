@@ -7,7 +7,7 @@ import { SectionContainer, CustomStepLabel, StepContent } from './style';
 import StepOne from './StepOne';
 import StepTwo from './StepTwo';
 import StepThree from './StepThree';
-import { updateUserInfo, reduceTourSpace, saveBookingInfo } from '../../actions';
+import { updateUserInfo, saveBookingInfo } from '../../actions';
 import EmailService from '../../services/emailService';
 
 class Booking extends Component {
@@ -140,7 +140,6 @@ class Booking extends Component {
       departingDate: this.state.currentTour.departingDate,
       departingFrom: this.state.currentTour.departingFrom
     };
-    this.props.reduceTourSpace(this.props.match.params.id);
     this.props.saveBooking(bookingObject);
     EmailService.sendOrderConfirmation(emailObject);
     EmailService.sendBookingNotification();
@@ -219,7 +218,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   updateUser: (user) => dispatch(updateUserInfo(user)),
-  reduceTourSpace: (id) => dispatch(reduceTourSpace(id)),
   saveBooking: (bookingObj) => dispatch(saveBookingInfo(bookingObj))
 });
 

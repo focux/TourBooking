@@ -16,7 +16,8 @@ import {
   StyledAccountIcon,
   CustomMenu,
   CustomMenuItem,
-  CustomTooltip
+  CustomTooltip,
+  CustomMenuLink
 } from './style';
 import AuthModal from './AuthModal/';
 import { openAuthModal, closeAuthModal } from '../../actions';
@@ -60,16 +61,20 @@ class Header extends Component {
           onClose={this.handleClose}
         >
           <CustomMenuItem onClick={this.handleClose}>
-            <ListItemIcon>
-              <Landscape />
-            </ListItemIcon>
-            <a href="/profile/bookings" style={{textDecoration: 'none', color: '#000'}}>Mis reservas</a>
+            <CustomMenuLink onClick={this.goTo('/profile/bookings')}>
+              <ListItemIcon>
+                <Landscape />
+              </ListItemIcon>
+              Mis reservas
+            </CustomMenuLink>
           </CustomMenuItem>
           <CustomMenuItem onClick={this.handleClose}>
-            <ListItemIcon>
-              <VpnKey />
-            </ListItemIcon>
-            <a href="/api/v1/auth/logout" style={{textDecoration: 'none', color: '#000'}}>Cerrar sesión</a>
+            <CustomMenuLink href="/api/v1/auth/logout">
+              <ListItemIcon>
+                <VpnKey />
+              </ListItemIcon>
+              Cerrar sesión
+            </CustomMenuLink>
           </CustomMenuItem>
         </CustomMenu>
       </Fragment>

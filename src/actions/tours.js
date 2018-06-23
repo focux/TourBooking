@@ -41,7 +41,7 @@ export const setFetchRequestReady = () => ({
   type: SET_FETCH_REQUEST_READY
 });
 
-export const reduceTourSpace = (id) => ({
+export const reduceTourSpace = (id, spaces) => ({
   type: REDUCE_TOUR_SPACE,
-  payload: { id: parseInt(id) }
+  payload: { id, spaces }
 });

@@ -4,7 +4,7 @@ import Header from 'Components/Header';
 import Heading from 'Components/Heading';
 import CustomModal from 'Components/CustomModal';
 import { Table, TableBody, Grid, TableHead, TableRow, Button } from 'material-ui';
-import { SectionContainer, SubHeading, CustomTableCell } from './style';
+import { SectionContainer, SubHeading, CustomTableCell, BigText, PaymentIcon } from './style';
 import { formatPrice } from '../../utils';
 import { startFetchingBookings, updateBooking } from '../../actions';
 import PaypalButton from '../../services/Paypal';
@@ -51,7 +51,18 @@ class MyBookings extends Component {
       open={this.state.openAuthModal}
       onClose={this.handleCloseModal}
     >
-      <PaypalButton onAuthorize={this.onAuthorizePayment} amount={this.state.chargeAmount / 49.43} />
+      <Grid container justify="center" alignItems="center" spacing={40}>
+        <Grid item xs={4} style={{ textAlign: 'center' }}>
+          <PaymentIcon style={{ width: '10rem', height: '10rem', }} />
+        </Grid>
+        <Grid item xs={12}>
+          <BigText>PAGAR {formatPrice(this.state.chargeAmount, true)}</BigText>
+        </Grid>
+        <Grid item xs={6}>
+          <PaypalButton onAuthorize={this.onAuthorizePayment} amount={this.state.chargeAmount / 49.43} />
+        </Grid>
+        <Grid item xs={12} />
+      </Grid>
     </CustomModal>
   );
 
@@ -96,25 +107,25 @@ class MyBookings extends Component {
           </Grid>
           <Grid container justify="center" alignItems="center">
             <Grid item xs={12} md={8}>
-              {this.props.bookings.length > 0 ?
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <CustomTableCell type="header">Nombre</CustomTableCell>
-                    <CustomTableCell type="header" numeric>Monto</CustomTableCell>
-                    <CustomTableCell type="header" numeric>Pagado</CustomTableCell>
-                    <CustomTableCell type="header">Estado</CustomTableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {this.props.bookings.map((v, k) => {
-                    const totalPrice = this.totalPrice(v.tour.adultPrice, v.tour.childPrice, v.adults, v.childs);
-                    const amount = v.payment.reduce((prevVal, nextVal) => prevVal + nextVal.amount, 0);
-                    return this.tableCell(v.tour.title, totalPrice, amount, v._id, k);
-                  })}
-                </TableBody>
-              </Table>
-              : ''}
+              {this.props.bookings && this.props.bookings.length > 0 ?
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <CustomTableCell type="header">Nombre</CustomTableCell>
+                      <CustomTableCell type="header" numeric>Monto</CustomTableCell>
+                      <CustomTableCell type="header" numeric>Pagado</CustomTableCell>
+                      <CustomTableCell type="header">Estado</CustomTableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {this.props.bookings.map((v, k) => {
+                      const totalPrice = this.totalPrice(v.tour.adultPrice, v.tour.childPrice, v.adults, v.childs);
+                      const amount = v.payment.reduce((prevVal, nextVal) => prevVal + nextVal.amount, 0);
+                      return this.tableCell(v.tour.title, totalPrice, amount, v._id, k);
+                    })}
+                  </TableBody>
+                </Table>
+              : <BigText>Todavía no has reservado ningún tour.</BigText>}
             </Grid>
           </Grid>
         </SectionContainer>
