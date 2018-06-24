@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Header from 'Components/Header';
 import { connect } from 'react-redux';
 import { Tabs, Grid, CircularProgress, Hidden } from 'material-ui';
+import CustomModal from 'Components/CustomModal';
 import moment from 'moment';
 import $ from 'jquery';
 import { openAuthModal } from '../../actions';
@@ -17,7 +18,8 @@ class TourPage extends Component {
     fixedTab: false,
     adults: 1,
     childs: 0,
-    totalPersons: 1
+    totalPersons: 1,
+    openAuthModal: false
   };
 
   componentDidMount() {
@@ -243,7 +245,7 @@ class TourPage extends Component {
             <Grid item xs={12}>
               {spaces > 0 ?
                 <BookingButton onClick={this.handleBooking}>
-                  Reserva con {formatPrice(bookingPrice * (this.state.adults + this.state.childs), true)}
+                  Reserva con RD{formatPrice(bookingPrice * (this.state.adults + this.state.childs), true)}
                 </BookingButton>
               :
                 <BookingButton>
@@ -256,6 +258,36 @@ class TourPage extends Component {
       </Grid>
     );
   }
+
+  bookingButton = () => (
+    <Grid item xs={12} style={{ position: 'fixed', bottom: 0, left: 0, padding: 0, width: '100%' }}>
+      {this.state.currentTour.spaces > 0 ?
+        <BookingButton onClick={this.handleOpenModal}>
+          Reserva con RD{formatPrice(this.state.currentTour.bookingPrice * (this.state.adults + this.state.childs), true)}
+        </BookingButton>
+      :
+        <BookingButton>
+          AGOTADO
+        </BookingButton>
+      }
+    </Grid>
+  );
+
+  handleCloseModal = () => this.setState({ openAuthModal: false });
+  handleOpenModal = () => this.setState({ openAuthModal: true });
+
+  bookingModal = () => (
+    <Grid container justify="center" alignItems="center">
+      <CustomModal
+        aria-labelledby="booking-modal"
+        aria-describedby="Modal for booking"
+        open={this.state.openAuthModal}
+        onClose={this.handleCloseModal}
+      >
+        {this.bookingColumn(true)}
+      </CustomModal>
+    </Grid>
+  );
 
   render() {
     const { image } = this.state.currentTour;
@@ -272,6 +304,7 @@ class TourPage extends Component {
     } : { ...currentTabStyle };
     return (
       <Fragment>
+        {this.bookingModal()}
         <Header fixed />
         <SectionContainer>
           {this.state.currentTour && !this.state.currentTour.id ?
@@ -298,7 +331,7 @@ class TourPage extends Component {
                   {this.bookingColumn()}
                 </Hidden>
                 <Hidden only={['md', 'lg', 'xl']}>
-                  {this.bookingColumn(true)}
+                  {this.bookingButton()}
                 </Hidden>
               </Grid>
             </Fragment>
