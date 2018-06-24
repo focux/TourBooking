@@ -20,7 +20,7 @@ const Login = ({
       <Divisor> <DivisorText>or</DivisorText> </Divisor>
     </Grid>
     <Grid item container justify="center" alignItems="center" xs={12}>
-      <span style={{ fontSize: '1.4rem', fontWeight: '400' }}>Por el momento, sólo está habilitado el social login</span>
+      <span style={{ fontSize: '1.4rem', fontWeight: '400' }}>Por el momento, sólo está habilitado el inicio de sesión con Google y Facebook.</span>
     </Grid>
     <Grid item xs={12}>
       <LoginForm onSubmit={() => {}} onError={() => {}} />

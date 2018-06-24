@@ -15,7 +15,8 @@ const CustomModal = ({
     style={{
       display: 'flex',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      zIndex: 9999999999
     }}
   >
     <Slide in={open}>
