@@ -144,7 +144,7 @@ class TourPage extends Component {
               {description.moreInfo}
             </Description>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} style={{ marginBottom: '2rem' }}>
             <CustomSmallTitle id="host">Acerca del operador</CustomSmallTitle>
             <Description>{description.aboutOperator}</Description>
           </Grid>
