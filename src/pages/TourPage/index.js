@@ -263,7 +263,7 @@ class TourPage extends Component {
     <Grid item xs={12} style={{ position: 'fixed', bottom: 0, left: 0, padding: 0, width: '100%' }}>
       {this.state.currentTour.spaces > 0 ?
         <BookingButton onClick={this.handleOpenModal}>
-          Reserva con RD{formatPrice(this.state.currentTour.bookingPrice * (this.state.adults + this.state.childs), true)}
+          Pulsa aqui para Reservar RD{formatPrice(this.state.currentTour.bookingPrice * (this.state.adults + this.state.childs), true)}
         </BookingButton>
       :
         <BookingButton>
