@@ -110,42 +110,44 @@ class Header extends Component {
 
   render() {
     return (
-      <Container fixed={this.props.fixed}>
-      {/* this.sideDrawer() */}
-        <AuthModal
-          handleCloseLoginModal={this.props.handleCloseAuth}
-          openAuthModal={this.props.openAuth}
-          currentPage={this.props.modalPage}
-          onChangePage={this.props.handleOpenAuth(this.props.modalPage === 0 ? 1 : 0)}
-          onClickEmailSignUp={this.props.handleOpenAuth(2)}
-        />
-        <LeftSide>
-          <Logo><CustomLink to="/"><img src={`/images/${!this.props.fixed ? 'logo.png' : 'logo-purple.png'}`} alt="Driscovery" style={{ maxWidth: 50 }} /></CustomLink></Logo>
-          <Navigation>
-            {!(this.props.user && this.props.user.id) &&
-              <Fragment>
-                <NavItem onClick={this.props.handleOpenAuth()}>Loguéate</NavItem>
-                <NavItem onClick={this.props.handleOpenAuth(1)}>Registrate</NavItem>
-              </Fragment>
+        <Container fixed={this.props.fixed} white={this.props.white} showSaleBar={this.props.showSaleBar} id="header-nav" innerRef={this.props.navRef && this.props.navRef}>
+          {/* this.sideDrawer() */}
+          <AuthModal
+            handleCloseLoginModal={this.props.handleCloseAuth}
+            openAuthModal={this.props.openAuth}
+            currentPage={this.props.modalPage}
+            onChangePage={this.props.handleOpenAuth(this.props.modalPage === 0 ? 1 : 0)}
+            onClickEmailSignUp={this.props.handleOpenAuth(2)}
+          />
+          <LeftSide>
+            <CustomLink to="/">
+              <img src={`/images/${!this.props.white ? 'logo.png' : 'logo-purple.png'}`} alt="Driscovery" />
+            </CustomLink>
+            <Navigation>
+              {!(this.props.user && this.props.user.id) &&
+                <Fragment>
+                  <NavItem onClick={this.props.handleOpenAuth()}>Loguéate</NavItem>
+                  <NavItem onClick={this.props.handleOpenAuth(1)}>Registrate</NavItem>
+                </Fragment>
+              }
+              <Hidden only="xs">
+              <NavItem onClick={this.goTo('/contactus')}>Contáctanos</NavItem>
+              </Hidden>
+            </Navigation>
+            {/* <IconButton onClick={this.handleDrawer(true)} color="inherit" aria-label="Menu">
+              <MenuIcon />
+            </IconButton> */}
+          </LeftSide>
+          <RightSide>
+            {!(this.props.user && this.props.user.id) ?
+              <RoundedButton onClick={this.goTo('/contactus')} type="solid" fill="tertiary">
+                Agencias
+              </RoundedButton>
+            :
+              this.profileMenu()
             }
-            <Hidden only="xs">
-            <NavItem onClick={this.goTo('/contactus')}>Contáctanos</NavItem>
-            </Hidden>
-          </Navigation>
-          {/* <IconButton onClick={this.handleDrawer(true)} color="inherit" aria-label="Menu">
-            <MenuIcon />
-          </IconButton> */}
-        </LeftSide>
-        <RightSide>
-          {!(this.props.user && this.props.user.id) ?
-            <RoundedButton onClick={this.goTo('/contactus')} type="solid" fill="tertiary">
-              Agencias
-            </RoundedButton>
-          :
-            this.profileMenu()
-          }
-        </RightSide>
-      </Container>
+          </RightSide>
+        </Container>
     );
   }
 }
@@ -153,7 +155,8 @@ class Header extends Component {
 const mapStateToProps = state => ({
   openAuth: state.ui.openAuthModal,
   modalPage: state.ui.authModalPage,
-  user: state.user
+  user: state.user,
+  showSaleBar: state.ui.showSaleBar
 });
 
 const mapDispatchToProps = dispatch => ({

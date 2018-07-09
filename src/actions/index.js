@@ -33,8 +33,10 @@ export {
 export {
   OPEN_AUTH_MODAL,
   CLOSE_AUTH_MODAL,
+  CLOSE_SALES_BAR,
   openAuthModal,
-  closeAuthModal
+  closeAuthModal,
+  closeSalesBar
 } from './ui';
 
 export {

@@ -18,7 +18,7 @@ class ContactPage extends Component {
   render() {
     return (
       <Fragment>
-        <Header fixed />
+        <Header white />
         <SectionContainer>
           <Grid container justify="center" alignItems="center">
             <Grid item container justify="center" xs={12} md={10}>

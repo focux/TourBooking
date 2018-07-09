@@ -1,11 +1,14 @@
 import {
   OPEN_AUTH_MODAL,
-  CLOSE_AUTH_MODAL
+  CLOSE_AUTH_MODAL,
+  CLOSE_SALES_BAR
 } from '../actions';
 
 const defaultState = {
   openAuthModal: false,
-  authModalPage: 0
+  authModalPage: 0,
+  showSaleBar: true,
+  salePrice: 249
 };
 
 const uiReducer = (state = defaultState, action) => {
@@ -19,6 +22,11 @@ const uiReducer = (state = defaultState, action) => {
       return {
         ...state,
         openAuthModal: false
+      };
+    case CLOSE_SALES_BAR:
+      return {
+        ...state,
+        showSaleBar: false
       };
     default:
       return state;

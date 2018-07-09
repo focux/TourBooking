@@ -7,7 +7,7 @@ import moment from 'moment';
 import $ from 'jquery';
 import { openAuthModal } from '../../actions';
 import { formatPrice } from '../../utils';
-import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, CustomSmallTitle } from './style';
+import { SectionContainer, HeroImage, StyledTab, Title, Subtitle, LocationIcon, BlockTitle, Description, BookingButton, BookingContent, BookingPrice, BookingSpaces, BookingTitle, CustomSmallTitle, StrikePrice } from './style';
 import IncrementInput from '../../components/IncrementInput';
 
 class TourPage extends Component {
@@ -19,21 +19,30 @@ class TourPage extends Component {
     adults: 1,
     childs: 0,
     totalPersons: 1,
-    openAuthModal: false
+    openAuthModal: false,
+    tabYPosition: -1000
   };
 
   componentDidMount() {
     this.getCurrentTour();
     window.scrollTo(0, 0);
+    console.log('SI SE MONTO');
     window.addEventListener('scroll', this.onScroll, false);
+    this.checkHeaderSize();
   }
 
   componentDidUpdate() {
     this.getCurrentTour();
+    this.checkHeaderSize();
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onScroll, false);
+  }
+
+  navRef = (el) => {
+    console.log(el, 'ELEMENT');
+    this.navReference = el;
   }
 
   onScroll = () => {
@@ -65,10 +74,16 @@ class TourPage extends Component {
 
   getCurrentTour = () => {
     if (this.props.toursRequest === 'READY' && !this.state.currentTour.id) {
-      console.log('jejeje')
       this.setState({
         currentTour: this.props.tours.filter((val) => val.id === this.props.match.params.id)[0]
       });
+    }
+  }
+
+  checkHeaderSize = () => {
+    const tabYPosition = this.props.showSaleBar ? 70 + this.navReference.clientHeight : this.navReference.clientHeight; // First condition: Sale bar + Navbar, Second: Navbar
+    if (tabYPosition !== this.state.tabYPosition) {
+      this.setState({ tabYPosition });
     }
   }
 
@@ -166,7 +181,7 @@ class TourPage extends Component {
     const columnWidth = $('#right-column').width();
     const tabStyle = this.state.fixedTab && !notFixed ? {
       position: 'fixed',
-      top: `${76 + 48 + 50}px`,
+      top: `${this.state.tabYPosition + 50 + 10}px`, // Size of whole header + tabsize + small margin
       width: columnWidth
     } : {};
     return (
@@ -245,7 +260,7 @@ class TourPage extends Component {
             <Grid item xs={12}>
               {spaces > 0 ?
                 <BookingButton onClick={this.handleBooking}>
-                  Reserva con RD{formatPrice(bookingPrice * (this.state.adults + this.state.childs), true)}
+                  Reserva con <StrikePrice>RD{formatPrice(bookingPrice * (this.state.adults + this.state.childs), true)}</StrikePrice>
                 </BookingButton>
               :
                 <BookingButton>
@@ -291,7 +306,7 @@ class TourPage extends Component {
 
   render() {
     const { image } = this.state.currentTour;
-    const { tabNames, fixedTab } = this.state;
+    const { tabNames, fixedTab, tabYPosition } = this.state;
     const currentTabStyle = {
       backgroundColor: '#fff',
       width: '100%',
@@ -299,13 +314,13 @@ class TourPage extends Component {
     };
     const tabStyle = fixedTab ? {
       position: 'fixed',
-      top: '76px',
+      top: tabYPosition,
       ...currentTabStyle
     } : { ...currentTabStyle };
     return (
       <Fragment>
         {this.bookingModal()}
-        <Header fixed />
+        <Header white fixed navRef={this.navRef} />
         <SectionContainer>
           {this.state.currentTour && !this.state.currentTour.id ?
             <Grid container justify="center" alignItems="center" style={{ position: 'absolute', top: '50%' }}>
@@ -345,7 +360,8 @@ class TourPage extends Component {
 const mapStateToProps = state => ({
   tours: state.tours.data,
   toursRequest: state.tours.status,
-  user: state.user
+  user: state.user,
+  showSaleBar: state.ui.showSaleBar
 });
 
 const mapDispatchToProps = dispatch => ({

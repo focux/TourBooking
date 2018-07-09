@@ -8,14 +8,15 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  top: 0;
   left: 0;
   width: 100%;
   z-index: 1;
+  height: 82px;
+  top: auto;
   padding: ${prop => prop.theme.gap.small} ${prop => prop.theme.gap.big};
-  ${props => props.fixed ?
+  ${props => props.white ?
     `
-    position: fixed;
+    position: relative;
     animation-fill-mode: backwards;
     animation: slideNavbar .2s ease-out;
     box-shadow: 0 2px 15px rgba(0,0,0,.1);
@@ -29,6 +30,7 @@ export const Container = styled.div`
    color: ${props.theme.white};
    `
   }
+  ${props => props.fixed ? 'position: fixed;' : ''}
   
 
   @keyframes slideNavbar {
@@ -100,6 +102,12 @@ export const LeftSide = styled.div`
 export const CustomLink = styled(Link)`
   text-decoration: none;
   color: inherit;
+  display: inline-block;
+  max-width: 50px;
+
+  img {
+    width: 100%;
+  }
 
   &:hover {
     text-decoration: underline;

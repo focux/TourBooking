@@ -5,8 +5,7 @@ import { SmallTitle } from 'Components/Heading';
 
 export const SectionContainer = styled.section`
   width: 100%;
-  min-height: calc(100vh - 7.6rem);;
-  margin-top: 7.6rem;
+  min-height: calc(100vh - 7.6rem);
 `;
 
 export const Container = styled.div`
@@ -146,4 +145,8 @@ export const DiscountText = styled.p`
 
 export const CustomSmallTitle = styled(SmallTitle)`
   text-transform: uppercase;
+`;
+
+export const StrikePrice = styled.span`
+  text-decoration: line-through;
 `;

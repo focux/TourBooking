@@ -58,7 +58,7 @@ export default class HomePage extends PureComponent {
   render() {
     return (
       <Fragment>
-        <Header fixed={this.state.fixedNav} />
+        <Header fixed={this.state.fixedNav} white={this.state.fixedNav} />
         <FirstSection handleKeyPress={this.handleKeyPress} onChangeSearch={this.onChangeSearch} handleSearch={this.handleSearch} predictions={this.state.predictions} />
         <SecondSection />
       </Fragment>

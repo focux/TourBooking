@@ -131,3 +131,7 @@ export const CardBookingPrice = styled.div`
   font-weight: 400;
   text-transform: uppercase;
 `;
+
+export const StrikePrice = styled.span`
+  text-decoration: line-through;
+`;
